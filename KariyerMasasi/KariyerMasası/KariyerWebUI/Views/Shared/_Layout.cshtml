@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="tr" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kariyer Masası Online Görüşme</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon.png">
+    <link rel="stylesheet" href="~/Content/css/chartist.min.css">
+    <link href="~/Content/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img src="~/Content/kariyermasasi/miniLogo.png" height="64" width="128" />
+                <div class="brand-title"></div>
+            </a>
+        </div>
+        <div class="deznav">
+            <div class="deznav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a href="/kullanici" class="has-arrow ai-icon" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Kullanıcı Bilgileri</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="copyright">
+                    <p><strong>Uena  Admin  Dashboard</strong> © 2021 All Rights Reserved</p>
+                    <p class="fs-12">Made with <span class="heart"></span> by DexignZone</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            @RenderBody()
+        </div>
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="dashboard_bar">
+                                Kariyer Merkezi
+                            </div>
+                        </div>
+                        <div class="custom-control custom-switch toggle-switch text-right mr-4">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch11" onchange="set_service_status()" checked>
+                            <label class="custom-control-label fs-15 text-black pr-2" for="customSwitch11">Firma Aktif Durumu</label>
+                        </div>
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <img src="/images/profile/pati.png" alt="">
+                                    <div class="header-info">
+                                        <span class="fs-20 font-w500">Bünyamin Çalışkan</span>
+                                        <small>Baron</small>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="/logout" class="dropdown-item ai-icon">
+                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                        <span class="ml-2">Çıkış Yap </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="footer">
+
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a> 2021</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/js/global.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+    <script src="~/Content/js/Chart.bundle.min.js"></script>
+    <script src="~/Content/js/jquery.peity.min.js"></script>
+    <script src="~/Content/js/custom.min.js"></script>
+    <script src="~/Content/js/deznav-init.js"></script>
+    <script src="~/Content/js/demo.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Content/js/styleSwitcher.js"></script>
+    <script src="~/Content/js/pages/custom.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
