@@ -9,6 +9,7 @@ namespace KariyerEntity.Entity
 {
     public class User : LowerBase
     {
+        
         public string Photo { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -23,11 +24,13 @@ namespace KariyerEntity.Entity
         public bool GeneralIsActive { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
-        public int BusinessAreaID { get; set; }
         public string MilitaryStatus { get; set; }
         public string Gender { get; set; }
         public string MarriageStatus { get; set; }
         public bool ProgramState { get; set; }
         public string Hobby { get; set; }
+        public int BusinessAreaID { get; set; }
+        
+
     }
 }

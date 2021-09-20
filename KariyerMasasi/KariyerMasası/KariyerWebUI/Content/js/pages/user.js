@@ -5,7 +5,6 @@ async function GetUserData() {
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
-        '<th class="sorting_asc">Fotoğraf</th>' +
         '<th class="sorting_asc">İsim</th>' +
         '<th class="sorting_asc">Soyisim</th>' +
         '<th class="sorting_asc">E-Mail</th>' +
@@ -18,8 +17,11 @@ async function GetUserData() {
         for (item in data.Result) {
             var deger =
                 '<tbody><tr role="row">' +
-                '<td>' + data.Result[item].Photo + '</td>' +
-                '<td>' + data.Result[item].Name + '</td>' +
+                '<div class="d-flex align-items-center">' +
+                '<td>'+
+                '<img src="' + data.Result[item].Photo+'" class="rounded-lg mr-2" width="24" alt="">' +
+                '<span class="w-space-no">' + data.Result[item].Name + '</span></div> ' +
+                '</td>'+
                 '<td>' + data.Result[item].Surname + '</td>' +
                 '<td>' + data.Result[item].EMail + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +

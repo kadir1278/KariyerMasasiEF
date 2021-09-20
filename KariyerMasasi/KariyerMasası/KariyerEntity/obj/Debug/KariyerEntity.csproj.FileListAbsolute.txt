@@ -10,3 +10,14 @@ C:\Users\kadirari\Desktop\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\K
 C:\Users\kadirari\Desktop\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
 C:\Users\kadirari\Desktop\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb
 C:\Users\kadirari\Desktop\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.dll.config
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.dll
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.pdb
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.dll
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.xml
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CoreCompileInputs.cache
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
+C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb

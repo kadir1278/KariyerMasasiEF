@@ -19,10 +19,14 @@ namespace KariyerWebUI.Controllers
         #region Partial
         public ActionResult PartialAddUser()
         {
+            ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
+
             return PartialView();
         }
         public ActionResult PartialUpdateUser(int id)
         {
+            ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
+
             var data = db.Users.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
@@ -39,15 +43,18 @@ namespace KariyerWebUI.Controllers
         [HttpPost]
         public ActionResult Add(User model, string Photo)
         {
-
-
-            string fileUrl = Path.Combine(Server.MapPath("File/User/" + Guid.NewGuid().ToString() + ".png"));
-            using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
-            using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+            if (Photo.Contains("base64,")&&Photo!=null)
             {
-                stream.WriteTo(fileStream);
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
+                string filePath = "/File/User/" + fileName + ".png";
+                using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
+                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    stream.WriteTo(fileStream);
+                }
+                model.Photo = filePath;
             }
-            model.Photo = fileUrl;
             model.DeletionStatus = false;
             model.CreatedTime = DateTime.Now;
             model.UpdatedTime = DateTime.Now;
@@ -61,8 +68,9 @@ namespace KariyerWebUI.Controllers
             var data = db.Users.Find(model.ID);
             if (Photo.Contains("base64,"))
             {
-                string fileUrl = Path.Combine(Server.MapPath("~/File/User/" + Guid.NewGuid().ToString() + ".png"));
-                using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
+                string filePath = "/File/User/" + fileName + ".png"; using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
                 using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
                 {
                     stream.WriteTo(fileStream);
@@ -117,9 +125,9 @@ namespace KariyerWebUI.Controllers
                              ID = obj.ID,
                              Name = obj.Name,
                              Surname = obj.Surname,
-                             EMail=obj.EMail,
-                             Phone=obj.Phone,
-                             Photo=obj.Photo,
+                             EMail = obj.EMail,
+                             Phone = obj.Phone,
+                             Photo = obj.Photo,
                          }
             };
             return Json(query, JsonRequestBehavior.AllowGet);

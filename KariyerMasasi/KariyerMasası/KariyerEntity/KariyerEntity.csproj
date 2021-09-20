@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity\LowerBase.cs" />
+    <Compile Include="Entity\Admin.cs" />
+    <Compile Include="Entity\BusinessArea.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\SystemContext.cs" />
