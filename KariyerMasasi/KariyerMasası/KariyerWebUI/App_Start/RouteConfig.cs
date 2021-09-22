@@ -174,6 +174,47 @@ namespace KariyerWebUI
            );
 
             #endregion CompanyUser
+
+            #region General
+
+            routes.MapRoute(
+                name: "General",
+                url: "genel",
+                defaults: new { controller = "General", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+               name: "GeneralDelete",
+               url: "genel-sil/{id}",
+               defaults: new { controller = "General", action = "Delete", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+              name: "GeneralAdd",
+              url: "genel-ekle/{id}",
+              defaults: new { controller = "General", action = "Add", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+             name: "GeneralUpdate",
+             url: "genel-guncelle/{id}",
+             defaults: new { controller = "General", action = "Update", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
+              name: "GetGeneralData",
+              url: "GetGeneralData/{searchText}",
+              defaults: new { controller = "General", action = "GetGeneralData", searchText = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+                name: "PartialAddGeneral",
+                url: "PartialAddGeneral",
+                defaults: new { controller = "General", action = "PartialAddGeneral", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+               name: "PartialUpdateGeneral",
+               url: "PartialUpdateGeneral/{id}",
+               defaults: new { controller = "General", action = "PartialUpdateGeneral", id = UrlParameter.Optional }
+           );
+
+            #endregion General
+
         }
     }
 }

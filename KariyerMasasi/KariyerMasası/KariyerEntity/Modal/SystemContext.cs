@@ -25,6 +25,8 @@ namespace KariyerEntity.Modal
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<BusinessArea> BusinessAreas { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<UserSpecialType> UserSpecialTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyUser> CompanyUsers { get; set; }
     }

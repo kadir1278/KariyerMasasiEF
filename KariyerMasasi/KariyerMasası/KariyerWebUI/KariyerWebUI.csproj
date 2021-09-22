@@ -230,6 +230,7 @@
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\custom.js" />
+    <Content Include="Content\js\pages\general.js" />
     <Content Include="Content\js\pages\user.js" />
     <Content Include="Content\js\styleSwitcher.js" />
     <Content Include="Content\kariyermasasi\Logo.png" />
@@ -340,10 +341,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
+    <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GeneralViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +428,8 @@
     <Content Include="Views\CompanyUser\Index.cshtml" />
     <Content Include="Views\CompanyUser\PartialAddCompanyUser.cshtml" />
     <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
+    <Content Include="Views\General\Index.cshtml" />
+    <Content Include="Views\General\PartialAddGeneral.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -435,7 +440,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="File\User\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

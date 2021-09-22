@@ -53,7 +53,9 @@
     <Compile Include="Entity\BusinessArea.cs" />
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\CompanyUser.cs" />
+    <Compile Include="Entity\Language.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserSpecialType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\SystemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
