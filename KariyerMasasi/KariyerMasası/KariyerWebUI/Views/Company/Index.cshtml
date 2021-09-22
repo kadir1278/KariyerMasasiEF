@@ -1,16 +1,14 @@
-﻿@model IEnumerable<KariyerEntity.Entity.User>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model IEnumerable<KariyerEntity.Entity.Company>
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 @section Scripts{
-    <script src="~/Content/js/pages/user.js"></script>
+    <script src="~/Content/js/pages/company.js"></script>
 }
 
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Kullanıcı Listesi</h3>
+            <h3 class="card-title">Şirket Listesi</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -24,7 +22,7 @@
                     <div class="input-group search-area d-xl-inline-flex d-none">
                         <input id="search" type="text" class="form-control" placeholder="Arama...">
                         <div class="input-group-append">
-                            <button id="search" onclick="GetUserData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                            <button id="search" onclick="GetCompanyData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
                         </div>
                     </div>
                 </div>
@@ -40,7 +38,8 @@
         </div>
     </div>
 </div>
-@{Html.RenderAction("PartialAddUser", "User");}
+@{Html.RenderAction("PartialAddCompany", "Company");}
 <div id="modalContent"></div>
+
 
 

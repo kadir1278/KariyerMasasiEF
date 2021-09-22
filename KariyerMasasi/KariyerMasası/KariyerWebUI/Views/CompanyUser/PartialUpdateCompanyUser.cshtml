@@ -1,0 +1,53 @@
+﻿
+@model KariyerEntity.Entity.CompanyUser
+@if (Model != null)
+{
+
+    <div class="modal fade" id="detailModal" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Şirket Görüntüle</h5>
+                    <button onclick="GetCompanyUserData()" type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="companyuser-edit-form" action="/sirket-personel-guncelle" submit-success="GetData">
+                        @Html.HiddenFor(x => x.ID)
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>İsim</label>
+                                <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="İsim Giriniz...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>İsim</label>
+                                <input type="text" class="form-control" value="@Model.Surname" name="Surname" placeholder="İsim Giriniz...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Ünvan</label>
+                                <input type="text" class="form-control" value="@Model.Title" name="Title" placeholder="Ünvan Giriniz...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Telefon</label>
+                                <input type="tel" class="form-control" value="@Model.Phone" name="Phone" placeholder="Telefon Giriniz...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>E-Mail</label>
+                                <input type="email" class="form-control" value="@Model.EMail" name="EMail" placeholder="E-Mail Giriniz...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Şifre</label>
+                                <input type="password" class="form-control" value="@Model.Password" name="Password" placeholder="Şifre Giriniz...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="GetCompanyUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                            <button type="button" submit-form="#companyuser-edit-form" class="btn btn-success light ">Güncelle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>}
+

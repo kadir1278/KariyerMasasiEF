@@ -226,11 +226,15 @@
     <Content Include="Content\js\global.min.js" />
     <Content Include="Content\js\jquery.peity.min.js" />
     <Content Include="Content\js\login-form.js" />
+    <Content Include="Content\js\pages\admin.js" />
+    <Content Include="Content\js\pages\company.js" />
+    <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\custom.js" />
     <Content Include="Content\js\pages\user.js" />
     <Content Include="Content\js\styleSwitcher.js" />
     <Content Include="Content\kariyermasasi\Logo.png" />
     <Content Include="Content\kariyermasasi\miniLogo.png" />
+    <Content Include="Content\kariyermasasi\pp.png" />
     <Content Include="Content\vendor\animate\animate.min.css" />
     <Content Include="Content\vendor\aos\css\aos.min.css" />
     <Content Include="Content\vendor\apexchart\apexchart.js" />
@@ -333,6 +337,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -409,6 +416,15 @@
     <Content Include="Views\User\PartialAddUser.cshtml" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\User\PartialUpdateUser.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\PartialAddAdmin.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\PartialAddCompany.cshtml" />
+    <Content Include="Views\Company\PartialUpdateCompany.cshtml" />
+    <Content Include="Views\Admin\PartialUpdateAdmin.cshtml" />
+    <Content Include="Views\CompanyUser\Index.cshtml" />
+    <Content Include="Views\CompanyUser\PartialAddCompanyUser.cshtml" />
+    <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
