@@ -11,6 +11,7 @@ namespace KariyerWebUI.Controllers
 {
     public class AdminController : Controller
     {
+        // Test
         // GET: Admin
         private SystemContext db = new SystemContext();
         public ActionResult Index()
