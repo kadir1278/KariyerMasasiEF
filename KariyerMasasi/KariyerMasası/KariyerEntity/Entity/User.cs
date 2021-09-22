@@ -9,7 +9,17 @@ namespace KariyerEntity.Entity
 {
     public class User : LowerBase
     {
-        
+        public User()
+        {
+            this.UserEducations = new HashSet<UserEducation>();
+            this.UserBusinessInformations = new HashSet<UserBusinessInformation>();
+            this.UserLanguages = new HashSet<UserLanguage>();
+            this.UserCertificates = new HashSet<UserCertificate>();
+            this.UserComputerInformations = new HashSet<UserComputerInformation>();
+            this.UserReferences = new HashSet<UserReference>();
+            this.UserSeminars = new HashSet<UserSeminar>();
+            this.SpecialDirectories = new HashSet<SpecialDirectory>();
+        }
         public string Photo { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -31,7 +41,13 @@ namespace KariyerEntity.Entity
         public string Hobby { get; set; }
         public int BusinessAreaID { get; set; }
         public BusinessArea BusinessArea { get; set; }
-
-
+        public virtual ICollection<UserEducation> UserEducations { get; set; }
+        public virtual ICollection<UserBusinessInformation> UserBusinessInformations { get; set; }
+        public virtual ICollection<UserLanguage> UserLanguages { get; set; }
+        public virtual ICollection<UserCertificate> UserCertificates { get; set; }
+        public virtual ICollection<UserComputerInformation> UserComputerInformations { get; set; }
+        public virtual ICollection<UserReference> UserReferences { get; set; }
+        public virtual ICollection<UserSeminar> UserSeminars { get; set; }
+        public virtual ICollection<SpecialDirectory> SpecialDirectories { get; set; }
     }
 }

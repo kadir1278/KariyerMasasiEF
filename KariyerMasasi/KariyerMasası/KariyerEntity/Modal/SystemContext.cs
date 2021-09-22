@@ -29,5 +29,13 @@ namespace KariyerEntity.Modal
         public DbSet<UserSpecialType> UserSpecialTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyUser> CompanyUsers { get; set; }
+        public DbSet<UserEducation> UserEducations { get; set; }
+        public DbSet<UserBusinessInformation> UserBusinessInformations { get; set; }
+        public DbSet<UserLanguage> UserLanguages { get; set; }
+        public DbSet<UserCertificate> UserCertificates { get; set; }
+        public DbSet<UserComputerInformation> UserComputerInformations { get; set; }
+        public DbSet<UserReference> UserReferences { get; set; }
+        public DbSet<UserSeminar> UserSeminars { get; set; }
+        public DbSet<SpecialDirectory> SpecialDirectories { get; set; }
     }
 }
