@@ -343,10 +343,12 @@
     <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneralViewModel.cs" />
+    <Compile Include="Models\UserDetailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +432,8 @@
     <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
     <Content Include="Views\General\Index.cshtml" />
     <Content Include="Views\General\PartialAddGeneral.cshtml" />
+    <Content Include="Views\General\PartialUpdateGeneral.cshtml" />
+    <Content Include="Views\UserDetail\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -439,7 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="File\User\" />
+    <Folder Include="File\User\Certificate\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KariyerEntity.Entity.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Content/js/pages/user.js"></script>
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kullanıcı Listesi</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <button id="refresh" class="btn light btn-success">Verileri Yenile</button>
+                    <button id="clear" class="btn light btn-danger">Verileri Temizle</button>
+                    <button class="btn light btn-info" id="btnDataAdd" data-toggle="modal" data-target="#basicModal">Veri Ekle</button>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group search-area d-xl-inline-flex d-none">
+                        <input id="search" type="text" class="form-control" placeholder="Arama...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetUserData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div id="example_wrapper" class="dataTables_wrapper">
+                    <table id="example" class="table primary-table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
+                        <br />
+                        <br />
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderAction("PartialAddUser", "User");}
+<div id="modalContent"></div>
+
+
