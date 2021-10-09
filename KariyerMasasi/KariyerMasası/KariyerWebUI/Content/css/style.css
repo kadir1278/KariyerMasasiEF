@@ -30495,12 +30495,13 @@ $color_pallate_15: #ed0b4c; */
 
 .photo-content {
   position: relative; }
-  .photo-content .cover-photo {
-    background: url(..//Content/images/profile/cover.jpg);
-    background-size: cover;
-    background-position: center;
-    min-height: 250px;
-    width: 100%; }
+    .photo-content .cover-photo {
+        background-size: auto;
+        background-position: center;
+        background-repeat:no-repeat;
+        min-height: 250px;
+        width: 100%;
+    }
 
 .profile .profile-photo {
   max-width: 100px;

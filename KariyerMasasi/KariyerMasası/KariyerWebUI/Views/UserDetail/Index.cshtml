@@ -1,46 +1,534 @@
-﻿@model IEnumerable<KariyerEntity.Entity.User>
+﻿@model KariyerWebUI.Models.UserDetailViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
-    <script src="~/Content/js/pages/user.js"></script>
+    <script src="~/Content/js/pages/userdetail.js"></script>
+}
+@{
+    int seminarCount = Model.Seminars.Count();
+    int referenceCount = Model.References.Count();
+    int certificateCount = Model.Certificates.Count();
+
 }
 
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Kullanıcı Listesi</h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button id="refresh" class="btn light btn-success">Verileri Yenile</button>
-                    <button id="clear" class="btn light btn-danger">Verileri Temizle</button>
-                    <button class="btn light btn-info" id="btnDataAdd" data-toggle="modal" data-target="#basicModal">Veri Ekle</button>
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div class="col-sm-6 p-md-0">
+            @foreach (var item in Model.UserInformations)
+            {
+
+                <div class="welcome-text">
+                    <h4>Hoşgeldin , @item.Name @item.Surname</h4>
                 </div>
-                <div class="col-md-3">
-                    <div class="input-group search-area d-xl-inline-flex d-none">
-                        <input id="search" type="text" class="form-control" placeholder="Arama...">
-                        <div class="input-group-append">
-                            <button id="search" onclick="GetUserData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+            }
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="profile card card-body px-3 pt-3 pb-0">
+                <div class="profile-head">
+                    <div class="photo-content">
+                        <div class="cover-photo" style="background-image: url(/Content/kariyermasasi/Logo.png)"></div>
+                    </div>
+                    <br />
+                    <div class="profile-info">
+                        @foreach (var item in Model.UserInformations)
+                        {
+                            <div class="profile-photo">
+                                <img src="@item.Photo" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <div class="profile-details">
+
+                                <div class="profile-name px-3 pt-2">
+                                    <h4 class="text-primary mb-0">@item.Name @item.Surname</h4>
+                                    <p>@item.BusinessArea.Name</p>
+                                </div>
+
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">@item.EMail</h4>
+                                    <p>Email</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">@item.Phone</h4>
+                                    <p>Telefon</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">@item.MarriageStatus</h4>
+                                    <p>Evlilik Durumu</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">@item.MilitaryStatus</h4>
+                                    <p>Askerlik Durumu</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">@item.Gender</h4>
+                                    <p>Cinsiyet</p>
+                                </div>
+
+                                @foreach (var data in Model.SpecialDirectories)
+                                {
+                                    <div class="profile-email px-2 pt-2">
+                                        <h4 class="text-primary mb-0">@data.UserSpecialType.Name</h4>
+                                        <p>Özel Durum</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        <div class="dropdown ml-auto">
+                            <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-item" data-toggle="modal" data-target="#workModal"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
-                <div id="example_wrapper" class="dataTables_wrapper">
-                    <table id="example" class="table primary-table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
-                        <br />
-                        <br />
-                    </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-statistics">
+                                <div class="text-center">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3 class="m-b-0">@referenceCount</h3><span>Referans</span>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="m-b-0">@seminarCount</h3><span>Seminer</span>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="m-b-0">@certificateCount</h3><span>Sertifika</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-blog">
+                                <h5 class="text-primary d-inline">Bilgisayar Bilgisi</h5>
+                                @foreach (var item in Model.ComputerInformations)
+                                {
+                                    <h4><a class="text-black">@item.Name</a></h4>
+                                    <p class="mb-0">@Html.Raw(item.Description)</p>
+                                    <br />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach (var item in Model.Educations)
+                            {
+
+                                <div class="profile-news">
+                                    <h5 class="text-primary d-inline">@item.SchoolName</h5>
+                                    <div class="media pt-3 pb-3">
+                                        <img src="~/Content/kariyermasasi/miniLogo.png" alt="image" class="mr-3 rounded" width="75">
+                                        <div class="media-body">
+                                            <h5 class="m-b-5"><a href="post-details.html" class="text-black">@item.GraduationGrade @item.GraduationStatus</a></h5>
+                                            <p class="mb-0">Mezuniyet Tarihi : @item.GraduationYear.ToString("dd.MM.yyyy")</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-tab">
+                        <div class="custom-tab-1">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#workInfo" data-toggle="tab" class="nav-link active show">İş Bilgisi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#educationInfo" data-toggle="tab" class="nav-link">Eğitim Bilgisi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#referenceInfo" data-toggle="tab" class="nav-link">Referans Bilgisi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#certificateInfo" data-toggle="tab" class="nav-link">Sertifika Bilgisi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#seminarInfo" data-toggle="tab" class="nav-link">Seminer Bilgisi</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="workInfo" class="tab-pane fade active show">
+                                    @foreach (var item in Model.BusinessInformations)
+                                    {
+                                        <div class="profile-about-me">
+                                            <div class="pt-4 border-bottom-1 pb-3">
+                                                <h4 class="text-primary">Bilgilendirme</h4>
+                                                <p> @Html.Raw(item.Description)</p>
+                                            </div>
+                                        </div>
+                                        <div class="profile-personal-info">
+                                            <h4 class="text-primary mb-4">Personal Information</h4>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Firma <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.CompanyName</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Görevi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.Duty</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">İşe Giriş Tarihi <span class="pull-right">:</span></h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.StartingDate.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        İşten Çıkış Tarihi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.FinishDate.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="@item.ID"><i class="fa fa-pencil"></i></a>
+                                        <a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="@item.ID"><i class="fa fa-trash"></i></a>
+                                        <hr />
+                                    }
+                                </div>
+                                <div id="educationInfo" class="tab-pane">
+                                    <br />
+                                    <div class="profile-personal-info">
+                                        <h4 class="text-primary mb-4">Eğitim Bilgisi</h4>
+                                        @foreach (var item in Model.Educations)
+                                        {
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Kurumu Adı <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.SchoolName</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Mezuniyet Durumu <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationStatus</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">Mezuniyet Yılı <span class="pull-right">:</span></h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationYear.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Derecesi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationGrade</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Fakülte/Bölüm <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.Department</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Açıklama <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@Html.Raw(item.Description)</span>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="@item.ID"><i class="fa fa-pencil"></i></a>
+                                            <a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="@item.ID"><i class="fa fa-trash"></i></a>
+                                            <hr />
+                                        }
+                                    </div>
+                                    <br />
+                                    <hr />
+                                </div>
+                                <div id="referenceInfo" class="tab-pane fade">
+                                    <br />
+                                    <div class="profile-personal-info">
+                                        <h4 class="text-primary mb-4">Eğitim Bilgisi</h4>
+                                        @foreach (var item in Model.Educations)
+                                        {
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Kurumu Adı <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.SchoolName</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Mezuniyet Durumu <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationStatus</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">Mezuniyet Yılı <span class="pull-right">:</span></h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationYear.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Derecesi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationGrade</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Fakülte/Bölüm <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.Department</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Açıklama <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@Html.Raw(item.Description)</span>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="@item.ID"><i class="fa fa-pencil"></i></a>
+                                            <a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="@item.ID"><i class="fa fa-trash"></i></a>
+                                            <hr />
+                                        }
+                                    </div>
+                                    <br />
+                                    <hr />
+                                </div>
+                                <div id="certificateInfo" class="tab-pane fade">
+                                    <br />
+                                    <div class="profile-personal-info">
+                                        <h4 class="text-primary mb-4">Eğitim Bilgisi</h4>
+                                        @foreach (var item in Model.Educations)
+                                        {
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Kurumu Adı <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.SchoolName</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Mezuniyet Durumu <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationStatus</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">Mezuniyet Yılı <span class="pull-right">:</span></h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationYear.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Derecesi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationGrade</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Fakülte/Bölüm <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.Department</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Açıklama <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@Html.Raw(item.Description)</span>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="@item.ID"><i class="fa fa-pencil"></i></a>
+                                            <a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="@item.ID"><i class="fa fa-trash"></i></a>
+                                            <hr />
+                                        }
+                                    </div>
+                                    <br />
+                                    <hr />
+                                </div>
+                                <div id="seminarInfo" class="tab-pane fade">
+                                    <br />
+                                    <div class="profile-personal-info">
+                                        <h4 class="text-primary mb-4">Eğitim Bilgisi</h4>
+                                        @foreach (var item in Model.Educations)
+                                        {
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Kurumu Adı <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.SchoolName</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Mezuniyet Durumu <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationStatus</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">Mezuniyet Yılı <span class="pull-right">:</span></h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationYear.ToString("dd.MM.yyyy")</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Eğitim Derecesi <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.GraduationGrade</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Fakülte/Bölüm <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@item.Department</span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5">
+                                                    <h5 class="f-w-500">
+                                                        Açıklama <span class="pull-right">:</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-sm-9 col-7">
+                                                    <span>@Html.Raw(item.Description)</span>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="@item.ID"><i class="fa fa-pencil"></i></a>
+                                            <a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="@item.ID"><i class="fa fa-trash"></i></a>
+                                            <hr />
+                                        }
+                                    </div>
+                                    <br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@{Html.RenderAction("PartialAddUser", "User");}
+
+@{Html.RenderAction("PartialBusinessAdd", "UserDetail");}
 <div id="modalContent"></div>
-
-

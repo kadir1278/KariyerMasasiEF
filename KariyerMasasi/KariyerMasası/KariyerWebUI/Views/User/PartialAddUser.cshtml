@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body" id="addModal">
-                <form id="user-add-form" action="/kullanici-ekle">
+                <form id="user-add-form" action="/kullanici-ekle" submit-success="succesSubmit">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>İsim</label>
@@ -117,7 +117,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="GetUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="button" id="closeUser" onclick="GetUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
                         <button type="button" submit-form="#user-add-form" class="btn btn-success light">Ekle</button>
                     </div>
                 </form>

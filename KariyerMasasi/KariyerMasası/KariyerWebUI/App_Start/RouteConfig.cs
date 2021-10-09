@@ -10,9 +10,9 @@ namespace KariyerWebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Anasayfa",
+                name: "Home",
                 url: "",
-                defaults: new { controller = "Anasayfa", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             #region User
@@ -54,6 +54,64 @@ namespace KariyerWebUI
            );
 
             #endregion User
+
+            #region UserDetail
+
+            routes.MapRoute(
+                name: "UserDetail",
+                url: "kullanici-detay/{id}",
+                defaults: new { controller = "UserDetail", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+              name: "UserWorkAdd",
+              url: "kullanici-is-ekle/{id}",
+              defaults: new { controller = "UserDetail", action = "AddWork", id = UrlParameter.Optional }
+          );
+            #region Delete
+            routes.MapRoute(
+              name: "UserWorkDelete",
+              url: "kullanici-is-sil/{id}",
+              defaults: new { controller = "UserDetail", action = "DeleteWork", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+            name: "UserEducationDelete",
+            url: "kullanici-egitim-sil/{id}",
+            defaults: new { controller = "UserDetail", action = "DeleteEducation", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
+            name: "UserReferenceDelete",
+            url: "kullanici-referans-sil/{id}",
+            defaults: new { controller = "UserDetail", action = "DeleteReference", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
+            name: "UserCertificateDelete",
+            url: "kullanici-sertifika-sil/{id}",
+            defaults: new { controller = "UserDetail", action = "DeleteCertificate", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
+            name: "UserSeminarDelete",
+            url: "kullanici-seminer-sil/{id}",
+            defaults: new { controller = "UserDetail", action = "DeleteSeminar", id = UrlParameter.Optional }
+        );
+            #endregion
+            routes.MapRoute(
+             name: "UserDetailUpdate",
+             url: "kullanici-detay-guncelle/{id}",
+             defaults: new { controller = "UserDetail", action = "Update", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
+            name: "PartialBusinessAdd",
+            url: "kullanici-isbilgisi-ekle/{id}",
+            defaults: new { controller = "UserDetail", action = "PartialBusinessAdd", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
+           name: "PartialBusinessEdit",
+           url: "kullanici-isbilgisi-duzenle/{id}",
+           defaults: new { controller = "UserDetail", action = "PartialBusinessEdit", id = UrlParameter.Optional }
+       );
+            #endregion UserDetail
+
 
             #region Admin
 
@@ -175,45 +233,14 @@ namespace KariyerWebUI
 
             #endregion CompanyUser
 
-            #region General
-
+            #region Error
             routes.MapRoute(
-                name: "General",
-                url: "genel",
-                defaults: new { controller = "General", action = "Index", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-               name: "GeneralDelete",
-               url: "genel-sil/{id}",
-               defaults: new { controller = "General", action = "Delete", id = UrlParameter.Optional }
+               name: "PageNotFound",
+               url: "sayfa-bulunamadi",
+               defaults: new { controller = "Error", action = "Page404" }
            );
-            routes.MapRoute(
-              name: "GeneralAdd",
-              url: "genel-ekle/{id}",
-              defaults: new { controller = "General", action = "Add", id = UrlParameter.Optional }
-          );
-            routes.MapRoute(
-             name: "GeneralUpdate",
-             url: "genel-guncelle/{id}",
-             defaults: new { controller = "General", action = "Update", id = UrlParameter.Optional }
-         );
-            routes.MapRoute(
-              name: "GetGeneralData",
-              url: "GetGeneralData/{searchText}",
-              defaults: new { controller = "General", action = "GetGeneralData", searchText = UrlParameter.Optional }
-          );
-            routes.MapRoute(
-                name: "PartialAddGeneral",
-                url: "PartialAddGeneral",
-                defaults: new { controller = "General", action = "PartialAddGeneral", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-               name: "PartialUpdateGeneral",
-               url: "PartialUpdateGeneral/{id}",
-               defaults: new { controller = "General", action = "PartialUpdateGeneral", id = UrlParameter.Optional }
-           );
+            #endregion
 
-            #endregion General
 
         }
     }

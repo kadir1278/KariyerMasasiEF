@@ -66,9 +66,14 @@ function update_user_photo() {
         }
     });
     input.trigger('click');
-} 
+}
+function succesSubmit() {
+    var btn = document.getElementById("closeUser")
+    bootbox.alert("Veri Eklendi !",btn.click())
+}
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
+    bootbox.ale
     bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
         if (result) {
             var ID = btn.data("id");

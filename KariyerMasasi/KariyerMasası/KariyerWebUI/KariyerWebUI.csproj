@@ -98,8 +98,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap-material-datetimepicker.css" />
     <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\chartist.min.css" />
+    <Content Include="Content\css\default.date.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\icons\avasta\css\style.css" />
     <Content Include="Content\icons\avasta\fonts\avasta.svg" />
@@ -218,6 +220,7 @@
     <Content Include="Content\images\tab\2.jpg" />
     <Content Include="Content\images\tab\3.jpg" />
     <Content Include="Content\images\tab\4.jpg" />
+    <Content Include="Content\js\bootstrap-material-datetimepicker.js" />
     <Content Include="Content\js\bootstrap-select.min.js" />
     <Content Include="Content\js\Chart.bundle.min.js" />
     <Content Include="Content\js\custom.min.js" />
@@ -226,13 +229,16 @@
     <Content Include="Content\js\global.min.js" />
     <Content Include="Content\js\jquery.peity.min.js" />
     <Content Include="Content\js\login-form.js" />
+    <Content Include="Content\js\material-date-picker-init.js" />
+    <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\custom.js" />
-    <Content Include="Content\js\pages\general.js" />
     <Content Include="Content\js\pages\user.js" />
+    <Content Include="Content\js\pages\userdetail.js" />
     <Content Include="Content\js\styleSwitcher.js" />
+    <Content Include="Content\kariyermasasi\pdf.png" />
     <Content Include="Content\kariyermasasi\Logo.png" />
     <Content Include="Content\kariyermasasi\miniLogo.png" />
     <Content Include="Content\kariyermasasi\pp.png" />
@@ -341,13 +347,12 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
-    <Compile Include="Controllers\GeneralController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GeneralViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -430,10 +435,10 @@
     <Content Include="Views\CompanyUser\Index.cshtml" />
     <Content Include="Views\CompanyUser\PartialAddCompanyUser.cshtml" />
     <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
-    <Content Include="Views\General\Index.cshtml" />
-    <Content Include="Views\General\PartialAddGeneral.cshtml" />
-    <Content Include="Views\General\PartialUpdateGeneral.cshtml" />
     <Content Include="Views\UserDetail\Index.cshtml" />
+    <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\UserDetail\PartialBusinessAdd.cshtml" />
+    <Content Include="Views\UserDetail\PartialBusinessEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
