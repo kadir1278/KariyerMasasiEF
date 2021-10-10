@@ -9,8 +9,8 @@
                 </button>
             </div>
             <div class="modal-body" id="detailModal">
+                <form id="user-workedit-form" action="/kullanici-is-duzenle" submit-success="succesSubmit">
                 @Html.HiddenFor(x=>x.ID)
-                <form id="user-work-form" action="/kullanici-is-guncelle" submit-success="succesSubmit">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Firma</label>
@@ -20,7 +20,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Açıklama</label>
-                            <input type="text" class="form-control" required value="@Model.Description" name="Description" placeholder="Açıklama Giriniz...">
+                            <textarea class="form-control" rows="4" required name="Description" id="comment">@Html.Raw(Model.Description)</textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
-                        <button type="submit" submit-form="#user-work-form" class="btn btn-success light">Ekle</button>
+                        <button type="button" submit-form="#user-workedit-form" class="btn btn-success light">Ekle</button>
                     </div>
                 </form>
             </div>

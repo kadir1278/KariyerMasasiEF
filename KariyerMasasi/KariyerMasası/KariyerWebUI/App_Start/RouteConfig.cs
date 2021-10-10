@@ -68,6 +68,11 @@ namespace KariyerWebUI
               url: "kullanici-is-ekle/{id}",
               defaults: new { controller = "UserDetail", action = "AddWork", id = UrlParameter.Optional }
           );
+            routes.MapRoute(
+              name: "UserWorkEdit",
+              url: "kullanici-is-duzenle/{id}",
+              defaults: new { controller = "UserDetail", action = "EditWork", id = UrlParameter.Optional }
+          );
             #region Delete
             routes.MapRoute(
               name: "UserWorkDelete",

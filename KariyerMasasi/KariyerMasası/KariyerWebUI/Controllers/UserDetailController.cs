@@ -109,9 +109,9 @@ namespace KariyerWebUI.Controllers
         #endregion
         #region Update
         [HttpPost]
-        public ActionResult EditWork(UserBusinessInformation userBusiness,int id)
+        public ActionResult EditWork(UserBusinessInformation userBusiness)
         {
-            var data = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
+            var data = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.ID == userBusiness.ID).FirstOrDefault();
             data.CompanyName = userBusiness.CompanyName;
             data.DeletionStatus = userBusiness.DeletionStatus;
             data.FinishDate = userBusiness.FinishDate;
