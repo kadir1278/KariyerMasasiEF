@@ -115,6 +115,16 @@ namespace KariyerWebUI
            url: "kullanici-isbilgisi-duzenle/{id}",
            defaults: new { controller = "UserDetail", action = "PartialBusinessEdit", id = UrlParameter.Optional }
        );
+            routes.MapRoute(
+          name: "PartialEducationAdd",
+          url: "kullanici-egitim-ekle/{id}",
+          defaults: new { controller = "UserDetail", action = "PartialEducationAdd", id = UrlParameter.Optional }
+      );
+            routes.MapRoute(
+           name: "PartialEducationEdit",
+           url: "kullanici-egitim-duzenle/{id}",
+           defaults: new { controller = "UserDetail", action = "PartialEducationEdit", id = UrlParameter.Optional }
+       );
             #endregion UserDetail
 
 

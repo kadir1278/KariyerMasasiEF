@@ -439,6 +439,8 @@
     <Content Include="Views\Error\PageError.cshtml" />
     <Content Include="Views\UserDetail\PartialBusinessAdd.cshtml" />
     <Content Include="Views\UserDetail\PartialBusinessEdit.cshtml" />
+    <Content Include="Views\UserDetail\PartialEducationAdd.cshtml" />
+    <Content Include="Views\UserDetail\PartialEducationEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

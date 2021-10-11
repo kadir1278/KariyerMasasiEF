@@ -1,0 +1,58 @@
+﻿@model KariyerEntity.Entity.UserEducation
+<div class="modal fade" id="educationEditModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">İş Bilgisi Düzenle</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="user-educationEdit-form" action="/kullanici-is-ekle" submit-success="succesSubmit">
+                    @Html.HiddenFor(x=>x.ID)
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>SchoolName</label>
+                            <input type="text" class="form-control" value="@Model.SchoolName" required name="SchoolName" placeholder="Firma Giriniz...">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>GraduationStatus</label>
+                            <input type="text" class="form-control"value="@Model.GraduationStatus" required name="GraduationStatus" placeholder="Görev Giriniz...">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>GraduationGrade</label>
+                            <input type="text" class="form-control"value="@Model.GraduationGrade" required name="GraduationGrade" placeholder="Görev Giriniz...">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Department</label>
+                            <input type="text" class="form-control"value="@Model.Department" required name="Department" placeholder="Görev Giriniz...">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" required name="Description" id="comment">@Html.Raw(Model.Description)</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>GraduationYear</label>
+                            <input type="datetime" class="form-control mdate" value="@Model.GraduationYear.ToString("dd.MM.yyyy")" required name="GraduationYear" placeholder="İşe Giriş Tarihi Giriniz...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" submit-form="#user-educationEdit-form" class="btn btn-success light">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

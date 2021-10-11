@@ -18,9 +18,15 @@ namespace KariyerWebUI.Controllers
         private UserDetailViewModel model = new UserDetailViewModel();
         #region Partial
         public ActionResult PartialBusinessAdd() => PartialView();
+        public ActionResult PartialEducationAdd() => PartialView();
         public ActionResult PartialBusinessEdit(int ID)
         {
             var data = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.ID == ID).FirstOrDefault();
+            return PartialView(data);
+        }
+        public ActionResult PartialEducationEdit(int ID)
+        {
+            var data = db.UserEducations.Where(x => !x.DeletionStatus && x.ID == ID).FirstOrDefault();
             return PartialView(data);
         }
 
