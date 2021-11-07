@@ -108,8 +108,24 @@ $(document).on("click", ("#btnDetail"), function () {
 $("#user-add-form").ready(function () {
     $("#addBtn").on("click", function () {
         var user = {
-            Name: document.getElementById("AddName").value,
+            Name: $("#user-add-form").find('[name="AddName"]').val(),
             Surname: $("#user-add-form").find('[name="AddSurname"]').val(),
+            Phone: $("#user-add-form").find('[name="AddPhone"]').val(),
+            EMail: $("#user-add-form").find('[name="AddEMail"]').val(),
+            Password: $("#user-add-form").find('[name="AddPassword"]').val(),
+            Country: $("#user-add-form").find('[name="AddCountry"]').val(),
+            City: $("#user-add-form").find('[name="AddCity"]').val(),
+            Town: $("#user-add-form").find('[name="AddTown"]').val(),
+            Address: $("#user-add-form").find('[name="AddAddress"]').val(),
+            Type: $("#user-add-form").find('[name="AddType"]').val(),
+            Description: $("#user-add-form").find('[name="AddDescription"]').val(),
+            Title: $("#user-add-form").find('[name="AddTitle"]').val(),
+            MilitaryStatus: $("#user-add-form").find('[name="AddMilitaryStatus"]').val(),
+            Gender: $("#user-add-form").find('[name="AddGender"]').val(),
+            MarriageStatus: $("#user-add-form").find('[name="AddMarriageStatus"]').val(),
+            Hobby: $("#user-add-form").find('[name="AddHobby"]').val(),
+            BusinessAreaID: $("#user-add-form").find('[name="AddBusinessAreaID"]').val(),
+            Photo: $("#img_user_photo").attr("src")
         }
         $.ajax({
             type: "POST",
