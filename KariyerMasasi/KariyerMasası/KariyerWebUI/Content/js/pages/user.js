@@ -18,10 +18,10 @@ async function GetUserData() {
             var deger =
                 '<tbody><tr role="row">' +
                 '<div class="d-flex align-items-center">' +
-                '<td>'+
-                '<img src="' + data.Result[item].Photo+'" class="rounded-lg mr-2" width="24" alt="">' +
+                '<td>' +
+                '<img src="' + data.Result[item].Photo + '" class="rounded-lg mr-2" width="24" alt="">' +
                 '<span class="w-space-no">' + data.Result[item].Name + '</span></div> ' +
-                '</td>'+
+                '</td>' +
                 '<td>' + data.Result[item].Surname + '</td>' +
                 '<td>' + data.Result[item].EMail + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +
@@ -35,6 +35,7 @@ async function GetUserData() {
 
     })
 }
+$(document).ready(GetUserData());
 function upload_user_photo() {
     var fileinput = document.createElement('input')
     var input = $(fileinput);
@@ -66,10 +67,6 @@ function update_user_photo() {
         }
     });
     input.trigger('click');
-}
-function succesSubmit() {
-    var btn = document.getElementById("closeUser")
-    bootbox.alert("Veri Eklendi !",btn.click())
 }
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
@@ -114,4 +111,20 @@ $(document).on("click", ("#btnDetail"), function () {
             init_custom_form_submit();
         });
 })
-$(document).ready(GetUserData());
+
+$("#user-add-form").ready(function () {
+    $("#addBtn").on("click", function () {
+        var user = {
+            Name: document.getElementById("AddName").value,
+            Surname: $("#user-add-form").find('[name="AddSurname"]').val(),
+        }
+        $.ajax({
+            type: "POST",
+            url: "/kullanici-ekle",
+            data: user,
+            success: alert("başarılı"),
+            error: alert("başarısız")
+        });
+
+    });
+});

@@ -1,5 +1,4 @@
-﻿
-async function GetAdminData() {
+﻿async function GetAdminData() {
     var searchText = document.getElementById("search").value;
     var url = '/GetAdminData/' + searchText;
     $('#example').html("");
@@ -36,6 +35,7 @@ async function GetAdminData() {
 
     })
 }
+$(document).ready(GetAdminData());
 
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
@@ -78,4 +78,3 @@ $(document).on("click", ("#btnDetail"), function () {
             init_custom_form_submit();
         });
 });
-$(document).ready(GetAdminData());

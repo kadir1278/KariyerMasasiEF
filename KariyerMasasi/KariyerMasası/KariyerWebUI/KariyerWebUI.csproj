@@ -234,7 +234,6 @@
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
-    <Content Include="Content\js\pages\custom.js" />
     <Content Include="Content\js\pages\user.js" />
     <Content Include="Content\js\pages\userdetail.js" />
     <Content Include="Content\js\styleSwitcher.js" />
