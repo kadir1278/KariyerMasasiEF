@@ -12,14 +12,18 @@ namespace KariyerWebUI.Controllers
    public class CompanyController : Controller
     {
         private SystemContext db = new SystemContext();
+        [Route("sirket"),HttpGet]
         public ActionResult Index() => View();
         #region Partial
+        [Route("PartialAddCompany"),HttpGet]
         public ActionResult PartialAddCompany()
         {
             ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
 
             return PartialView();
         }
+        [Route("PartialUpdateCompany/{id}"), HttpGet]
+
         public ActionResult PartialUpdateCompany(int id)
         {
             ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
@@ -29,6 +33,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Methot
+        [Route("sirket-sil"),HttpGet]
         public ActionResult Delete(int ID)
         {
             var data = db.Companies.Find(ID);
@@ -37,7 +42,7 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [Route("sirket-ekle"),HttpPost]
         public ActionResult Add(Company model)
         {       
             model.DeletionStatus = false;
@@ -47,7 +52,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost]
+        [Route("sirket-guncelle"),HttpPost]
         public ActionResult Update(Company model)
         {
             var data = db.Companies.Find(model.ID);   
@@ -73,6 +78,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Json
+        [Route("GetCompanyData"),HttpGet]
         public JsonResult GetCompanyData(string searchText)
         {
             List<Company> data = new List<Company>();

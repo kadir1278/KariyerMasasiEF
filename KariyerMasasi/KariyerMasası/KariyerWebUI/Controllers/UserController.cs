@@ -15,14 +15,17 @@ namespace KariyerWebUI.Controllers
     public class UserController : Controller
     {
         private SystemContext db = new SystemContext();
+        [Route("kullanici"), HttpGet]
         public ActionResult Index() => View();
         #region Partial
+        [Route("PartialAddUser")]
         public ActionResult PartialAddUser()
         {
             ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
 
             return PartialView();
         }
+        [Route("PartialUpdateUser/{id}"),HttpGet]
         public ActionResult PartialUpdateUser(int id)
         {
             ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
@@ -32,6 +35,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Methot
+        [Route("kullanici-sil"), HttpGet]
         public ActionResult Delete(int ID)
         {
             var data = db.Users.Find(ID);
@@ -40,10 +44,10 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [Route("kullanici-ekle"), HttpPost]
         public ActionResult Add(User model, string Photo)
         {
-            if (Photo.Contains("base64,")&&Photo!=null)
+            if (Photo.Contains("base64,") && Photo != null)
             {
                 string fileName = Guid.NewGuid().ToString();
                 string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
@@ -62,7 +66,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost]
+        [Route("kullanici-guncelle"), HttpPost]
         public ActionResult Update(User model, string Photo)
         {
             var data = db.Users.Find(model.ID);
@@ -105,6 +109,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Json
+        [Route("GetUserData"),HttpGet]
         public JsonResult GetUserData(string searchText)
         {
             List<User> data = new List<User>();
