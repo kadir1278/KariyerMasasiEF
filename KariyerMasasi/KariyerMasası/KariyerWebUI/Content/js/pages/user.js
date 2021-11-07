@@ -35,7 +35,6 @@ async function GetUserData() {
 
     })
 }
-$(document).ready(GetUserData());
 function upload_user_photo() {
     var fileinput = document.createElement('input')
     var input = $(fileinput);
@@ -70,7 +69,6 @@ function update_user_photo() {
 }
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
-    bootbox.ale
     bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
         if (result) {
             var ID = btn.data("id");
@@ -78,21 +76,14 @@ $("#example").on("click", "#btnDelete", function () {
                 type: "GET",
                 url: "/kullanici-sil/" + ID,
                 success: function () {
-                    btn.parent().parent().parent().remove();
                     GetUserData();
                 },
+                error: function () {
+                    bootbox.alert("Kullanıcı silerken bir problem oluştu. Lütfen sayfayı yenileyip tekrar deneyiniz. Problemin devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                }
             })
         }
     })
-})
-$(document).on("click", ("#refresh"), function () {
-    GetUserData();
-})
-$(document).on("click", ("#clear"), function () {
-    $('#example').html("");
-})
-$(document).on("click", ("#btnDataAdd"), function () {
-    init_custom_form_submit();
 })
 $(document).on("click", ("#btnDetail"), function () {
     var btn = $(this);
@@ -104,14 +95,16 @@ $(document).on("click", ("#btnDetail"), function () {
     $.ajax({
         url: "/PartialUpdateUser/" + ID,
         type: "GET",
-    })
-        .done(function (partialViewResult) {
+        success: function (partialViewResult) {
             $("#modalContent").html(partialViewResult);
             $('#detailModal').modal('show');
-            init_custom_form_submit();
-        });
-})
+        },
+        error: function () {
+            bootbox.alert("Kullanıcı güncelleme modelinde bir problem oluştu. Lütfen sayfayı yenileyip tekrar deneyiniz. Problemin devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+        }
 
+    })
+})
 $("#user-add-form").ready(function () {
     $("#addBtn").on("click", function () {
         var user = {
@@ -128,3 +121,5 @@ $("#user-add-form").ready(function () {
 
     });
 });
+
+$(document).ready(GetUserData());

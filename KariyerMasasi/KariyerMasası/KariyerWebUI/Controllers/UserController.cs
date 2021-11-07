@@ -22,49 +22,62 @@ namespace KariyerWebUI.Controllers
         public ActionResult PartialAddUser()
         {
             ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
-
             return PartialView();
         }
-        [Route("PartialUpdateUser/{id}"),HttpGet]
+        [Route("PartialUpdateUser/{id}"), HttpGet]
         public ActionResult PartialUpdateUser(int id)
         {
             ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
-
             var data = db.Users.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
         #endregion
         #region Methot
         [Route("kullanici-sil"), HttpGet]
-        public ActionResult Delete(int ID)
+        public ActionResult Delete(int id)
         {
-            var data = db.Users.Find(ID);
-            data.DeletionStatus = true;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var data = db.Users.Find(id);
+                data.DeletionStatus = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [Route("kullanici-ekle"), HttpPost]
         public ActionResult Add(User model, string Photo)
         {
-            if (Photo.Contains("base64,") && Photo != null)
+            try
             {
-                string fileName = Guid.NewGuid().ToString();
-                string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
-                string filePath = "/File/User/" + fileName + ".png";
-                using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
-                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                if (Photo.Contains("base64,") && Photo != null)
                 {
-                    stream.WriteTo(fileStream);
+                    string fileName = Guid.NewGuid().ToString();
+                    string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
+                    string filePath = "/File/User/" + fileName + ".png";
+                    using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
+                    using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        stream.WriteTo(fileStream);
+                    }
+                    model.Photo = filePath;
                 }
-                model.Photo = filePath;
+                model.DeletionStatus = false;
+                model.CreatedTime = DateTime.Now;
+                model.UpdatedTime = DateTime.Now;
+                db.Users.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            model.DeletionStatus = false;
-            model.CreatedTime = DateTime.Now;
-            model.UpdatedTime = DateTime.Now;
-            db.Users.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
         [Route("kullanici-guncelle"), HttpPost]
         public ActionResult Update(User model, string Photo)
@@ -109,7 +122,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Json
-        [Route("GetUserData"),HttpGet]
+        [Route("GetUserData"), HttpGet]
         public JsonResult GetUserData(string searchText)
         {
             List<User> data = new List<User>();
