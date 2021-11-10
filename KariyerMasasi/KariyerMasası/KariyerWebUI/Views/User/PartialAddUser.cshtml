@@ -9,46 +9,46 @@
                 </button>
             </div>
             <div class="modal-body" id="addModal">
-                <form id="user-add-form">
+                <form id="user-add-form" method="post" role="form">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>İsim</label>
-                            <input type="text" class="form-control" name="AddName" placeholder="İsim Giriniz...">
+                            <input required type="text" class="form-control" name="AddName" placeholder="İsim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Soyisim</label>
-                            <input type="text" class="form-control" name="AddSurname" placeholder="Soyisim Giriniz...">
+                            <input required type="text" class="form-control" name="AddSurname" placeholder="Soyisim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>E-Mail</label>
-                            <input type="email" class="form-control" name="AddEMail" placeholder="E-Mail Giriniz...">
+                            <input required type="email" class="form-control" name="AddEMail" placeholder="E-Mail Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Şifre</label>
-                            <input type="password" class="form-control" name="AddPassword" placeholder="Şifre Giriniz...">
+                            <input required type="password" class="form-control" name="AddPassword" placeholder="Şifre Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Telefon</label>
-                            <input type="tel" class="form-control" name="AddPhone" placeholder="Telefon Giriniz...">
+                            <input required type="tel" class="form-control" name="AddPhone" placeholder="Telefon Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ülke</label>
-                            <input type="text" class="form-control" name="AddCountry" placeholder="Ülke Giriniz...">
+                            <input required type="text" class="form-control" name="AddCountry" placeholder="Ülke Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Şehir</label>
-                            <input type="text" class="form-control" name="AddCity" placeholder="Şehir Giriniz...">
+                            <input required type="text" class="form-control" name="AddCity" placeholder="Şehir Giriniz...">
                         </div> <div class="form-group col-md-6">
                             <label>İlçe/Kasaba</label>
-                            <input type="text" class="form-control" name="AddTown" placeholder="İlçe/Kasaba Giriniz...">
+                            <input required type="text" class="form-control" name="AddTown" placeholder="İlçe/Kasaba Giriniz...">
                         </div>
                         <div class="form-group col-md-12">
                             <label>Adres</label>
-                            <textarea class="form-control" rows="4" name="AddAddress" id="comment" placeholder="Adres Giriniz..."></textarea>
+                            <textarea required class="form-control" rows="4" name="AddAddress" id="comment" placeholder="Adres Giriniz..."></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Kullanıcı Tipi</label>
-                            <select class="custom-select2 form-control" name="AddType">
+                            <select required class="custom-select2 form-control" name="AddType">
                                 <optgroup label="Cinsiyet">
                                     <option value="Öğrenci">Öğrenci</option>
                                     <option value="Mezun">Mezun</option>
@@ -60,19 +60,26 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ünvan</label>
-                            <input type="text" class="form-control" name="AddTitle" placeholder="Ünvan Giriniz...">
+                            <input required type="text" class="form-control" name="AddTitle" placeholder="Ünvan Giriniz...">
                         </div>
                         <div class="form-group col-md-12">
                             <label>Açıklama</label>
-                            <textarea class="form-control" rows="4" name="AddDescription" id="comment" placeholder="Adres Giriniz..."></textarea>
+                            <textarea required class="form-control" rows="4" name="AddDescription" id="comment" placeholder="Adres Giriniz..."></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Çalışma Alanı</label>
-                            @Html.DropDownList("BusinessAreaID", null, htmlAttributes: new { @class = "form-control" })
+                            <select required class="custom-select2 form-control" name="AddBusinessAreaID">
+                                <optgroup label="Çalışma Alanı">
+                                    @foreach (var item in ViewBag.BusinessAreaID)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                </optgroup>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Askerlik Durumu</label>
-                            <select class="custom-select2 form-control" name="AddMilitaryStatus">
+                            <select required class="custom-select2 form-control" name="AddMilitaryStatus">
                                 <optgroup label="Cinsiyet">
                                     <option value="Yapıldı">Yapıldı</option>
                                     <option value="Yapılmadı">Yapılmadı</option>
@@ -83,7 +90,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Cinsiyet</label>
-                            <select class="custom-select2 form-control" name="AddGender">
+                            <select required class="custom-select2 form-control" name="AddGender">
                                 <optgroup label="Cinsiyet">
                                     <option value="Erkek">Erkek</option>
                                     <option value="Kadın">Kadın</option>
@@ -93,7 +100,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Evlilik Durumu</label>
-                            <select class="custom-select2 form-control" name="AddMarriageStatus">
+                            <select required class="custom-select2 form-control" name="AddMarriageStatus">
                                 <optgroup label="Medeni Durum">
                                     <option value="Evli">Evli</option>
                                     <option value="Bekar">Bekar</option>
@@ -103,11 +110,10 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Hobi</label>
-                            <textarea class="form-control" rows="4" name="AddHobby" id="comment" placeholder="Hobi Giriniz..."></textarea>
+                            <textarea required class="form-control" rows="4" name="AddHobby" id="comment" placeholder="Hobi Giriniz..."></textarea>
                         </div>
                         <div class="form-group col-md-12" onclick="upload_user_photo()">
                             <button type="button" class="file-input btn light btn-primary">Fotoğraf Ekle</button>
-                            @Html.HiddenFor(s => s.Photo)
                         </div>
                         <div class="form-group col-md-12">
                             <div class="update-photo">
@@ -118,7 +124,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="closeUser" onclick="GetUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
-                        <button type="button" id="addBtn" class="btn btn-success light">Ekle</button>
+                        <button type="submit" id="addBtn" class="btn btn-success light">Ekle</button>
                     </div>
                 </form>
             </div>

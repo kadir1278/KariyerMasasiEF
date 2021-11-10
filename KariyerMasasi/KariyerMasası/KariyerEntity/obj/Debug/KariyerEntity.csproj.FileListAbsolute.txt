@@ -53,7 +53,6 @@ E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFr
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.dll
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.xml
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.xml
-E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CoreCompileInputs.cache
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
 E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll

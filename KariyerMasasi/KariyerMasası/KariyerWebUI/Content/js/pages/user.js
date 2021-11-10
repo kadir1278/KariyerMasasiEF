@@ -15,22 +15,17 @@ async function GetUserData() {
 
     $.getJSON(url, function (data) {
         for (item in data.Result) {
-            var deger =
-                '<tbody><tr role="row">' +
-                '<div class="d-flex align-items-center">' +
-                '<td>' +
-                '<img src="' + data.Result[item].Photo + '" class="rounded-lg mr-2" width="24" alt="">' +
-                '<span class="w-space-no">' + data.Result[item].Name + '</span></div> ' +
-                '</td>' +
+            var tableData =
+                '<tbody><tr role="row"><div class="d-flex align-items-center">' +
+                '<td>' + data.Result[item].Name + '</td>' +
                 '<td>' + data.Result[item].Surname + '</td>' +
                 '<td>' + data.Result[item].EMail + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td><div class="d-flex">' +
                 '<a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
                 '<a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
-                '</div></td>' +
-                '</tr></tbody> '
-            $('#example').append(deger);
+                '</div></td></tr></tbody> '
+            $('#example').append(tableData);
         };
 
     })
@@ -78,8 +73,8 @@ $("#example").on("click", "#btnDelete", function () {
                 success: function () {
                     GetUserData();
                 },
-                error: function () {
-                    bootbox.alert("Kullanıcı silerken bir problem oluştu. Lütfen sayfayı yenileyip tekrar deneyiniz. Problemin devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                error: function (result) {
+                    bootbox.alert(result);
                 }
             })
         }
@@ -105,37 +100,46 @@ $(document).on("click", ("#btnDetail"), function () {
 
     })
 })
+
 $("#user-add-form").ready(function () {
-    $("#addBtn").on("click", function () {
-        var user = {
-            Name: $("#user-add-form").find('[name="AddName"]').val(),
-            Surname: $("#user-add-form").find('[name="AddSurname"]').val(),
-            Phone: $("#user-add-form").find('[name="AddPhone"]').val(),
-            EMail: $("#user-add-form").find('[name="AddEMail"]').val(),
-            Password: $("#user-add-form").find('[name="AddPassword"]').val(),
-            Country: $("#user-add-form").find('[name="AddCountry"]').val(),
-            City: $("#user-add-form").find('[name="AddCity"]').val(),
-            Town: $("#user-add-form").find('[name="AddTown"]').val(),
-            Address: $("#user-add-form").find('[name="AddAddress"]').val(),
-            Type: $("#user-add-form").find('[name="AddType"]').val(),
-            Description: $("#user-add-form").find('[name="AddDescription"]').val(),
-            Title: $("#user-add-form").find('[name="AddTitle"]').val(),
-            MilitaryStatus: $("#user-add-form").find('[name="AddMilitaryStatus"]').val(),
-            Gender: $("#user-add-form").find('[name="AddGender"]').val(),
-            MarriageStatus: $("#user-add-form").find('[name="AddMarriageStatus"]').val(),
-            Hobby: $("#user-add-form").find('[name="AddHobby"]').val(),
-            BusinessAreaID: $("#user-add-form").find('[name="AddBusinessAreaID"]').val(),
-            Photo: $("#img_user_photo").attr("src")
-        }
+    var btnClose = document.getElementById("closeUser");
+    var user = {
+        Name: $("#user-add-form").find('[name="AddName"]').val(),
+        Surname: $("#user-add-form").find('[name="AddSurname"]').val(),
+        Phone: $("#user-add-form").find('[name="AddPhone"]').val(),
+        EMail: $("#user-add-form").find('[name="AddEMail"]').val(),
+        Password: $("#user-add-form").find('[name="AddPassword"]').val(),
+        Country: $("#user-add-form").find('[name="AddCountry"]').val(),
+        City: $("#user-add-form").find('[name="AddCity"]').val(),
+        Town: $("#user-add-form").find('[name="AddTown"]').val(),
+        Address: $("#user-add-form").find('[name="AddAddress"]').val(),
+        Type: $("#user-add-form").find('[name="AddType"]').val(),
+        Description: $("#user-add-form").find('[name="AddDescription"]').val(),
+        Title: $("#user-add-form").find('[name="AddTitle"]').val(),
+        MilitaryStatus: $("#user-add-form").find('[name="AddMilitaryStatus"]').val(),
+        Gender: $("#user-add-form").find('[name="AddGender"]').val(),
+        MarriageStatus: $("#user-add-form").find('[name="AddMarriageStatus"]').val(),
+        Hobby: $("#user-add-form").find('[name="AddHobby"]').val(),
+        BusinessAreaID: $("#user-add-form").find('[name="AddBusinessAreaID"]').val(),
+        Photo: $("#img_user_photo").attr("src")
+    }
+    
+    $("#addBtn").click(function () {
         $.ajax({
             type: "POST",
             url: "/kullanici-ekle",
             data: user,
-            success: alert("başarılı"),
-            error: alert("başarısız")
+            success: function () {
+                bootbox.alert("Veri Eklendi")
+                btnClose.click();
+            },
+            error: function () {
+                bootbox.alert("Eksik bilgileri doldurunuz")
+            }
         });
-
-    });
+    })
 });
 
+
 $(document).ready(GetUserData());
+

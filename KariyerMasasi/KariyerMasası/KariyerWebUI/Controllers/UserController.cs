@@ -21,13 +21,13 @@ namespace KariyerWebUI.Controllers
         [Route("PartialAddUser")]
         public ActionResult PartialAddUser()
         {
-            ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
             return PartialView();
         }
         [Route("PartialUpdateUser/{id}"), HttpGet]
         public ActionResult PartialUpdateUser(int id)
         {
-            ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
             var data = db.Users.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
@@ -54,7 +54,7 @@ namespace KariyerWebUI.Controllers
         {
             try
             {
-                if (Photo.Contains("base64,") && Photo != null)
+                if (Photo != null && Photo.Contains("base64,"))
                 {
                     string fileName = Guid.NewGuid().ToString();
                     string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
@@ -77,7 +77,7 @@ namespace KariyerWebUI.Controllers
             {
                 throw;
             }
-            
+
         }
         [Route("kullanici-guncelle"), HttpPost]
         public ActionResult Update(User model, string Photo)
