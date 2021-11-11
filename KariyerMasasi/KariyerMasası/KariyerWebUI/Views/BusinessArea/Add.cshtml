@@ -1,0 +1,27 @@
+﻿@model KariyerEntity.Entity.BusinessArea
+<div class="modal fade" id="basicModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Çalışma Alanı Ekle</h5>
+                <button type="button" onclick="GetData()" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="addModal">
+                <form id="businessarea-add-form" method="post" role="form">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Çalışma Alanı</label>
+                            <input required type="text" class="form-control" name="AddName" placeholder="Çalışma Alanı Giriniz...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" onclick="GetData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="button" id="addBtn" class="btn btn-success light">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

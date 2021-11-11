@@ -241,6 +241,7 @@
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
+    <Content Include="Content\js\pages\businessarea.js" />
     <Content Include="Content\js\pages\main.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
@@ -356,6 +357,7 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailController.cs" />
@@ -454,6 +456,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Language\Add.cshtml" />
+    <Content Include="Views\BusinessArea\Add.cshtml" />
+    <Content Include="Views\BusinessArea\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

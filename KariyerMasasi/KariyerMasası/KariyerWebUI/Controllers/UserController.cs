@@ -17,7 +17,6 @@ namespace KariyerWebUI.Controllers
         private SystemContext db = new SystemContext();
         [Route("kullanici"), HttpGet]
         public ActionResult Index() => View();
-        #region Partial
         [Route("PartialAddUser")]
         public ActionResult PartialAddUser()
         {
@@ -31,8 +30,6 @@ namespace KariyerWebUI.Controllers
             var data = db.Users.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
-        #endregion
-        #region Methot
         [Route("kullanici-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
@@ -59,7 +56,8 @@ namespace KariyerWebUI.Controllers
                     string fileName = Guid.NewGuid().ToString();
                     string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
                     string filePath = "/File/User/" + fileName + ".png";
-                    using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
+                    using (MemoryStream stream = new MemoryStream
+                        (Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
                     using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
                     {
                         stream.WriteTo(fileStream);
@@ -87,17 +85,16 @@ namespace KariyerWebUI.Controllers
             {
                 string fileName = Guid.NewGuid().ToString();
                 string fileUrl = Path.Combine(Server.MapPath("File/User/" + fileName + ".png"));
-                string filePath = "/File/User/" + fileName + ".png"; using (System.IO.MemoryStream stream = new System.IO.MemoryStream(Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
+                string filePath = "/File/User/" + fileName + ".png"; using (MemoryStream stream = new MemoryStream
+                    (Convert.FromBase64String(Photo.Substring(Photo.IndexOf("base64,") + 7, Photo.Length - (Photo.IndexOf("base64,") + 7)))))
                 using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
                 {
                     stream.WriteTo(fileStream);
                 }
                 model.Photo = fileUrl;
             }
-
             data.UpdatedTime = DateTime.Now;
             data.DeletionStatus = model.DeletionStatus;
-
             data.EMail = model.EMail;
             data.Password = model.Password;
             data.Name = model.Name;
@@ -120,8 +117,6 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return View();
         }
-        #endregion
-        #region Json
         [Route("GetData/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
@@ -149,7 +144,5 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-
-        #endregion
     }
 }
