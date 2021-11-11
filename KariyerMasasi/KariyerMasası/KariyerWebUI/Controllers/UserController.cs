@@ -122,8 +122,8 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Json
-        [Route("GetUserData/{searchText?}"), HttpGet]
-        public JsonResult GetUserData(string searchText)
+        [Route("GetData/{searchText?}"), HttpGet]
+        public JsonResult GetData(string searchText)
         {
             List<User> data = new List<User>();
 

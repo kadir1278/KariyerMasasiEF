@@ -1,16 +1,16 @@
-﻿@model IEnumerable<KariyerEntity.Entity.User>
+﻿@model IEnumerable<KariyerEntity.Entity.Language>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
-    <script src="~/Content/js/pages/user.js"></script>
+    <script src="~/Content/js/pages/languages.js"></script>
 }
-<br />
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Kullanıcı Listesi</h3>
+            <h3 class="card-title">Sistem Dil Listesi</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -34,5 +34,4 @@
         </div>
     </div>
 </div>
-@{Html.RenderAction("PartialAddUser", "User");}
-<div id="modalContent"></div>
+@{Html.RenderAction("Add", "Language");}

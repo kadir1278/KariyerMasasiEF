@@ -1,6 +1,6 @@
-﻿async function GetUserData() {
+﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/GetUserData/' + searchText;
+    var url = '/GetData/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
@@ -71,7 +71,7 @@ $("#example").on("click", "#btnDelete", function () {
                 url: "/kullanici-sil/" + ID,
                 success: function () {
                     bootbox.alert("Kullanıcı silme işlemi başarılı.")
-                    GetUserData();
+                    GetData();
                 },
                 error: function () {
                     bootbox.alert("Kullanıcı silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
@@ -138,5 +138,5 @@ $("#user-add-form").ready(function () {
         });
     })
 });
-$(document).ready(GetUserData());
+$(document).ready(GetData());
 
