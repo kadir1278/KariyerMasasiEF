@@ -100,7 +100,9 @@ $(document).on("click", ("#btnDetail"), function () {
 
     })
 })
-$("#user-add-form").ready(function () {
+
+
+$("#addBtn").click(function () {
     var btnClose = document.getElementById("closeUser");
     var user = {
         Name: $("#user-add-form").find('[name="AddName"]').val(),
@@ -122,21 +124,19 @@ $("#user-add-form").ready(function () {
         BusinessAreaID: $("#user-add-form").find('[name="AddBusinessAreaID"]').val(),
         Photo: $("#img_user_photo").attr("src")
     }
-    
-    $("#addBtn").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "/kullanici-ekle",
-            data: user,
-            success: function () {
-                bootbox.alert("Veri Eklendi")
-                btnClose.click();
-            },
-            error: function () {
-                bootbox.alert("Eksik bilgileri doldurunuz")
-            }
-        });
-    })
+    console.log(user);
+    $.ajax({
+        type: "POST",
+        url: "/kullanici-ekle",
+        data: user,
+        success: function () {
+            bootbox.alert("Veri Eklendi")
+            btnClose.click();
+        },
+        error: function () {
+            bootbox.alert("Eksik bilgileri doldurunuz")
+        }
+    });
 });
 $(document).ready(GetData());
 

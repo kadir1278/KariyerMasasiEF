@@ -1,5 +1,6 @@
 ﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
+using KariyerWebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace KariyerWebUI.Controllers
         private SystemContext db = new SystemContext();
         [Route("dil"), HttpGet]
         public ActionResult Index() => View();
-        [Route("dil/{searchText?}"), HttpGet]
+        [Route("dil-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
             List<Language> data = new List<Language>();
@@ -50,10 +51,10 @@ namespace KariyerWebUI.Controllers
         {
             try
             {
-                var data = db.Languages.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
+                var data = db.Languages.Where(x => x.ID == id).FirstOrDefault();
                 data.DeletionStatus = true;
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
@@ -65,17 +66,31 @@ namespace KariyerWebUI.Controllers
         {
             try
             {
-                lang.CreatedTime = DateTime.Now;
-                lang.UpdatedTime = DateTime.Now;
-                lang.DeletionStatus = false;
-                lang.Name = lang.Name.ToUpper();
-                db.Languages.Add(lang);
-                db.SaveChanges();
-                return View(lang);
+                var data = db.Languages.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
+                if (data.Count() == 0)
+                {
+                    lang.CreatedTime = DateTime.Now;
+                    lang.UpdatedTime = DateTime.Now;
+                    lang.DeletionStatus = false;
+                    lang.Name = lang.Name.ToUpper();
+                    db.Languages.Add(lang);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    AjaxErrorViewModel error = new AjaxErrorViewModel();
+                    error.Error = 001;
+                    error.Message = "Eklenmek istenen dil sistemde bulunmaktadır";
+                    return Json(error, JsonRequestBehavior.AllowGet);
+                }
             }
             catch (Exception ex)
             {
-                return View(ex);
+                AjaxErrorViewModel error = new AjaxErrorViewModel();
+                error.Error = 002;
+                error.Message = ex.Message;
+                return Json(error, JsonRequestBehavior.AllowGet);
             }
         }
         [Route("dil-duzenle/{id}"), HttpPost]
