@@ -33,7 +33,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Methot
-        [Route("kullanici-sil"), HttpGet]
+        [Route("kullanici-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
             try
@@ -79,7 +79,7 @@ namespace KariyerWebUI.Controllers
             }
 
         }
-        [Route("kullanici-guncelle"), HttpPost]
+        [Route("kullanici-guncelle/{id}"), HttpPost]
         public ActionResult Update(User model, string Photo)
         {
             var data = db.Users.Find(model.ID);
@@ -122,7 +122,7 @@ namespace KariyerWebUI.Controllers
         }
         #endregion
         #region Json
-        [Route("GetUserData"), HttpGet]
+        [Route("GetUserData/{searchText?}"), HttpGet]
         public JsonResult GetUserData(string searchText)
         {
             List<User> data = new List<User>();
@@ -145,7 +145,6 @@ namespace KariyerWebUI.Controllers
                              Surname = obj.Surname,
                              EMail = obj.EMail,
                              Phone = obj.Phone,
-                             Photo = obj.Photo,
                          }
             };
             return Json(query, JsonRequestBehavior.AllowGet);

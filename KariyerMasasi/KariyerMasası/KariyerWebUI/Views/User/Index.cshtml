@@ -6,7 +6,7 @@
 @section Scripts{
     <script src="~/Content/js/pages/user.js"></script>
 }
-
+<br />
 <div class="col-12">
     <div class="card">
         <div class="card-header">
@@ -26,17 +26,13 @@
                     </div>
                 </div>
             </div>
-                <br />
-            <div class="table-responsive">
-                <div id="example_wrapper" class="dataTables_wrapper">
-                    <table id="example" class="table primary-table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
-                        
-                    </table>
-                </div>
+            <br />
+            <div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 55vh; width: 100%;">
+                <table id="example" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+                </table>
             </div>
         </div>
     </div>
 </div>
 @{Html.RenderAction("PartialAddUser", "User");}
 <div id="modalContent"></div>
-

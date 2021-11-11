@@ -102,6 +102,7 @@
     <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\chartist.min.css" />
     <Content Include="Content\css\default.date.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\icons\avasta\css\style.css" />
     <Content Include="Content\icons\avasta\fonts\avasta.svg" />
@@ -210,6 +211,11 @@
     <Content Include="Content\images\profile\Untitled-13.jpg" />
     <Content Include="Content\images\profile\Untitled-2.jpg" />
     <Content Include="Content\images\qr.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
     <Content Include="Content\images\svg\check.svg" />
     <Content Include="Content\images\table\Untitled-1.jpg" />
     <Content Include="Content\images\table\Untitled-2.jpg" />
@@ -227,6 +233,7 @@
     <Content Include="Content\js\demo.js" />
     <Content Include="Content\js\deznav-init.js" />
     <Content Include="Content\js\global.min.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\jquery.peity.min.js" />
     <Content Include="Content\js\login-form.js" />
     <Content Include="Content\js\material-date-picker-init.js" />
@@ -234,6 +241,7 @@
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
+    <Content Include="Content\js\pages\main.js" />
     <Content Include="Content\js\pages\user.js" />
     <Content Include="Content\js\pages\userdetail.js" />
     <Content Include="Content\js\styleSwitcher.js" />

@@ -1,5 +1,4 @@
-﻿
-async function GetUserData() {
+﻿async function GetUserData() {
     var searchText = document.getElementById("search").value;
     var url = '/GetUserData/' + searchText;
     $('#example').html("");
@@ -22,8 +21,8 @@ async function GetUserData() {
                 '<td>' + data.Result[item].EMail + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td><div class="d-flex">' +
-                '<a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
-                '<a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                '<a id="btnDetail" style="color:white" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
+                '<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
                 '</div></td></tr></tbody> '
             $('#example').append(tableData);
         };
@@ -71,10 +70,11 @@ $("#example").on("click", "#btnDelete", function () {
                 type: "GET",
                 url: "/kullanici-sil/" + ID,
                 success: function () {
+                    bootbox.alert("Kullanıcı silme işlemi başarılı.")
                     GetUserData();
                 },
-                error: function (result) {
-                    bootbox.alert(result);
+                error: function () {
+                    bootbox.alert("Kullanıcı silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
                 }
             })
         }
@@ -100,7 +100,6 @@ $(document).on("click", ("#btnDetail"), function () {
 
     })
 })
-
 $("#user-add-form").ready(function () {
     var btnClose = document.getElementById("closeUser");
     var user = {
@@ -139,7 +138,5 @@ $("#user-add-form").ready(function () {
         });
     })
 });
-
-
 $(document).ready(GetUserData());
 
