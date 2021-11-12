@@ -12,27 +12,22 @@ namespace KariyerWebUI.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
         private SystemContext db = new SystemContext();
 
         [Route("yonetici"), HttpGet]
         public ActionResult Index() => View();
-        #region Partial 
-        [Route("PartialAddAdmin"),HttpGet]
+        [Route("PartialAddAdmin"), HttpGet]
         public ActionResult PartialAddAdmin()
         {
             return PartialView();
         }
-        [Route("PartialUpdateAdmin/{id}"),HttpGet]
+        [Route("PartialUpdateAdmin/{id}"), HttpGet]
         public ActionResult PartialUpdateAdmin(int id)
         {
             var data = db.Admins.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
-        #endregion
-        #region Methods
-
-        [Route("yonetici-sil"),HttpGet]
+        [Route("yonetici-sil/{id}"), HttpGet]
         public ActionResult Delete(int ID)
         {
             var data = db.Admins.Find(ID);
@@ -41,7 +36,7 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("yonetici-ekle"),HttpPost]
+        [Route("yonetici-ekle"), HttpPost]
         public ActionResult Add(Admin model)
         {
             model.DeletionStatus = false;
@@ -65,9 +60,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return View();
         }
-        #endregion
-        #region Json
-        [Route("GetAdminData"),HttpGet]
+        [Route("GetAdminData"), HttpGet]
         public JsonResult GetAdminData(string searchText)
         {
             List<Admin> data = new List<Admin>();
@@ -95,6 +88,5 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-        #endregion
     }
 }

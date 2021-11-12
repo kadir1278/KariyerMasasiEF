@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fc60fb13-7420-45ea-a1b7-fae397064ed9": {
+      "ProjectGuid": "fc60fb13-7420-45ea-a1b7-fae397064ed9",
+      "DisplayName": "KariyerWebUI",
+      "ColorIndex": 0
+    },
+    "2e1018d4-1e88-4158-98f4-d0f98a78de35": {
+      "ProjectGuid": "2e1018d4-1e88-4158-98f4-d0f98a78de35",
+      "DisplayName": "KariyerEntity",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

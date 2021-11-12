@@ -23,7 +23,8 @@
 
     })
 }
-$("#addBtn").click(function () {
+$("#businessarea-add-form").submit(function (e) {
+    e.preventDefault();
     var btnClose = document.getElementById("closeUser");
     var user = {
         Name: $("#businessarea-add-form").find('[name="AddName"]').val(),

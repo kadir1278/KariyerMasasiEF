@@ -100,9 +100,8 @@ $(document).on("click", ("#btnDetail"), function () {
 
     })
 })
-
-
-$("#addBtn").click(function () {
+$("#user-add-form").submit(function (e) {
+    e.preventDefault();
     var btnClose = document.getElementById("closeUser");
     var user = {
         Name: $("#user-add-form").find('[name="AddName"]').val(),
@@ -124,7 +123,6 @@ $("#addBtn").click(function () {
         BusinessAreaID: $("#user-add-form").find('[name="AddBusinessAreaID"]').val(),
         Photo: $("#img_user_photo").attr("src")
     }
-    console.log(user);
     $.ajax({
         type: "POST",
         url: "/kullanici-ekle",

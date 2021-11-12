@@ -23,7 +23,8 @@
 
     })
 }
-$("#addBtn").click(function () {
+$("#lang-add-form").submit(function (e) {
+    e.preventDefault();
     var btnClose = document.getElementById("closeUser");
     var user = {
         Name: $("#lang-add-form").find('[name="AddName"]').val(),

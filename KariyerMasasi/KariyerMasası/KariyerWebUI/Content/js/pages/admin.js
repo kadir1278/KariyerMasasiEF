@@ -26,8 +26,8 @@
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td>' + data.Result[item].Password + '</td>' +
                 '<td><div class="d-flex">' +
-                '<a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
-                '<a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                '<a id="btnDetail" style="color:white" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
+                '<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
                 '</div></td>' +
                 '</tr></tbody> '
             $('#example').append(deger);
@@ -36,7 +36,6 @@
     })
 }
 $(document).ready(GetAdminData());
-
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
     bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
@@ -46,21 +45,15 @@ $("#example").on("click", "#btnDelete", function () {
                 type: "GET",
                 url: "/yonetici-sil/" + ID,
                 success: function () {
-                    btn.parent().parent().parent().remove();
+                    bootbox.alert("Yönetici silme işlemi başarılı.")
                     GetAdminData();
                 },
+                error: function () {
+                    bootbox.alert("Yönetici silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                }
             })
         }
     })
-})
-$(document).on("click", ("#refresh"), function () {
-    GetAdminData();
-})
-$(document).on("click", ("#clear"), function () {
-    $('#example').html("");
-})
-$(document).on("click", ("#btnDataAdd"), function () {
-    init_custom_form_submit();
 })
 $(document).on("click", ("#btnDetail"), function () {
     var btn = $(this);
@@ -77,4 +70,27 @@ $(document).on("click", ("#btnDetail"), function () {
             $('#detailModal').modal('show');
             init_custom_form_submit();
         });
+});
+$("#admin-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var admin = {
+        Name: $("#admin-add-form").find('[name="AddName"]').val(),
+        Surname: $("#admin-add-form").find('[name="AddSurname"]').val(),
+        Phone: $("#admin-add-form").find('[name="AddPhone"]').val(),
+        EMail: $("#admin-add-form").find('[name="AddEMail"]').val(),
+        Password: $("#admin-add-form").find('[name="AddPassword"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/yonetici-ekle",
+        data: admin,
+        success: function () {
+            bootbox.alert("Veri Eklendi")
+            btnClose.click();
+        },
+        error: function () {
+            bootbox.alert("Eksik bilgileri doldurunuz")
+        }
+    });
 });
