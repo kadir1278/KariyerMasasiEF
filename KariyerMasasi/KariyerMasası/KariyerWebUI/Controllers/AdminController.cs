@@ -55,7 +55,7 @@ namespace KariyerWebUI.Controllers
             data.Surname = model.Surname;
             data.Phone = model.Phone;
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         [Route("GetAdminData"), HttpGet]
         public JsonResult GetAdminData(string searchText)
