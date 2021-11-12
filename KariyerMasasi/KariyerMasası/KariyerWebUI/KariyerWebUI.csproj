@@ -360,6 +360,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailController.cs" />
     <Compile Include="Global.asax.cs">
@@ -470,6 +471,7 @@
     <Folder Include="File\Company\Logo\" />
     <Folder Include="File\Company\TaxFile\" />
     <Folder Include="File\User\Certificate\" />
+    <Folder Include="Views\SpecialDirectory\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

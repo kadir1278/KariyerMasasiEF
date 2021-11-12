@@ -392,3 +392,4 @@ C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWe
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.CopyComplete
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.dll
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.pdb
+E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.CopyComplete

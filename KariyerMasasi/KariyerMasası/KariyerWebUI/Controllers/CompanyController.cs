@@ -75,9 +75,35 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
         [Route("sirket-guncelle"), HttpPost]
-        public ActionResult Update(Company model)
+        public ActionResult Update(Company model, string Logo, string TaxFile)
         {
             var data = db.Companies.Find(model.ID);
+            if (Logo != null && Logo.Contains("base64,"))
+            {
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/Company/Logo/" + fileName + ".png"));
+                string filePath = "/File/Company/Logo/" + fileName + ".png";
+                using (MemoryStream stream = new MemoryStream
+                    (Convert.FromBase64String(Logo.Substring(Logo.IndexOf("base64,") + 7, Logo.Length - (Logo.IndexOf("base64,") + 7)))))
+                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    stream.WriteTo(fileStream);
+                }
+                data.Logo = filePath;
+            }
+            if (TaxFile != null && TaxFile.Contains("base64,"))
+            {
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/Company/TaxFile/" + fileName + ".pdf"));
+                string filePath = "/File/Company/TaxFile/" + fileName + ".pdf";
+                using (MemoryStream stream = new MemoryStream
+                    (Convert.FromBase64String(TaxFile.Substring(TaxFile.IndexOf("base64,") + 7, TaxFile.Length - (TaxFile.IndexOf("base64,") + 7)))))
+                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    stream.WriteTo(fileStream);
+                }
+                data.TaxFile = filePath;
+            }
             data.UpdatedTime = DateTime.Now;
             data.DeletionStatus = model.DeletionStatus;
 
@@ -90,13 +116,12 @@ namespace KariyerWebUI.Controllers
             data.Address = model.Address;
             data.Fax = model.Fax;
             data.TaxNumber = model.TaxNumber;
-            data.TaxFile = model.TaxFile;
             data.TaxAddress = model.TaxAddress;
             data.ProgramState = model.ProgramState;
             data.GeneralIsActiveStatus = model.GeneralIsActiveStatus;
             data.PaymentStatus = model.PaymentStatus;
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         [Route("GetCompanyData"), HttpGet]
         public JsonResult GetCompanyData(string searchText)

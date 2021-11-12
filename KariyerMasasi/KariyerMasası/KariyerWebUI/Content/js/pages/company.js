@@ -96,6 +96,41 @@ function upload_tax_file() {
     });
     input.trigger('click');
 }
+function update_company_photo() {
+    var fileinput = document.createElement('input')
+    var input = $(fileinput);
+    input.attr("type", "file");
+    input.attr("accept", "image/*");
+    fileinput.addEventListener("change", function (event) {
+        var reader = new FileReader();
+        reader.readAsDataURL(fileinput.files[0]);
+        reader.onload = function (e) {
+            $('#imgu_company_photo').attr('src', e.target.result);
+            $('#imgu_company_photo').removeAttr('hidden');
+            $('#Logo').val(e.target.result);
+        }
+    });
+    input.trigger('click');
+}
+function update_tax_file() {
+    var fileinput = document.createElement('input')
+    var input = $(fileinput);
+    input.attr("type", "file");
+    input.attr("accept", "application/pdf");
+    fileinput.addEventListener("change", function (event) {
+        var reader = new FileReader();
+        reader.readAsDataURL(fileinput.files[0]);
+        reader.onload = function (e) {
+            $('#imgu_tax_file').attr('src', "/Content/images/pdf.png");
+            $('#imgu_tax_file').attr('alt', e.target.result);
+            $('#imgu_tax_file').removeAttr('hidden');
+            $('#TaxFile').val(e.target.result);
+
+        }
+    });
+    input.trigger('click');
+}
+
 $("#company-add-form").submit(function (e) {
     e.preventDefault();
     var btnClose = document.getElementById("closeUser");
