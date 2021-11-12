@@ -243,6 +243,7 @@
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\businessarea.js" />
+    <Content Include="Content\js\pages\specialdirectories.js" />
     <Content Include="Content\js\pages\main.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
@@ -367,6 +368,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AjaxErrorViewModel.cs" />
+    <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -459,6 +461,8 @@
     <Content Include="Views\Language\Add.cshtml" />
     <Content Include="Views\BusinessArea\Add.cshtml" />
     <Content Include="Views\BusinessArea\Index.cshtml" />
+    <Content Include="Views\SpecialDirectory\Index.cshtml" />
+    <Content Include="Views\SpecialDirectory\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -471,7 +475,6 @@
     <Folder Include="File\Company\Logo\" />
     <Folder Include="File\Company\TaxFile\" />
     <Folder Include="File\User\Certificate\" />
-    <Folder Include="Views\SpecialDirectory\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

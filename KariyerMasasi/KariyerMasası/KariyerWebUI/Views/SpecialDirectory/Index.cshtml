@@ -1,0 +1,29 @@
+﻿@model IEnumerable<KariyerEntity.Entity.SpecialDirectory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Content/js/pages/specialdirectories.js"></script>
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Özel Durum Listesi</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn light btn-info" id="btnDataAdd" data-toggle="modal" data-target="#basicModal">Veri Ekle</button>
+                </div>
+            </div>
+            <br />
+            <div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 55vh; width: 100%;">
+                <table id="example" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderAction("Add", "SpecialDirectory");}
