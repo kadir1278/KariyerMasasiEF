@@ -1,5 +1,4 @@
-﻿using KariyerEntity.BaseEntity;
-using KariyerEntity.Entity;
+﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,6 @@ namespace KariyerWebUI.Controllers
         private SystemContext db = new SystemContext();
         [Route("sirket"),HttpGet]
         public ActionResult Index() => View();
-        #region Partial
         [Route("PartialAddCompany"),HttpGet]
         public ActionResult PartialAddCompany()
         {
@@ -23,7 +21,6 @@ namespace KariyerWebUI.Controllers
             return PartialView();
         }
         [Route("PartialUpdateCompany/{id}"), HttpGet]
-
         public ActionResult PartialUpdateCompany(int id)
         {
             ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
@@ -31,8 +28,6 @@ namespace KariyerWebUI.Controllers
             var data = db.Companies.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
-        #endregion
-        #region Methot
         [Route("sirket-sil"),HttpGet]
         public ActionResult Delete(int ID)
         {
@@ -41,7 +36,6 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         [Route("sirket-ekle"),HttpPost]
         public ActionResult Add(Company model)
         {       
@@ -76,8 +70,6 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return View();
         }
-        #endregion
-        #region Json
         [Route("GetCompanyData"),HttpGet]
         public JsonResult GetCompanyData(string searchText)
         {
@@ -106,8 +98,5 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-
-        #endregion
-
     }
 }

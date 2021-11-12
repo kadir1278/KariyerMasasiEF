@@ -1,5 +1,4 @@
-﻿using KariyerEntity.BaseEntity;
-using KariyerEntity.Entity;
+﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,6 @@ namespace KariyerWebUI.Controllers
     public class AdminController : Controller
     {
         private SystemContext db = new SystemContext();
-
         [Route("yonetici"), HttpGet]
         public ActionResult Index() => View();
         [Route("PartialAddAdmin"), HttpGet]
@@ -35,7 +33,6 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         [Route("yonetici-ekle"), HttpPost]
         public ActionResult Add(Admin model)
         {

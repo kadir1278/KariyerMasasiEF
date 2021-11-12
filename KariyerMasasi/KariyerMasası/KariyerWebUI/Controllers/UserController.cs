@@ -1,13 +1,9 @@
-﻿using KariyerEntity.BaseEntity;
-using KariyerEntity.Entity;
+﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
@@ -45,7 +41,6 @@ namespace KariyerWebUI.Controllers
                 throw;
             }
         }
-
         [Route("kullanici-ekle"), HttpPost]
         public ActionResult Add(User model, string Photo)
         {
