@@ -4,61 +4,77 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Şirket Ekle</h5>
-                <button type="button" onclick="GetCompanyData()" class="close" data-dismiss="modal">
+                <button type="button" onclick="GetData()" class="close" data-dismiss="modal">
                     <span>×</span>
                 </button>
             </div>
             <div class="modal-body" id="addModal">
-                <form id="company-add-form" action="/sirket-ekle">
+                <form id="user-add-form" method="post" role="form">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>İsim</label>
-                            <input type="text" class="form-control" name="Name" placeholder="İsim Giriniz...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Ülke</label>
-                            <input type="text" class="form-control" name="Country" placeholder="Ülke Giriniz...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>E-Mail</label>
-                            <input type="email" class="form-control" name="EMail" placeholder="E-Mail Giriniz...">
+                            <input required type="text" class="form-control" name="AddName" placeholder="İsim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Telefon</label>
-                            <input type="tel" class="form-control" name="Phone" placeholder="Telefon Giriniz...">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label>Şehir</label>
-                            <input type="text" class="form-control" name="City" placeholder="Şehir Giriniz...">
-                        </div> <div class="form-group col-md-6">
-                            <label>İlçe/Kasaba</label>
-                            <input type="text" class="form-control" name="Town" placeholder="İlçe/Kasaba Giriniz...">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label>Adres</label>
-                            <textarea class="form-control" rows="4" name="Address" id="comment" placeholder="Adres Giriniz..."></textarea>
+                            <input required type="tel" class="form-control" name="AddPhone" placeholder="Telefon Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Fax</label>
-                            <input type="text" class="form-control" name="Fax" placeholder="Fax Numaranızı Giriniz...">
+                            <input required type="tel" class="form-control" name="AddFax" placeholder="Fax Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>E-Mail</label>
+                            <input required type="email" class="form-control" name="AddEMail" placeholder="E-Mail Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ülke</label>
+                            <input required type="text" class="form-control" name="AddCountry" placeholder="Ülke Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Şehir</label>
+                            <input required type="text" class="form-control" name="AddCity" placeholder="Şehir Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>İlçe/Kasaba</label>
+                            <input required type="text" class="form-control" name="AddTown" placeholder="İlçe/Kasaba Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Çalışma Alanı</label>
-                            @Html.DropDownList("BusinessAreaID", null, htmlAttributes: new { @class = "form-control" })
+                            <select required class="custom-select2 form-control" name="AddBusinessAreaID">
+                                <optgroup label="Çalışma Alanı">
+                                    @foreach (var item in ViewBag.BusinessAreaID)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Adres</label>
+                            <textarea required class="form-control" rows="4" name="AddAddress" id="comment" placeholder="Adres Giriniz..."></textarea>
+                        </div>
+
+                        <div class="form-group col-md-6" onclick="upload_company_photo()">
+                            <button type="button" class="file-input btn light btn-primary">Fotoğraf Ekle</button>
+                        </div>
+                        <div class="form-group col-md-6" onclick="upload_tax_file()">
+                            <button type="button" class="file-input btn light btn-primary">Vergi Levhası Ekle</button>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Vergi NO</label>
-                            <input type="text" class="form-control" name="TaxNumber" placeholder="Vergi Numaranızı Giriniz...">
+                            <div class="update-photo">
+                                <img hidden style="max-height:200px;max-width:200px" id="img_company_photo" alt="">
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Vergi Adresi</label>
-                            <input type="text" class="form-control" name="TaxAddress" placeholder="Vergi Adresinizi Giriniz...">
+                            <div class="update-photo">
+                                <img hidden style="max-height: 200px; max-width: 200px " id="img_tax_file" alt="">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="GetCompanyData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
-                        <button type="button" submit-form="#company-add-form" class="btn btn-success light">Ekle</button>
+                        <button type="button" id="closeUser" onclick="GetData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" id="addBtn" class="btn btn-success light">Ekle</button>
                     </div>
                 </form>
             </div>

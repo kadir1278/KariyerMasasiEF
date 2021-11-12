@@ -16,19 +16,17 @@ namespace KariyerWebUI.Controllers
         [Route("PartialAddCompany"),HttpGet]
         public ActionResult PartialAddCompany()
         {
-            ViewBag.BusinessAreaID = new SelectList(db.BusinessAreas.Where(x => !x.DeletionStatus), "ID", "Name");
-
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList(); ;
             return PartialView();
         }
         [Route("PartialUpdateCompany/{id}"), HttpGet]
         public ActionResult PartialUpdateCompany(int id)
         {
-            ViewBag.BusinessAreaID = new SelectList(db.Users.Where(x => !x.DeletionStatus), "ID", "Name");
-
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList(); ;
             var data = db.Companies.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
-        [Route("sirket-sil"),HttpGet]
+        [Route("sirket-sil/{id}"),HttpGet]
         public ActionResult Delete(int ID)
         {
             var data = db.Companies.Find(ID);

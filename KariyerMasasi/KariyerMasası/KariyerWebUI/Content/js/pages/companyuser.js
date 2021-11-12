@@ -1,5 +1,4 @@
-﻿
-async function GetCompanyUserData() {
+﻿async function GetCompanyUserData() {
     var searchText = document.getElementById("search").value;
     var url = '/GetCompanyUserData/' + searchText;
     $('#example').html("");
@@ -10,7 +9,7 @@ async function GetCompanyUserData() {
         '<th class="sorting_asc">Ünvan</th>' +
         '<th class="sorting_asc">Telefon</th>' +
         '<th class="sorting_asc">E-Mail</th>' + 
-        '<th class="sorting_asc">Şifre</th>' +
+        '<th class="sorting_asc">Firma</th>' +
         '<th class="sorting_asc">İşlemler</th>' +
         '</tr></thead>';
     $('#example').append(thead);
@@ -20,18 +19,15 @@ async function GetCompanyUserData() {
             var deger =
                 '<tbody><tr role="row">' +
                 '<div class="d-flex align-items-center">' +
-                '<td>' +
-                //  '<img src="' + data.Result[item].Logo + '" class="rounded-lg mr-2" width="24" alt="">' +
-                '<span class="w-space-no">' + data.Result[item].Name + '</span></div> ' +
-                '</td>' +
+                '<td><span class="w-space-no">' + data.Result[item].Name + '</span></div> </td>' +
                 '<td>' + data.Result[item].Surname + '</td>' +
                 '<td>' + data.Result[item].Title + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td>' + data.Result[item].EMail + '</td>' +
-                '<td>' + data.Result[item].Password + '</td>' +
+                '<td>' + data.Result[item].Company + '</td>' +
                 '<td><div class="d-flex">' +
-                '<a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
-                '<a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                '<a id="btnDetail" style="color:white" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
+                '<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
                 '</div></td>' +
                 '</tr></tbody> '
             $('#example').append(deger);
@@ -48,21 +44,15 @@ $("#example").on("click", "#btnDelete", function () {
                 type: "GET",
                 url: "/sirket-personel-sil/" + ID,
                 success: function () {
-                    btn.parent().parent().parent().remove();
+                    bootbox.alert("Şirket personeli silme işlemi başarılı.")
                     GetCompanyUserData();
                 },
+                error: function () {
+                    bootbox.alert("Şirket personeli silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                }
             })
         }
     })
-})
-$(document).on("click", ("#refresh"), function () {
-    GetCompanyUserData();
-})
-$(document).on("click", ("#clear"), function () {
-    $('#example').html("");
-})
-$(document).on("click", ("#btnDataAdd"), function () {
-    init_custom_form_submit();
 })
 $(document).on("click", ("#btnDetail"), function () {
     var btn = $(this);
@@ -71,13 +61,37 @@ $(document).on("click", ("#btnDetail"), function () {
     $('#detailModal').remove();
 
     $.ajax({
-        url: "/PartialUpdateUser/" + ID,
+        url: "/PartialUpdateCompanyUser/" + ID,
         type: "GET",
     })
         .done(function (partialViewResult) {
             $("#modalContent").html(partialViewResult);
             $('#detailModal').modal('show');
-            init_custom_form_submit();
         });
 })
 $(document).ready(GetCompanyUserData());
+$("#companyuser-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("CloseCompanyUser");
+    var companyuser = {
+        Name: $("#companyuser-add-form").find('[name="AddName"]').val(),
+        Surname: $("#companyuser-add-form").find('[name="AddSurname"]').val(),
+        Title: $("#companyuser-add-form").find('[name="AddTitle"]').val(),
+        EMail: $("#companyuser-add-form").find('[name="AddEMail"]').val(),
+        Password: $("#companyuser-add-form").find('[name="AddPassword"]').val(),
+        Phone: $("#companyuser-add-form").find('[name="AddPhone"]').val(),
+        CompanyID: $("#companyuser-add-form").find('[name="AddCompanyID"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/sirket-personel-ekle",
+        data: companyuser,
+        success: function () {
+            bootbox.alert("Veri Eklendi")
+            btnClose.click();
+        },
+        error: function () {
+            bootbox.alert("Eksik bilgileri doldurunuz")
+        }
+    });
+});

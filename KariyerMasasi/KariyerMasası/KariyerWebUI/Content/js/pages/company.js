@@ -1,5 +1,4 @@
-﻿
-async function GetCompanyData() {
+﻿async function GetCompanyData() {
     var searchText = document.getElementById("search").value;
     var url = '/GetCompanyData/' + searchText;
     $('#example').html("");
@@ -16,18 +15,14 @@ async function GetCompanyData() {
     $.getJSON(url, function (data) {
         for (item in data.Result) {
             var deger =
-                '<tbody><tr role="row">' +
-                '<div class="d-flex align-items-center">' +
-                '<td>' +
-              //  '<img src="' + data.Result[item].Logo + '" class="rounded-lg mr-2" width="24" alt="">' +
-                '<span class="w-space-no">' + data.Result[item].Name + '</span></div> ' +
-                '</td>' +
+                '<tbody><tr role="row"><div class="d-flex align-items-center">' +
+                '<td><span class="w-space-no">' + data.Result[item].Name + '</span></div></td>' +
                 '<td>' + data.Result[item].Country + '</td>' +
                 '<td>' + data.Result[item].EMail + '</td>' +
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td><div class="d-flex">' +
-                '<a id="btnDetail" href="#" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
-                '<a id="btnDelete" href="#" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                '<a id="btnDetail" style="color:white" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
+                '<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
                 '</div></td>' +
                 '</tr></tbody> '
             $('#example').append(deger);
@@ -44,21 +39,15 @@ $("#example").on("click", "#btnDelete", function () {
                 type: "GET",
                 url: "/sirket-sil/" + ID,
                 success: function () {
-                    btn.parent().parent().parent().remove();
+                    bootbox.alert("Şirket silme işlemi başarılı.")
                     GetCompanyData();
                 },
+                error: function () {
+                    bootbox.alert("Şirket silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                }
             })
         }
     })
-})
-$(document).on("click", ("#refresh"), function () {
-    GetCompanyData();
-})
-$(document).on("click", ("#clear"), function () {
-    $('#example').html("");
-})
-$(document).on("click", ("#btnDataAdd"), function () {
-    init_custom_form_submit();
 })
 $(document).on("click", ("#btnDetail"), function () {
     var btn = $(this);
@@ -77,4 +66,35 @@ $(document).on("click", ("#btnDetail"), function () {
             init_custom_form_submit();
         });
 })
+function upload_company_photo() {
+    var fileinput = document.createElement('input')
+    var input = $(fileinput);
+    input.attr("type", "file");
+    input.attr("accept", "image/*");
+    fileinput.addEventListener("change", function (event) {
+        var reader = new FileReader();
+        reader.readAsDataURL(fileinput.files[0]);
+        reader.onload = function (e) {
+            $('#img_company_photo').attr('src', e.target.result);
+            $('#img_company_photo').removeAttr('hidden');
+        }
+    });
+    input.trigger('click');
+}
+function upload_tax_file() {
+    var fileinput = document.createElement('input')
+    var input = $(fileinput);
+    input.attr("type", "file");
+    input.attr("accept", "image/*");
+    fileinput.addEventListener("change", function (event) {
+        var reader = new FileReader();
+        reader.readAsDataURL(fileinput.files[0]);
+        reader.onload = function (e) {
+            $('#img_tax_file').attr('src', e.target.result);
+            $('#img_tax_file').removeAttr('hidden');
+        }
+    });
+    input.trigger('click');
+}
+
 $(document).ready(GetCompanyData());

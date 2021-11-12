@@ -448,7 +448,6 @@
     <Content Include="Views\CompanyUser\PartialAddCompanyUser.cshtml" />
     <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
     <Content Include="Views\UserDetail\Index.cshtml" />
-    <Content Include="Views\Error\PageError.cshtml" />
     <Content Include="Views\UserDetail\PartialBusinessAdd.cshtml" />
     <Content Include="Views\UserDetail\PartialBusinessEdit.cshtml" />
     <Content Include="Views\UserDetail\PartialEducationAdd.cshtml" />

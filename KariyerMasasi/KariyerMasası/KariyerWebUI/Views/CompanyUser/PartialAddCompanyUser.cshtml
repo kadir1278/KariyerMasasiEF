@@ -9,40 +9,45 @@
                 </button>
             </div>
             <div class="modal-body" id="addModal">
-                <form id="companyuser-add-form" action="/sirket-personel-ekle">
+                <form id="companyuser-add-form" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>İsim</label>
-                            <input type="text" class="form-control" name="Name" placeholder="İsim Giriniz...">
+                            <input type="text" required class="form-control" name="AddName" placeholder="İsim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Soyisim</label>
-                            <input type="text" class="form-control" name="Surname" placeholder="Soyisim Giriniz...">
+                            <input type="text" required class="form-control" name="AddSurname" placeholder="Soyisim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ünvan</label>
-                            <input type="text" class="form-control" name="Title" placeholder="Ünvan Giriniz...">
+                            <input type="text" required class="form-control" name="AddTitle" placeholder="Ünvan Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Telefon</label>
-                            <input type="tel" class="form-control" name="Phone" placeholder="Telefon Giriniz...">
+                            <input type="tel" required class="form-control" name="AddPhone" placeholder="Telefon Giriniz...">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>E-Mail</label>
-                            <input type="email" class="form-control" name="EMail" placeholder="E-Mail Giriniz...">
+                            <input type="email" required class="form-control" name="AddEMail" placeholder="E-Mail Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Şifre</label>
-                            <input type="password" class="form-control" name="Password" placeholder="Şifre Giriniz...">
+                            <input required type="password" class="form-control" name="AddPassword" placeholder="Şifre Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Şirket</label>
-                            @Html.DropDownList("CompanyID", null, htmlAttributes: new { @class = "form-control" })
+                            <select required class="custom-select2 form-control" name="AddCompanyID">
+                                <optgroup label="Şirket">
+                                    @foreach (var item in ViewBag.CompanyID)
+                                    {<option value="@item.ID">@item.Name</option>}
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="GetCompanyUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
-                        <button type="button" submit-form="#companyuser-add-form" class="btn btn-success light">Ekle</button>
+                        <button type="button" id="CloseCompanyUser" onclick="GetCompanyUserData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-success light">Ekle</button>
                     </div>
                 </form>
             </div>

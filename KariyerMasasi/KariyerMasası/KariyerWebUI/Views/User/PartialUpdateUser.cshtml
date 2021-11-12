@@ -78,7 +78,10 @@
                                     <option value="@Model.BusinessAreaID">@Model.BusinessArea.Name</option>
                                     @foreach (var item in ViewBag.BusinessAreaID)
                                     {
-                                        <option value="@item.ID">@item.Name</option>
+                                        if (item.ID != Model.BusinessAreaID)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
                                     }
                                 </optgroup>
                             </select>
