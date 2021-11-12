@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kariyer Masası | 360MEKA Toplantı Sistemi</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon.png">
+    <link href="~/Content/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="authincation d-flex flex-column flex-lg-row flex-column-fluid">
+        <div class="login-aside text-center  d-flex flex-column flex-row-auto container">
+            <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+                <div class="text-center mb-4 pt-5">
+                    <img class="img-fluid" src="~/Content/kariyermasasi/Logo.png" alt="">
+                </div>
+                <h3 class="mb-2">Kariyer Masası Sistemine Hoşgeldiniz !</h3>
+            </div>
+            <div class="aside-image" style="background-image: url(/Content/kariyermasasi/pp.png);background-size:contain"></div>
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center h-100 align-items-center">
+                <div class="authincation-content style-2">
+                    <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
+                        <br />
+                        <br />
+                        <br />
+                        <form class="form-validate" method="post" action="/giris-yap">
+                            <h3 class="text-center mb-4 text-black">Kullanıcı Giriş</h3>
+                            <div class="form-group">
+                                <label class="mb-1 text-black"><strong>E-Mail</strong></label>
+                                <div>
+                                    <input type="email" name="EMail" class="form-control" placeholder="admin@360meka.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-1 text-black"><strong>Şifre</strong></label>
+                                <div>
+                                    <input type="password" name="Password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/js/global.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.min.js"></script>
+    <script src="~/Content/js/custom.min.js"></script>
+    <script src="~/Content/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="~/Content/vendor/jquery-validation/jquery.validate.min.js"></script>
+</body>
+</html>

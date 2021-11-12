@@ -36511,7 +36511,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
       box-shadow: 2px 0px 30px rgba(0, 0, 0, 0.15); }
     .authincation .login-aside .aside-image {
       min-height: 450px;
-      margin: auto 0;
+      /*margin: auto 0;*/
       min-width: 0;
       background-size: contain;
       background-repeat: no-repeat;

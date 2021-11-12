@@ -57,3 +57,4 @@ C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEn
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache
+E:\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache

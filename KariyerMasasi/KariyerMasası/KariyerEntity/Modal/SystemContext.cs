@@ -37,5 +37,7 @@ namespace KariyerEntity.Modal
         public DbSet<UserReference> UserReferences { get; set; }
         public DbSet<UserSeminar> UserSeminars { get; set; }
         public DbSet<SpecialDirectory> SpecialDirectories { get; set; }
+        public DbSet<Role>Roles { get; set; }
+        public DbSet<UserRole>UserRoles { get; set; }
     }
 }

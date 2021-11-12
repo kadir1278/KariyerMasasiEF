@@ -361,6 +361,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailController.cs" />
@@ -368,6 +369,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AjaxErrorViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -463,6 +465,7 @@
     <Content Include="Views\BusinessArea\Index.cshtml" />
     <Content Include="Views\SpecialDirectory\Index.cshtml" />
     <Content Include="Views\SpecialDirectory\Add.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

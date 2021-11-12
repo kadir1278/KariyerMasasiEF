@@ -54,6 +54,7 @@
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\CompanyUser.cs" />
     <Compile Include="Entity\Language.cs" />
+    <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\SpecialDirectory.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\UserBusinessInformation.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Entity\UserEducation.cs" />
     <Compile Include="Entity\UserLanguage.cs" />
     <Compile Include="Entity\UserReference.cs" />
+    <Compile Include="Entity\UserRole.cs" />
     <Compile Include="Entity\UserSeminar.cs" />
     <Compile Include="Entity\UserSpecialType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
