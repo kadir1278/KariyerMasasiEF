@@ -161,6 +161,7 @@
     <Content Include="Content\images\card\Untitled-7.jpg" />
     <Content Include="Content\images\card\Untitled-8.jpg" />
     <Content Include="Content\images\card\Untitled-9.jpg" />
+    <Content Include="Content\images\pdf.png" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\like.png" />
     <Content Include="Content\images\logo-full.png" />
@@ -466,6 +467,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="File\Company\Logo\" />
+    <Folder Include="File\Company\TaxFile\" />
     <Folder Include="File\User\Certificate\" />
   </ItemGroup>
   <ItemGroup>

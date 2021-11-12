@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body" id="addModal">
-                <form id="user-add-form" method="post" role="form">
+                <form id="company-add-form" method="post" role="form">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>İsim</label>
@@ -34,6 +34,14 @@
                         <div class="form-group col-md-6">
                             <label>Şehir</label>
                             <input required type="text" class="form-control" name="AddCity" placeholder="Şehir Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Vergi Numarası</label>
+                            <input required type="number" min="0" class="form-control" name="AddTaxNumber" placeholder="Vergi Numarası Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Vergi Dairesi Adresi</label>
+                            <input required type="text" class="form-control" name="AddTaxAddress" placeholder="Vergi Dairesi Adresi Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>İlçe/Kasaba</label>
@@ -68,7 +76,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <div class="update-photo">
-                                <img hidden style="max-height: 200px; max-width: 200px " id="img_tax_file" alt="">
+                                <img hidden style="max-height: 200px; max-width: 200px" id="img_tax_file">
                             </div>
                         </div>
                     </div>

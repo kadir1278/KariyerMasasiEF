@@ -2,18 +2,19 @@
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
-   public class CompanyController : Controller
+    public class CompanyController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("sirket"),HttpGet]
+        [Route("sirket"), HttpGet]
         public ActionResult Index() => View();
-        [Route("PartialAddCompany"),HttpGet]
+        [Route("PartialAddCompany"), HttpGet]
         public ActionResult PartialAddCompany()
         {
             ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList(); ;
@@ -26,7 +27,7 @@ namespace KariyerWebUI.Controllers
             var data = db.Companies.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
-        [Route("sirket-sil/{id}"),HttpGet]
+        [Route("sirket-sil/{id}"), HttpGet]
         public ActionResult Delete(int ID)
         {
             var data = db.Companies.Find(ID);
@@ -34,20 +35,49 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("sirket-ekle"),HttpPost]
-        public ActionResult Add(Company model)
-        {       
+        [Route("sirket-ekle"), HttpPost]
+        public ActionResult Add(Company model, string Logo, string TaxFile)
+        {
+            if (Logo != null && Logo.Contains("base64,"))
+            {
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/Company/Logo/" + fileName + ".png"));
+                string filePath = "/File/Company/Logo/" + fileName + ".png";
+                using (MemoryStream stream = new MemoryStream
+                    (Convert.FromBase64String(Logo.Substring(Logo.IndexOf("base64,") + 7, Logo.Length - (Logo.IndexOf("base64,") + 7)))))
+                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    stream.WriteTo(fileStream);
+                }
+                model.Logo = filePath;
+            }
+            if (TaxFile != null && TaxFile.Contains("base64,"))
+            {
+                string fileName = Guid.NewGuid().ToString();
+                string fileUrl = Path.Combine(Server.MapPath("File/Company/TaxFile/" + fileName + ".pdf"));
+                string filePath = "/File/Company/TaxFile/" + fileName + ".pdf";
+                using (MemoryStream stream = new MemoryStream
+                    (Convert.FromBase64String(TaxFile.Substring(TaxFile.IndexOf("base64,") + 7, TaxFile.Length - (TaxFile.IndexOf("base64,") + 7)))))
+                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    stream.WriteTo(fileStream);
+                }
+                model.TaxFile = filePath;
+            }
             model.DeletionStatus = false;
             model.CreatedTime = DateTime.Now;
             model.UpdatedTime = DateTime.Now;
+            model.PaymentStatus = false;
+            model.GeneralIsActiveStatus = false;
+            model.ProgramState = false;
             db.Companies.Add(model);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("sirket-guncelle"),HttpPost]
+        [Route("sirket-guncelle"), HttpPost]
         public ActionResult Update(Company model)
         {
-            var data = db.Companies.Find(model.ID);   
+            var data = db.Companies.Find(model.ID);
             data.UpdatedTime = DateTime.Now;
             data.DeletionStatus = model.DeletionStatus;
 
@@ -64,11 +94,11 @@ namespace KariyerWebUI.Controllers
             data.TaxAddress = model.TaxAddress;
             data.ProgramState = model.ProgramState;
             data.GeneralIsActiveStatus = model.GeneralIsActiveStatus;
-            data.PaymentStatus = model.PaymentStatus;     
+            data.PaymentStatus = model.PaymentStatus;
             db.SaveChanges();
             return View();
         }
-        [Route("GetCompanyData"),HttpGet]
+        [Route("GetCompanyData"), HttpGet]
         public JsonResult GetCompanyData(string searchText)
         {
             List<Company> data = new List<Company>();
@@ -89,9 +119,8 @@ namespace KariyerWebUI.Controllers
                              ID = obj.ID,
                              Name = obj.Name,
                              EMail = obj.EMail,
-                             Phone = obj.Phone,         
+                             Phone = obj.Phone,
                              Country = obj.Country,
-                             Logo = obj.Logo
                          }
             };
             return Json(query, JsonRequestBehavior.AllowGet);

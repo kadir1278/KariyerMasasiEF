@@ -63,7 +63,6 @@ $(document).on("click", ("#btnDetail"), function () {
         .done(function (partialViewResult) {
             $("#modalContent").html(partialViewResult);
             $('#detailModal').modal('show');
-            init_custom_form_submit();
         });
 })
 function upload_company_photo() {
@@ -85,16 +84,48 @@ function upload_tax_file() {
     var fileinput = document.createElement('input')
     var input = $(fileinput);
     input.attr("type", "file");
-    input.attr("accept", "image/*");
+    input.attr("accept", "application/pdf");
     fileinput.addEventListener("change", function (event) {
         var reader = new FileReader();
         reader.readAsDataURL(fileinput.files[0]);
         reader.onload = function (e) {
-            $('#img_tax_file').attr('src', e.target.result);
+            $('#img_tax_file').attr('src', "/Content/images/pdf.png");
+            $('#img_tax_file').attr('alt', e.target.result);
             $('#img_tax_file').removeAttr('hidden');
         }
     });
     input.trigger('click');
 }
-
+$("#company-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var company = {
+        Name: $("#company-add-form").find('[name="AddName"]').val(),
+        Phone: $("#company-add-form").find('[name="AddPhone"]').val(),
+        Fax: $("#company-add-form").find('[name="AddFax"]').val(),
+        EMail: $("#company-add-form").find('[name="AddEMail"]').val(),
+        Country: $("#company-add-form").find('[name="AddCountry"]').val(),
+        City: $("#company-add-form").find('[name="AddCity"]').val(),
+        Town: $("#company-add-form").find('[name="AddTown"]').val(),
+        Address: $("#company-add-form").find('[name="AddAddress"]').val(),
+        TaxNumber: $("#company-add-form").find('[name="AddTaxNumber"]').val(),
+        TaxAddress: $("#company-add-form").find('[name="AddTaxAddress"]').val(),
+        BusinessAreaID: $("#company-add-form").find('[name="AddBusinessAreaID"]').val(),
+        TaxFile: $("#img_tax_file").attr("alt"),
+        Logo: $("#img_company_photo").attr("src"),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/sirket-ekle",
+        data: company,
+        success: function () {
+            bootbox.alert("Veri Eklendi")
+            btnClose.click();
+            GetCompanyData();
+        },
+        error: function () {
+            bootbox.alert("Eksik bilgileri doldurunuz")
+        }
+    });
+});
 $(document).ready(GetCompanyData());
