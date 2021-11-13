@@ -41,10 +41,15 @@
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="/kullanici" class="has-arrow ai-icon" aria-expanded="false">
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Kullanıcı Bilgileri</span>
                         </a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="/kullanici">Kullanıcılar</a></li>
+                            <li><a href="/yetki">Yetkiler</a></li>
+                            <li><a href="/kullanici-yetki">Kullanıcı Yetkileri</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="/yonetici" class="has-arrow ai-icon" aria-expanded="false">
@@ -141,7 +146,6 @@
     <script src="~/Content/js/Chart.bundle.min.js"></script>
     <script src="~/Content/js/jquery.peity.min.js"></script>
     <script src="~/Content/js/custom.min.js"></script>
-    @RenderSection("Scripts", required: false)
     <script src="~/Content/js/deznav-init.js"></script>
     <script src="~/Content/js/demo.js"></script>
     <script src="~/Scripts/bootbox.js"></script>
@@ -151,6 +155,8 @@
     <script src="~/Content/js/bootstrap-material-datetimepicker.js"></script>
     <script src="~/Content/js/material-date-picker-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
     <!-- All init script -->
 </body>
 </html>

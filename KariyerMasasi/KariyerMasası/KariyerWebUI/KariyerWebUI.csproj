@@ -243,6 +243,8 @@
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\businessarea.js" />
+    <Content Include="Content\js\pages\role.js" />
+    <Content Include="Content\js\pages\userrole.js" />
     <Content Include="Content\js\pages\specialdirectories.js" />
     <Content Include="Content\js\pages\main.js" />
     <Content Include="Content\js\pages\languages.js" />
@@ -362,9 +364,11 @@
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailController.cs" />
+    <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -372,6 +376,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
+    <Compile Include="Models\UserRoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +471,11 @@
     <Content Include="Views\SpecialDirectory\Index.cshtml" />
     <Content Include="Views\SpecialDirectory\Add.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\UserRole\Add.cshtml" />
+    <Content Include="Views\UserRole\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
