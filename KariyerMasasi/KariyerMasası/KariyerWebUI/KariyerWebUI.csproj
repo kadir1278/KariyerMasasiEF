@@ -249,7 +249,6 @@
     <Content Include="Content\js\pages\main.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
-    <Content Include="Content\js\pages\userdetail.js" />
     <Content Include="Content\js\styleSwitcher.js" />
     <Content Include="Content\kariyermasasi\pdf.png" />
     <Content Include="Content\kariyermasasi\Logo.png" />
@@ -372,7 +371,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AjaxErrorViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
@@ -458,11 +456,6 @@
     <Content Include="Views\CompanyUser\Index.cshtml" />
     <Content Include="Views\CompanyUser\PartialAddCompanyUser.cshtml" />
     <Content Include="Views\CompanyUser\PartialUpdateCompanyUser.cshtml" />
-    <Content Include="Views\UserDetail\Index.cshtml" />
-    <Content Include="Views\UserDetail\PartialBusinessAdd.cshtml" />
-    <Content Include="Views\UserDetail\PartialBusinessEdit.cshtml" />
-    <Content Include="Views\UserDetail\PartialEducationAdd.cshtml" />
-    <Content Include="Views\UserDetail\PartialEducationEdit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Language\Add.cshtml" />
@@ -470,7 +463,7 @@
     <Content Include="Views\BusinessArea\Index.cshtml" />
     <Content Include="Views\SpecialDirectory\Index.cshtml" />
     <Content Include="Views\SpecialDirectory\Add.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\UserRole\Add.cshtml" />
@@ -488,6 +481,7 @@
     <Folder Include="File\Company\Logo\" />
     <Folder Include="File\Company\TaxFile\" />
     <Folder Include="File\User\Certificate\" />
+    <Folder Include="Views\UserDetail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

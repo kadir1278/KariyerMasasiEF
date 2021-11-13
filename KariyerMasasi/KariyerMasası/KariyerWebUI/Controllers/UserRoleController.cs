@@ -77,10 +77,7 @@ namespace KariyerWebUI.Controllers
             }
             catch (Exception ex)
             {
-                AjaxErrorViewModel error = new AjaxErrorViewModel();
-                error.Error = 002;
-                error.Message = ex.Message;
-                return Json(error, JsonRequestBehavior.AllowGet);
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
     }

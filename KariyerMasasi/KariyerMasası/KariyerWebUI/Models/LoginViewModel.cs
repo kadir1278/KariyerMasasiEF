@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace KariyerWebUI.Models
+﻿namespace KariyerWebUI.Models
 {
     public class LoginViewModel
     {
-        public string EMail { get; set; }
-        public string Password { get; set; }
-        public int Role { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Role { get; set; }
+        public string Image { get; set; }
     }
 }

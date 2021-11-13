@@ -74,22 +74,14 @@ namespace KariyerWebUI.Controllers
                     bsnarea.Name = bsnarea.Name.ToUpper();
                     db.BusinessAreas.Add(bsnarea);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
                 }
-                else
-                {
-                    AjaxErrorViewModel error = new AjaxErrorViewModel();
-                    error.Error = 001;
-                    error.Message = "Eklenmek istenen calisma-alani sistemde bulunmaktadır";
-                    return Json(error, JsonRequestBehavior.AllowGet);
-                }
+                return RedirectToAction("Index");
+
             }
             catch (Exception ex)
             {
-                AjaxErrorViewModel error = new AjaxErrorViewModel();
-                error.Error = 002;
-                error.Message = ex.Message;
-                return Json(error, JsonRequestBehavior.AllowGet);
+                
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
         [Route("calisma-alani-duzenle/{id}"), HttpPost]

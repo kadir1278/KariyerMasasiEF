@@ -74,22 +74,12 @@ namespace KariyerWebUI.Controllers
                     lang.Name = lang.Name.ToUpper();
                     db.Languages.Add(lang);
                     db.SaveChanges();
+                }
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    AjaxErrorViewModel error = new AjaxErrorViewModel();
-                    error.Error = 001;
-                    error.Message = "Eklenmek istenen dil sistemde bulunmaktadır";
-                    return Json(error, JsonRequestBehavior.AllowGet);
-                }
             }
             catch (Exception ex)
             {
-                AjaxErrorViewModel error = new AjaxErrorViewModel();
-                error.Error = 002;
-                error.Message = ex.Message;
-                return Json(error, JsonRequestBehavior.AllowGet);
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
         [Route("dil-duzenle/{id}"), HttpPost]

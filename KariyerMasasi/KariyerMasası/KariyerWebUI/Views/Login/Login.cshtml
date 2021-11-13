@@ -35,6 +35,14 @@
                         <br />
                         <br />
                         <form class="form-validate" method="post" action="/giris-yap">
+                            @if (ViewBag.LoginError != null)
+                            {
+                                <div class="new-account text-danger mt-3 text-center">
+                                    <span class="fa fa-warning"></span>
+                                    <b>@ViewBag.LoginError</b>
+                                </div>
+                            }
+                            <br />
                             <h3 class="text-center mb-4 text-black">Kullanıcı Giriş</h3>
                             <div class="form-group">
                                 <label class="mb-1 text-black"><strong>E-Mail</strong></label>
@@ -52,6 +60,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
