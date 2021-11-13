@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class AdminController : Controller
     {
         private SystemContext db = new SystemContext();

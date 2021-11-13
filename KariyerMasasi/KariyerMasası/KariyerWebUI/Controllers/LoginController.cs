@@ -18,7 +18,7 @@ namespace KariyerWebUI.Controllers
             var user = db.Users.Where(x => x.EMail == email && x.Password == password).FirstOrDefault();
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(user.Name, false);
+                FormsAuthentication.SetAuthCookie(user.EMail, false);
                 var userrole = db.Roles.Where(x => x.DeletionStatus).FirstOrDefault();
 
                 LoginViewModel login = new LoginViewModel();

@@ -4,6 +4,7 @@ using KariyerWebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
@@ -61,7 +62,7 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("dil-ekle"), HttpPost]
-        public ActionResult AddLang(Language lang)
+        public JsonResult AddLang(Language lang)
         {
             try
             {
@@ -75,11 +76,15 @@ namespace KariyerWebUI.Controllers
                     db.Languages.Add(lang);
                     db.SaveChanges();
                 }
-                    return RedirectToAction("Index");
+                else
+                {
+                    throw new Exception(lang.Name.ToUpper() + " Sistemde bulunmaktadır.");
+                }
+                return Json(new { res = true });
             }
             catch (Exception ex)
             {
-                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+                throw ex;
             }
         }
         [Route("dil-duzenle/{id}"), HttpPost]

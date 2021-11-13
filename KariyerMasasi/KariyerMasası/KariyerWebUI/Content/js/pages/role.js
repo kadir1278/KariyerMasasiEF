@@ -15,7 +15,7 @@
                 '<tbody><tr role="row"><div class="d-flex align-items-center">' +
                 '<td>' + data.Result[item].Name + '</td>' +
                 '<td><div class="d-flex">' +
-                '<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                //'<a id="btnDelete" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
                 '</div></td></tr></tbody> '
             $('#example').append(tableData);
         };
