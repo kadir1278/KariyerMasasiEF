@@ -13,9 +13,9 @@ namespace KariyerWebUI.Controllers
         [Route("giris-yap"), HttpGet]
         public ActionResult Login() => View();
         [Route("giris-yap"), HttpPost]
-        public ActionResult Login(User model)
+        public ActionResult Login(string email,string password)
         {
-            var user = db.Users.Where(x => x.EMail == model.EMail && x.Password == model.Password).FirstOrDefault();
+            var user = db.Users.Where(x => x.EMail == email && x.Password == password).FirstOrDefault();
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.Name, false);
@@ -41,6 +41,7 @@ namespace KariyerWebUI.Controllers
         [Route("cikis-yap"), HttpGet]
         public ActionResult LogOut()
         {
+            Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
