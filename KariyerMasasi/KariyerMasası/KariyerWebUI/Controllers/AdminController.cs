@@ -67,8 +67,8 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("GetAdminData"), HttpGet]
-        public JsonResult GetAdminData(string searchText)
+        [Route("GetData"), HttpGet]
+        public JsonResult GetData(string searchText)
         {
             List<Admin> data = new List<Admin>();
 

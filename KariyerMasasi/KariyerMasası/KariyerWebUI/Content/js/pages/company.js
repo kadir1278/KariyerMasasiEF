@@ -1,6 +1,6 @@
-﻿async function GetCompanyData() {
+﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/GetCompanyData/' + searchText;
+    var url = '/GetData/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
@@ -40,7 +40,7 @@ $("#example").on("click", "#btnDelete", function () {
                 url: "/sirket-sil/" + ID,
                 success: function () {
                     bootbox.alert("Şirket silme işlemi başarılı.")
-                    GetCompanyData();
+                    GetData();
                 },
                 error: function () {
                     bootbox.alert("Şirket silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
@@ -156,7 +156,6 @@ $("#company-add-form").submit(function (e) {
         success: function () {
             bootbox.alert("Veri Eklendi")
             btnClose.click();
-            GetCompanyData();
         },
         error: function (xhr, ajaxOptions, thrownError) {
 
@@ -173,4 +172,4 @@ $("#company-add-form").submit(function (e) {
         }
     });
 });
-$(document).ready(GetCompanyData());
+$(document).ready(GetData());

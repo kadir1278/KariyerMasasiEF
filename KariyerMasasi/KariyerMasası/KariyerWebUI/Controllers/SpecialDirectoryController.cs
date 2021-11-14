@@ -10,6 +10,7 @@ using KariyerWebUI.Models;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class SpecialDirectoryController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -40,14 +41,24 @@ namespace KariyerWebUI.Controllers
             return PartialView(model);
         }
         [Route("ozel-durum-ekle"),HttpPost]
-        public ActionResult AddSpecial(SpecialDirectory model)
+        public JsonResult AddSpecial(SpecialDirectory model)
         {
-            model.CreatedTime = DateTime.Now;
-            model.UpdatedTime = DateTime.Now;
-            model.DeletionStatus = false;
-            db.SpecialDirectories.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var data = db.SpecialDirectories.Where(x => !x.DeletionStatus && x.UserID == model.UserID&&x.UserSpecialTypeID==model.UserSpecialTypeID).ToList();
+
+            if (data.Count() == 0)
+            {
+                model.CreatedTime = DateTime.Now;
+                model.UpdatedTime = DateTime.Now;
+                model.DeletionStatus = false;
+                db.SpecialDirectories.Add(model);
+                db.SaveChanges();
+            }
+            else
+            {
+                var error = db.SpecialDirectories.Include(x => x.UserSpecialType).Include(x => x.User).Where(x => !x.DeletionStatus && x.UserID == model.UserID && x.UserSpecialTypeID == model.UserSpecialTypeID).FirstOrDefault();
+                throw new Exception(error.UserSpecialType.Name.ToUpper() + " Özel Durumuna " + error.User.Name.ToUpper() + " Kullanıcısı Zaten Sahip");
+            }
+            return Json(new { res = true });
         }
         [Route("ozel-durum-sil/{id}"),HttpGet]
         public ActionResult Delete(int id)

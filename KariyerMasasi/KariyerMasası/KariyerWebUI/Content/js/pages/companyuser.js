@@ -1,6 +1,6 @@
-﻿async function GetCompanyUserData() {
+﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/GetCompanyUserData/' + searchText;
+    var url = '/GetData/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
@@ -45,7 +45,7 @@ $("#example").on("click", "#btnDelete", function () {
                 url: "/sirket-personel-sil/" + ID,
                 success: function () {
                     bootbox.alert("Şirket personeli silme işlemi başarılı.")
-                    GetCompanyUserData();
+                    GetData();
                 },
                 error: function () {
                     bootbox.alert("Şirket personeli silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
@@ -69,7 +69,7 @@ $(document).on("click", ("#btnDetail"), function () {
             $('#detailModal').modal('show');
         });
 })
-$(document).ready(GetCompanyUserData());
+$(document).ready(GetData());
 $("#companyuser-add-form").submit(function (e) {
     e.preventDefault();
     var btnClose = document.getElementById("CloseCompanyUser");

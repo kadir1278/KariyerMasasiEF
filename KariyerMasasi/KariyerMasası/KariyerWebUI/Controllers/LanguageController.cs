@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class LanguageController : Controller
     {
         private SystemContext db = new SystemContext();

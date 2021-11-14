@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
+        [Authorize(Roles = "ADMİN")]
     public class CompanyController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -133,8 +134,8 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("GetCompanyData"), HttpGet]
-        public JsonResult GetCompanyData(string searchText)
+        [Route("GetData"), HttpGet]
+        public JsonResult GetData(string searchText)
         {
             List<Company> data = new List<Company>();
 

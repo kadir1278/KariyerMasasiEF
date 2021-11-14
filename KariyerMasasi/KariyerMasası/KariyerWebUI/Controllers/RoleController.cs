@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class RoleController : Controller
     {
         private SystemContext db = new SystemContext();

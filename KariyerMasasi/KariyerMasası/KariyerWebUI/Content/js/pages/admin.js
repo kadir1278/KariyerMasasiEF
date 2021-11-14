@@ -1,6 +1,6 @@
-﻿async function GetAdminData() {
+﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/GetAdminData/' + searchText;
+    var url = '/GetData/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
@@ -35,7 +35,7 @@
 
     })
 }
-$(document).ready(GetAdminData());
+$(document).ready(GetData());
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
     bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
@@ -46,7 +46,7 @@ $("#example").on("click", "#btnDelete", function () {
                 url: "/yonetici-sil/" + ID,
                 success: function () {
                     bootbox.alert("Yönetici silme işlemi başarılı.")
-                    GetAdminData();
+                    GetData();
                 },
                 error: function () {
                     bootbox.alert("Yönetici silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");

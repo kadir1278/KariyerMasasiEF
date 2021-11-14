@@ -1,4 +1,4 @@
-﻿async function GetUserRoleData() {
+﻿async function GetData() {
     var url = '/kullanici-yetki-getir';
     $('#example').html("");
     var thead =
@@ -23,7 +23,7 @@
 
     })
 }
-$(document).ready(GetUserRoleData());
+$(document).ready(GetData());
 
 $("#example").on("click", "#btnDelete", function () {
     var btn = $(this);
@@ -35,7 +35,7 @@ $("#example").on("click", "#btnDelete", function () {
                 url: "/kullanici-yetki-sil/" + ID,
                 success: function () {
                     bootbox.alert("Kullanıcı yetki silme işlemi başarılı.")
-                    GetUserRoleData();
+                    GetData();
                 },
                 error: function () {
                     bootbox.alert("Kullanıcı yetki silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
@@ -59,11 +59,20 @@ $("#userrole-add-form").submit(function (e) {
         data: user,
         success: function () {
             bootbox.alert("Veri Eklendi")
-            GetUserRoleData();
             btnClose.click();
         },
-        error: function () {
-            bootbox.alert("Eksik bilgileri doldurunuz")
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
         }
     });
 });

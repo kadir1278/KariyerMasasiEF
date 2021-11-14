@@ -10,6 +10,7 @@ using KariyerWebUI.Models;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class UserRoleController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -64,14 +65,23 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("kullanici-yetki-ekle"), HttpPost]
-        public ActionResult AddUserRole(UserRole user)
+        public JsonResult AddUserRole(UserRole user)
         {
-            user.CreatedTime = DateTime.Now;
-            user.UpdatedTime = DateTime.Now;
-            user.DeletionStatus = false;
-            db.UserRoles.Add(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var data = db.UserRoles.Where(x => !x.DeletionStatus && x.UserID == user.UserID&&x.RoleID==user.RoleID).ToList();
+            if (data.Count() == 0)
+            {
+                user.CreatedTime = DateTime.Now;
+                user.UpdatedTime = DateTime.Now;
+                user.DeletionStatus = false;
+                db.UserRoles.Add(user);
+                db.SaveChanges();
+            }
+            else
+            {
+                var error = db.UserRoles.Include(x => x.Role).Include(x => x.User).Where(x => !x.DeletionStatus && x.UserID == user.UserID && x.RoleID == user.RoleID).FirstOrDefault();
+                throw new Exception(error.Role.Name.ToUpper() + " Yetkisine "+ error.User.Name.ToUpper() + " Kullanıcısı Zaten Sahip");
+            }
+            return Json(new { res = true });
         }
     }
 }

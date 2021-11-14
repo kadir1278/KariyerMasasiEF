@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
+    [Authorize(Roles = "ADMİN")]
     public class BusinessAreaController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -61,28 +62,24 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("calisma-alani-ekle"), HttpPost]
-        public ActionResult AddBusinessArea(BusinessArea bsnarea)
+        public JsonResult AddBusinessArea(BusinessArea bsnarea)
         {
-            try
-            {
-                var data = db.BusinessAreas.Where(x => !x.DeletionStatus && x.Name == bsnarea.Name).ToList();
-                if (data.Count() == 0)
-                {
-                    bsnarea.CreatedTime = DateTime.Now;
-                    bsnarea.UpdatedTime = DateTime.Now;
-                    bsnarea.DeletionStatus = false;
-                    bsnarea.Name = bsnarea.Name.ToUpper();
-                    db.BusinessAreas.Add(bsnarea);
-                    db.SaveChanges();
-                }
-                return RedirectToAction("Index");
+            var data = db.BusinessAreas.Where(x => !x.DeletionStatus && x.Name == bsnarea.Name).ToList();
 
-            }
-            catch (Exception ex)
+            if (data.Count() == 0)
             {
-                
-                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+                bsnarea.CreatedTime = DateTime.Now;
+                bsnarea.UpdatedTime = DateTime.Now;
+                bsnarea.DeletionStatus = false;
+                bsnarea.Name = bsnarea.Name.ToUpper();
+                db.BusinessAreas.Add(bsnarea);
+                db.SaveChanges();
             }
+            else
+            {
+                throw new Exception(bsnarea.Name.ToUpper() + " Sistemde bulunmaktadır.");
+            }
+            return Json(new { res = true });
         }
         [Route("calisma-alani-duzenle/{id}"), HttpPost]
         public ActionResult UpdateBusinessArea(BusinessArea bsnarea, int id)
