@@ -10,23 +10,23 @@ using System.Web.Mvc;
 namespace KariyerWebUI.Controllers
 {
     [Authorize(Roles = "ADMIN")]
-    public class LanguageController : Controller
+    public class UserSpecialTypeController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("dil"), HttpGet]
+        [Route("ozel-durum"), HttpGet]
         public ActionResult Index() => View();
-        [Route("dil-getir/{searchText?}"), HttpGet]
+        [Route("ozel-durum-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
-            List<Language> data = new List<Language>();
+            List<UserSpecialType> data = new List<UserSpecialType>();
 
             if (searchText == "" || searchText == null)
             {
-                data = db.Languages.Where(x => !x.DeletionStatus).ToList();
+                data = db.UserSpecialTypes.Where(x => !x.DeletionStatus).ToList();
             }
             else
             {
-                data = db.Languages.Where(x => !x.DeletionStatus && x.Name == searchText).ToList();
+                data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.Name == searchText).ToList();
             }
             var query = new
             {
@@ -39,20 +39,20 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-        [Route("dil-ekle"), HttpGet]
+        [Route("ozel-durum-ekle"), HttpGet]
         public ActionResult Add() => PartialView();
-        [Route("dil-duzenle/{id}")]
+        [Route("ozel-durum-duzenle/{id}")]
         public ActionResult Update(int id)
         {
-            var data = db.Languages.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
+            var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
             return View(data);
         }
-        [Route("dil-sil/{id}"), HttpGet]
+        [Route("ozel-durum-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
             try
             {
-                var data = db.Languages.Where(x => x.ID == id).FirstOrDefault();
+                var data = db.UserSpecialTypes.Where(x => x.ID == id).FirstOrDefault();
                 data.DeletionStatus = true;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,17 +62,17 @@ namespace KariyerWebUI.Controllers
                 return View(ex);
             }
         }
-        [Route("dil-ekle"), HttpPost]
-        public JsonResult AddLang(Language lang)
+        [Route("ozel-durum-ekle"), HttpPost]
+        public JsonResult AddLang(UserSpecialType lang)
         {
-            var data = db.Languages.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
+            var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
             if (data.Count() == 0)
             {
                 lang.CreatedTime = DateTime.Now;
                 lang.UpdatedTime = DateTime.Now;
                 lang.DeletionStatus = false;
                 lang.Name = lang.Name.ToUpper();
-                db.Languages.Add(lang);
+                db.UserSpecialTypes.Add(lang);
                 db.SaveChanges();
             }
             else
@@ -81,12 +81,12 @@ namespace KariyerWebUI.Controllers
             }
             return Json(new { res = true });
         }
-        [Route("dil-duzenle/{id}"), HttpPost]
-        public ActionResult UpdateLang(Language lang, int id)
+        [Route("ozel-durum-duzenle/{id}"), HttpPost]
+        public ActionResult UpdateLang(UserSpecialType lang, int id)
         {
             try
             {
-                var data = db.Languages.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
+                var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
                 data.Name = lang.Name.ToUpper();
                 data.UpdatedTime = DateTime.Now;
                 data.CreatedTime = lang.CreatedTime;

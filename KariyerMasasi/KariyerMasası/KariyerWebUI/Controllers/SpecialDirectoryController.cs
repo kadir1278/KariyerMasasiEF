@@ -10,13 +10,13 @@ using KariyerWebUI.Models;
 
 namespace KariyerWebUI.Controllers
 {
-    [Authorize(Roles = "ADMİN")]
+    [Authorize(Roles = "ADMIN")]
     public class SpecialDirectoryController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("ozel-durum"),HttpGet]
+        [Route("kullanici-ozel-durum"),HttpGet]
         public ActionResult Index() => View();
-        [Route("ozel-durum-getir"), HttpGet]
+        [Route("kullanici-ozel-durum-getir"), HttpGet]
         public JsonResult GetSpecialDirectoryData()
         {
             List<SpecialDirectory> data = new List<SpecialDirectory>();
@@ -33,14 +33,14 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-        [Route("ozel-durum-ekle"), HttpGet]
+        [Route("kullanici-ozel-durum-ekle"), HttpGet]
         public ActionResult Add(SpecialDirectoryViewModel model)
         {
             model.Users = db.Users.Where(x => !x.DeletionStatus).ToList();
             model.UserSpecialTypes = db.UserSpecialTypes.Where(x => !x.DeletionStatus).ToList();
             return PartialView(model);
         }
-        [Route("ozel-durum-ekle"),HttpPost]
+        [Route("kullanici-ozel-durum-ekle"),HttpPost]
         public JsonResult AddSpecial(SpecialDirectory model)
         {
             var data = db.SpecialDirectories.Where(x => !x.DeletionStatus && x.UserID == model.UserID&&x.UserSpecialTypeID==model.UserSpecialTypeID).ToList();
@@ -60,7 +60,7 @@ namespace KariyerWebUI.Controllers
             }
             return Json(new { res = true });
         }
-        [Route("ozel-durum-sil/{id}"),HttpGet]
+        [Route("kullanici-ozel-durum-sil/{id}"),HttpGet]
         public ActionResult Delete(int id)
         {
             var data = db.SpecialDirectories.Find(id);

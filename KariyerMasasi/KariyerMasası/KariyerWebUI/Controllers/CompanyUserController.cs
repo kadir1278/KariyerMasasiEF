@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace KariyerWebUI.Controllers
 {
-    [Authorize(Roles = "ADMİN")]
+    [Authorize(Roles = "ADMIN")]
     public class CompanyUserController : Controller
     {
         private SystemContext db = new SystemContext();

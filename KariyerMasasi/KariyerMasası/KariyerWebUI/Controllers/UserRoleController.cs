@@ -10,7 +10,7 @@ using KariyerWebUI.Models;
 
 namespace KariyerWebUI.Controllers
 {
-    [Authorize(Roles = "ADMİN")]
+    [Authorize(Roles = "ADMIN")]
     public class UserRoleController : Controller
     {
         private SystemContext db = new SystemContext();

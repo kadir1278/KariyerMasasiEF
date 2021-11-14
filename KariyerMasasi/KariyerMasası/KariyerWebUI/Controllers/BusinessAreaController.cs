@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
-    [Authorize(Roles = "ADMİN")]
+    [Authorize(Roles = "ADMIN")]
     public class BusinessAreaController : Controller
     {
         private SystemContext db = new SystemContext();

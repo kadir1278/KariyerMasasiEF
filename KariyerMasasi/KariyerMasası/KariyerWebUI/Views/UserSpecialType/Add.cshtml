@@ -1,0 +1,27 @@
+﻿@model KariyerEntity.Entity.Language
+<div class="modal fade" id="basicModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Özel DurumEkle</h5>
+                <button type="button" onclick="GetData()" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="addModal">
+                <form id="user-special-types-add-form" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Özel Durum</label>
+                            <input required type="text" class="form-control" name="AddName" placeholder="Özel Durum Giriniz...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" onclick="GetData()" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" id="addBtn" class="btn btn-success light">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
