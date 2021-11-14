@@ -158,8 +158,18 @@ $("#company-add-form").submit(function (e) {
             btnClose.click();
             GetCompanyData();
         },
-        error: function () {
-            bootbox.alert("Eksik bilgileri doldurunuz")
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
         }
     });
 });

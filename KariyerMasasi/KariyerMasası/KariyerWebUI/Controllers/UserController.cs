@@ -42,9 +42,10 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("kullanici-ekle"), HttpPost]
-        public ActionResult Add(User model, string Photo)
+        public JsonResult Add(User model, string Photo)
         {
-            try
+            var data = db.Users.Where(x => !x.DeletionStatus && x.Name == model.EMail).ToList();
+            if (data.Count() == 0)
             {
                 if (Photo != null && Photo.Contains("base64,"))
                 {
@@ -64,13 +65,12 @@ namespace KariyerWebUI.Controllers
                 model.UpdatedTime = DateTime.Now;
                 db.Users.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-            catch (Exception)
+            else
             {
-                throw;
+                throw new Exception(model.EMail.ToUpper() + " Sistemde bulunmaktadır.");
             }
-
+            return Json(new { res = true });
         }
         [Route("kullanici-guncelle/{id}"), HttpPost]
         public ActionResult Update(User model, string Photo)

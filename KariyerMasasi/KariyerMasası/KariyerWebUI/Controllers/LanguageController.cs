@@ -64,28 +64,21 @@ namespace KariyerWebUI.Controllers
         [Route("dil-ekle"), HttpPost]
         public JsonResult AddLang(Language lang)
         {
-            try
+            var data = db.Languages.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
+            if (data.Count() == 0)
             {
-                var data = db.Languages.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
-                if (data.Count() == 0)
-                {
-                    lang.CreatedTime = DateTime.Now;
-                    lang.UpdatedTime = DateTime.Now;
-                    lang.DeletionStatus = false;
-                    lang.Name = lang.Name.ToUpper();
-                    db.Languages.Add(lang);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception(lang.Name.ToUpper() + " Sistemde bulunmaktadır.");
-                }
-                return Json(new { res = true });
+                lang.CreatedTime = DateTime.Now;
+                lang.UpdatedTime = DateTime.Now;
+                lang.DeletionStatus = false;
+                lang.Name = lang.Name.ToUpper();
+                db.Languages.Add(lang);
+                db.SaveChanges();
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                throw new Exception(lang.Name.ToUpper() + " Sistemde bulunmaktadır.");
             }
+            return Json(new { res = true });
         }
         [Route("dil-duzenle/{id}"), HttpPost]
         public ActionResult UpdateLang(Language lang, int id)

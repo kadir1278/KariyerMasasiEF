@@ -35,14 +35,23 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
         [Route("yonetici-ekle"), HttpPost]
-        public ActionResult Add(Admin model)
+        public JsonResult Add(Admin model)
         {
-            model.DeletionStatus = false;
-            model.CreatedTime = DateTime.Now;
-            model.UpdatedTime = DateTime.Now;
-            db.Admins.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var data = db.Admins.Where(x => !x.DeletionStatus && x.EMail == model.EMail).ToList();
+            if (data.Count() == 0)
+            {
+                model.DeletionStatus = false;
+                model.CreatedTime = DateTime.Now;
+                model.UpdatedTime = DateTime.Now;
+                db.Admins.Add(model);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception(model.EMail.ToUpper() + " Sistemde bulunmaktadır.");
+            }
+            return Json(new { res = true });
+          
         }
         [Route("yonetici-guncelle"), HttpPost]
         public ActionResult Update(Admin model)

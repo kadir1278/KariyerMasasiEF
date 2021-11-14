@@ -36,43 +36,53 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
         [Route("sirket-ekle"), HttpPost]
-        public ActionResult Add(Company model, string Logo, string TaxFile)
+        public JsonResult Add(Company model, string Logo, string TaxFile)
         {
-            if (Logo != null && Logo.Contains("base64,"))
+            var data = db.Companies.Where(x => !x.DeletionStatus && x.EMail == model.EMail).ToList();
+            if (data.Count() == 0)
             {
-                string fileName = Guid.NewGuid().ToString();
-                string fileUrl = Path.Combine(Server.MapPath("File/Company/Logo/" + fileName + ".png"));
-                string filePath = "/File/Company/Logo/" + fileName + ".png";
-                using (MemoryStream stream = new MemoryStream
-                    (Convert.FromBase64String(Logo.Substring(Logo.IndexOf("base64,") + 7, Logo.Length - (Logo.IndexOf("base64,") + 7)))))
-                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                if (Logo != null && Logo.Contains("base64,"))
                 {
-                    stream.WriteTo(fileStream);
+                    string fileName = Guid.NewGuid().ToString();
+                    string fileUrl = Path.Combine(Server.MapPath("File/Company/Logo/" + fileName + ".png"));
+                    string filePath = "/File/Company/Logo/" + fileName + ".png";
+                    using (MemoryStream stream = new MemoryStream
+                        (Convert.FromBase64String(Logo.Substring(Logo.IndexOf("base64,") + 7, Logo.Length - (Logo.IndexOf("base64,") + 7)))))
+                    using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        stream.WriteTo(fileStream);
+                    }
+                    model.Logo = filePath;
                 }
-                model.Logo = filePath;
+                if (TaxFile != null && TaxFile.Contains("base64,"))
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    string fileUrl = Path.Combine(Server.MapPath("File/Company/TaxFile/" + fileName + ".pdf"));
+                    string filePath = "/File/Company/TaxFile/" + fileName + ".pdf";
+                    using (MemoryStream stream = new MemoryStream
+                        (Convert.FromBase64String(TaxFile.Substring(TaxFile.IndexOf("base64,") + 7, TaxFile.Length - (TaxFile.IndexOf("base64,") + 7)))))
+                    using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        stream.WriteTo(fileStream);
+                    }
+                    model.TaxFile = filePath;
+                }
+                model.DeletionStatus = false;
+                model.CreatedTime = DateTime.Now;
+                model.UpdatedTime = DateTime.Now;
+                model.PaymentStatus = false;
+                model.GeneralIsActiveStatus = false;
+                model.ProgramState = false;
+                db.Companies.Add(model);
+                db.SaveChanges();
             }
-            if (TaxFile != null && TaxFile.Contains("base64,"))
+            else
             {
-                string fileName = Guid.NewGuid().ToString();
-                string fileUrl = Path.Combine(Server.MapPath("File/Company/TaxFile/" + fileName + ".pdf"));
-                string filePath = "/File/Company/TaxFile/" + fileName + ".pdf";
-                using (MemoryStream stream = new MemoryStream
-                    (Convert.FromBase64String(TaxFile.Substring(TaxFile.IndexOf("base64,") + 7, TaxFile.Length - (TaxFile.IndexOf("base64,") + 7)))))
-                using (FileStream fileStream = new FileStream(fileUrl, FileMode.Create, FileAccess.ReadWrite))
-                {
-                    stream.WriteTo(fileStream);
-                }
-                model.TaxFile = filePath;
+                throw new Exception(model.EMail.ToUpper() + " Sistemde bulunmaktadır.");
             }
-            model.DeletionStatus = false;
-            model.CreatedTime = DateTime.Now;
-            model.UpdatedTime = DateTime.Now;
-            model.PaymentStatus = false;
-            model.GeneralIsActiveStatus = false;
-            model.ProgramState = false;
-            db.Companies.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { res = true });
+
+           
         }
         [Route("sirket-guncelle"), HttpPost]
         public ActionResult Update(Company model, string Logo, string TaxFile)

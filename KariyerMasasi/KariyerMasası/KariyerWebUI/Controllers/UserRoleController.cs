@@ -66,19 +66,12 @@ namespace KariyerWebUI.Controllers
         [Route("kullanici-yetki-ekle"), HttpPost]
         public ActionResult AddUserRole(UserRole user)
         {
-            try
-            {
-                user.CreatedTime = DateTime.Now;
-                user.UpdatedTime = DateTime.Now;
-                user.DeletionStatus = false;
-                db.UserRoles.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                return Json(ex.Message, JsonRequestBehavior.AllowGet);
-            }
+            user.CreatedTime = DateTime.Now;
+            user.UpdatedTime = DateTime.Now;
+            user.DeletionStatus = false;
+            db.UserRoles.Add(user);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

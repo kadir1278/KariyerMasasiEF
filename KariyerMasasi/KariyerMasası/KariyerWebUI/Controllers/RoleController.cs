@@ -55,7 +55,7 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("yetki-ekle"), HttpPost]
-        public ActionResult AddRole(Role model)
+        public JsonResult AddRole(Role model)
         {
             var dataCount = db.Roles.Where(x => !x.DeletionStatus && x.Name == model.Name).Count();
             if (!(dataCount > 0))
@@ -66,12 +66,12 @@ namespace KariyerWebUI.Controllers
                 model.Name = model.Name.ToUpper();
                 db.Roles.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
             else
             {
-                return RedirectToAction("Index");
+                throw new Exception(model.Name.ToUpper() + " Sistemde bulunmaktadır.");
             }
+            return Json(new { res = true });
         }
     }
 }

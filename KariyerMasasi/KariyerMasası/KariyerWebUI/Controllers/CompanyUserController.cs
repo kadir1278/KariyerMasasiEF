@@ -35,14 +35,23 @@ namespace KariyerWebUI.Controllers
             return RedirectToAction("Index");
         }
         [Route("sirket-personel-ekle"), HttpPost]
-        public ActionResult Add(CompanyUser model)
+        public JsonResult Add(CompanyUser model)
         {
-            model.DeletionStatus = false;
-            model.CreatedTime = DateTime.Now;
-            model.UpdatedTime = DateTime.Now;
-            db.CompanyUsers.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.EMail == model.EMail).ToList();
+            if (data.Count() == 0)
+            {
+                model.DeletionStatus = false;
+                model.CreatedTime = DateTime.Now;
+                model.UpdatedTime = DateTime.Now;
+                db.CompanyUsers.Add(model);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception(model.EMail.ToUpper() + " Sistemde bulunmaktadır.");
+            }
+            return Json(new { res = true });
+          
         }
         [Route("sirket-personel-guncelle"), HttpPost]
         public ActionResult Update(CompanyUser model)
