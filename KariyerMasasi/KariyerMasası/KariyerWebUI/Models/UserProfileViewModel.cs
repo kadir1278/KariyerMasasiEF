@@ -7,7 +7,7 @@ using System.Web;
 namespace KariyerWebUI.Models
 {
 
-    public class UserDetailViewModel
+    public class UserProfileViewModel
     {
         public int UserID { get; set; }
         public int RoleID { get; set; }

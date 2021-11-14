@@ -1,6 +1,6 @@
 ﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/ozel-durum-getir/' + searchText;
+    var url = '/ozel-durum-tip-getir/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +
@@ -32,7 +32,7 @@ $("#user-special-types-add-form").submit(function (e) {
     console.log(user);
     $.ajax({
         type: "POST",
-        url: "/ozel-durum-ekle",
+        url: "/ozel-durum-tip-ekle",
         data: user,
         success: function () {
             bootbox.alert("Veri Eklendi");
@@ -62,13 +62,13 @@ $("#example").on("click", "#btnDelete", function () {
             var ID = btn.data("id");
             $.ajax({
                 type: "GET",
-                url: "/ozel-durum-sil/" + ID,
+                url: "/ozel-durum-tip-sil/" + ID,
                 success: function () {
-                    bootbox.alert("ozel-durum silme işlemi başarılı.")
+                    bootbox.alert("Özel Durum Tipi silme işlemi başarılı.")
                     GetData();
                 },
                 error: function () {
-                    bootbox.alert("ozel-durum silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                    bootbox.alert("Özel Durum Tipi silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
                 }
             })
         }

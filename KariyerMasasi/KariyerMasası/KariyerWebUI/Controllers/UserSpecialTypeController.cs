@@ -13,9 +13,9 @@ namespace KariyerWebUI.Controllers
     public class UserSpecialTypeController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("ozel-durum"), HttpGet]
+        [Route("ozel-durum-tip"), HttpGet]
         public ActionResult Index() => View();
-        [Route("ozel-durum-getir/{searchText?}"), HttpGet]
+        [Route("ozel-durum-tip-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
             List<UserSpecialType> data = new List<UserSpecialType>();
@@ -39,15 +39,15 @@ namespace KariyerWebUI.Controllers
             };
             return Json(query, JsonRequestBehavior.AllowGet);
         }
-        [Route("ozel-durum-ekle"), HttpGet]
+        [Route("ozel-durum-tip-ekle"), HttpGet]
         public ActionResult Add() => PartialView();
-        [Route("ozel-durum-duzenle/{id}")]
+        [Route("ozel-durum-tip-duzenle/{id}")]
         public ActionResult Update(int id)
         {
             var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
             return View(data);
         }
-        [Route("ozel-durum-sil/{id}"), HttpGet]
+        [Route("ozel-durum-tip-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
             try
@@ -62,7 +62,7 @@ namespace KariyerWebUI.Controllers
                 return View(ex);
             }
         }
-        [Route("ozel-durum-ekle"), HttpPost]
+        [Route("ozel-durum-tip-ekle"), HttpPost]
         public JsonResult AddLang(UserSpecialType lang)
         {
             var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus && x.Name == lang.Name).ToList();
@@ -81,7 +81,7 @@ namespace KariyerWebUI.Controllers
             }
             return Json(new { res = true });
         }
-        [Route("ozel-durum-duzenle/{id}"), HttpPost]
+        [Route("ozel-durum-tip-duzenle/{id}"), HttpPost]
         public ActionResult UpdateLang(UserSpecialType lang, int id)
         {
             try

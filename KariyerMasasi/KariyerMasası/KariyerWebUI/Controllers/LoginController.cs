@@ -25,6 +25,7 @@ namespace KariyerWebUI.Controllers
                 login.Name = user.Name;
                 login.Surname = user.Surname;
                 login.Image = user.Photo;
+                login.ID = user.ID;
                 if (userrole != null)
                 {
                     login.Role = userrole.Name;
