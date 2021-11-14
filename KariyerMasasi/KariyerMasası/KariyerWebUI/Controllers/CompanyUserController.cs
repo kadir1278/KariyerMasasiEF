@@ -69,7 +69,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("GetData"), HttpGet]
+        [Route("sirket-personel-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
             List<CompanyUser> data = new List<CompanyUser>();

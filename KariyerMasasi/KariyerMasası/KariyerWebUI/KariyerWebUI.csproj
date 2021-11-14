@@ -370,6 +370,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />

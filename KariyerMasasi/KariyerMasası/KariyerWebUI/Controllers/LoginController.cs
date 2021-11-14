@@ -13,7 +13,7 @@ namespace KariyerWebUI.Controllers
         [Route("giris-yap"), HttpGet]
         public ActionResult Login() => View();
         [Route("giris-yap"), HttpPost]
-        public ActionResult Login(string email,string password)
+        public ActionResult Login(string email, string password)
         {
             var user = db.Users.Where(x => x.EMail == email && x.Password == password).FirstOrDefault();
             if (user != null)

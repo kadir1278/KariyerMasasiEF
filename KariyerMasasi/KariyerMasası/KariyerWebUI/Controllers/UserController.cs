@@ -113,7 +113,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("GetData/{searchText?}"), HttpGet]
+        [Route("kullanici-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
             List<User> data = new List<User>();

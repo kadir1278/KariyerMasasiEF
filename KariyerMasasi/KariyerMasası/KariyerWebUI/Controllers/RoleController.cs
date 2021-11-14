@@ -1,5 +1,6 @@
 ﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
+using KariyerWebUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,19 +59,20 @@ namespace KariyerWebUI.Controllers
         [Route("yetki-ekle"), HttpPost]
         public JsonResult AddRole(Role model)
         {
-            var dataCount = db.Roles.Where(x => !x.DeletionStatus && x.Name == model.Name).Count();
+            string RoleName = StringHelper.StringReplacer(model.Name.ToUpper());
+            var dataCount = db.Roles.Where(x => !x.DeletionStatus && x.Name == RoleName).Count();
             if (!(dataCount > 0))
             {
                 model.DeletionStatus = false;
                 model.CreatedTime = DateTime.Now;
                 model.UpdatedTime = DateTime.Now;
-                model.Name = model.Name.ToUpper();
+                model.Name = RoleName;
                 db.Roles.Add(model);
                 db.SaveChanges();
             }
             else
             {
-                throw new Exception(model.Name.ToUpper() + " Sistemde bulunmaktadır.");
+                throw new Exception(RoleName + " Sistemde bulunmaktadır.");
             }
             return Json(new { res = true });
         }

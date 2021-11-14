@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 namespace KariyerWebUI.Controllers
 {
-    [Authorize(Roles = "ADMİN")]
+    [Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -67,7 +67,7 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("GetData"), HttpGet]
+        [Route("yonetici-getir/{searchText?}"), HttpGet]
         public JsonResult GetData(string searchText)
         {
             List<Admin> data = new List<Admin>();
