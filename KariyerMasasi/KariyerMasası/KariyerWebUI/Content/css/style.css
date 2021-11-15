@@ -9281,7 +9281,7 @@ a {
     -webkit-transform: scale(1);
     transform: scale(1); } }
 .footer {
-  padding-left: 17.1875rem;
+  /*padding-left: 17.1875rem;*/
   background-color: #fbfbfb;
   font-size: 13px; }
   .footer .copyright {

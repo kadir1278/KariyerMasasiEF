@@ -362,6 +362,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="Controllers\UserSeminarController.cs" />
     <Compile Include="Controllers\UserSpecialTypeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -476,6 +477,7 @@
     <Content Include="Views\UserSpecialType\Add.cshtml" />
     <Content Include="Views\UserSpecialType\Index.cshtml" />
     <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\UserSeminar\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
