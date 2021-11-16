@@ -7,7 +7,9 @@
     int certificateCount = Model.Certificates.Count();
     int referenceCount = Model.References.Count();
 }
-
+@section Scripts{
+    <script src="~/Content/js/pages/userprofiles.js"></script>
+}
 
 <div class=" @(loginUser != null ? "container-fluid" : "")">
     <br />
@@ -50,14 +52,14 @@
                         <div class="dropdown ml-auto">
                             <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-item" data-toggle="modal" data-target="#workModal"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Sertifika Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Seminer Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Referans Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Yabancı Dil Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Bilgisayar Bilgisi Ekle</li>
-                                <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#workModal"><i class="fa fa-plus text-primary mr-2"></i> Seminer Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Sertifika Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Referans Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Yabancı Dil Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Bilgisayar Bilgisi Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
                             </ul>
                         </div>
                     </div>
@@ -289,7 +291,7 @@
                                     @foreach (var item in Model.Seminars)
                                     {
                                         <div class="profile-personal-info">
-                                            <h4 class="text-primary mb-4">Üniversite Bilgileri</h4>
+                                            <h4 class="text-primary mb-4">Seminer Bilgileri</h4>
                                             <div class="row mb-2">
                                                 <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı<span class="pull-right">:</span></h5></div>
                                                 <div class="col-sm-9 col-7"><span>@item.Name</span></div>
