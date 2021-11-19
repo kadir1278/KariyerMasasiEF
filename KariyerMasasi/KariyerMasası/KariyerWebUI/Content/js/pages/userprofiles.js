@@ -17,20 +17,19 @@
         }
     })
 })
-$(document).on("click", ("#btnDetail"), function () {
+$(document).on("click", ("#btnSeminarDetail"), function () {
     var btn = $(this);
     var ID = btn.data("id");
-    $("#modalContent").html('');
-    $('#detailModal').remove();
+    $("#seminarModalContent").html('');
+    $('#seminarUpdateModal').remove();
 
     $.ajax({
-        url: "/PartialUpdateAdmin/" + ID,
+        url: "/seminer-guncelle/" + ID,
         type: "GET",
     })
         .done(function (partialViewResult) {
-            $("#modalContent").html(partialViewResult);
-            $('#detailModal').modal('show');
-            init_custom_form_submit();
+            $("#SeminarModalContent").html(partialViewResult);
+            $('#seminarUpdateModal').modal('show');
         });
 });
 $("#seminar-add-form").submit(function (e) {
@@ -38,7 +37,7 @@ $("#seminar-add-form").submit(function (e) {
     var btnClose = document.getElementById("closeUser");
     var seminar = {
         Name: $("#seminar-add-form").find('[name="SeminarName"]').val(),
-        SeminarDate: $("#seminar-add-form").find('[name="SeminarDate"]').val(),
+        Date: $("#seminar-add-form").find('[name="SeminarDate"]').val(),
         Description: $("#seminar-add-form").find('[name="SeminarDescription"]').val(),
     }
     $.ajax({

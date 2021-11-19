@@ -1,59 +1,101 @@
-﻿
-@{
-    Layout = null;
-}
+﻿﻿
+@{ Layout = null; }
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <title>Kariyer Masası | 360MEKA Toplantı Sistemi</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon.png">
-    <link href="~/Content/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Kariyer Masası Giriş Ekranı</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Login/img/favicon.png">
+    <link rel="stylesheet" href="~/Content/Login/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Login/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/Login/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <link href="~/Content/Login/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="text-center">
-        <div>
-            <br />
-            <div class="text-center">
-                <img class="img-fluid" src="~/Content/kariyermasasi/Logo.png" alt="">
-            </div>
-            <br /><br />
-            <h2 class="mb-0">Kariyer Masası Sistemine Hoşgeldiniz !</h2>
-            <br />
-        </div>
-        <div class="container">
-            <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
-                <form class="form-validate" method="post" action="/giris-yap">
-                    @if (ViewBag.LoginError != null)
-                    {
-                        <div class="new-account text-danger mt-3 text-center">
-                            <span class="fa fa-warning"></span>
-                            <b>@ViewBag.LoginError</b>
-                        </div>
-                    }
-                    <br />
-                    <div class="form-group">
-                        <label class="mb-1 text-black"><strong>E-Mail</strong></label>
-                        <div>
-                            <input type="email" name="email" class="form-control" placeholder="admin@360meka.com">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="mb-1 text-black"><strong>Şifre</strong></label>
-                        <div>
-                            <input type="password" name="password" class="form-control" placeholder="Şifre">
-                        </div>
-                    </div>
-                    <div class="form-group text-center mt-4">
-                        <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
-                    </div>
-                </form>
-            </div>
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
         </div>
     </div>
+    <section class="fxt-template-animation fxt-template-layout31">
+        <span class="fxt-shape fxt-animation-active"></span>
+        <div class="fxt-content-wrap">
+            <div class="fxt-heading-content">
+                <div class="fxt-inner-wrap">
+                    <div class="fxt-transformY-50 fxt-transition-delay-3">
+                        <a href="login-31.html" class="fxt-logo"><img src="~/Content/Login/img/logo-31.png" alt="Logo"></a>
+                    </div>
+                    <div class="fxt-login-option">
+                        <ul>
+                            <li class="fxt-transformY-50 fxt-transition-delay-6"><a href="#">Yeni Kurumsal Hesap Oluştur</a></li>
+                            <li class="fxt-transformY-50 fxt-transition-delay-7"><a href="#">Yeni Bireysel Hesap Oluştur</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fxt-form-content">
+                @*<div class="fxt-page-switcher">
+                    <h2 class="fxt-page-title mr-3">Kariyer Masası Giriş Ekranı</h2>
+                    <div class="fxt-login-option">
+                        <ul>
+                            <ul class="fxt-switcher-wrap">
+                                <li><a href="login-31.html" class="fxt-switcher-btn">Kurumsal</a></li>
+                                <li><a href="register-31.html" class="fxt-switcher-btn active">Bireysel</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>*@
+                <div class="fxt-main-form">
+                    <div class="fxt-inner-wrap">
+                        <form method="POST">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input id="password" type="password" class="form-control" name="password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
+                                        <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="fxt-checkbox-wrap">
+                                            <div class="fxt-checkbox-box mr-3">
+                                                <input id="checkbox1" type="checkbox">
+                                                <label for="checkbox1" class="pl-4">Beni Hatırla</label>
+                                            </div>
+                                            <a href="forgot-password-31.html" class="fxt-switcher-text">Şifrenizi mi unuttunuz?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="fxt-btn-fill">Giriş Yap</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Content/Login/js/jquery-3.5.0.min.js"></script>
+    <script src="~/Content/Login/js/popper.min.js"></script>
+    <script src="~/Content/Login/js/bootstrap.min.js"></script>
+    <script src="~/Content/Login/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/Login/js/validator.min.js"></script>
+    <script src="~/Content/Login/js/main.js"></script>
 </body>
 </html>

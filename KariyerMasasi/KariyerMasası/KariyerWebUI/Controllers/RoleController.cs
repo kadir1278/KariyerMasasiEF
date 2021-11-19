@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace KariyerWebUI.Controllers
 {
     [Authorize(Roles = "ADMIN")]
+
     public class RoleController : Controller
     {
         private SystemContext db = new SystemContext();

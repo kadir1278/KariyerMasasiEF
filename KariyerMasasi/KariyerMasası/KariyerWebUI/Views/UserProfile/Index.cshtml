@@ -298,23 +298,29 @@
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-3 col-5"><h5 class="f-w-500">Mezun Tarihi<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.SeminarDate.ToString("dd.MM.yyyy")</span></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Date.ToString("dd.MM.yyyy")</span></div>
                                             </div>
                                             <div class="row mb-2">
                                                 <div class="col-sm-3 col-5"><h5 class="f-w-500">Açıklama<span class="pull-right">:</span></h5></div>
                                                 <div class="col-sm-9 col-7"><span>@item.Description</span></div>
                                             </div>
+                                            <div class="lg-right-end">
+                                                <a class="fs-28 text-danger las la-times-circle" href="/seminer-sil/@item.ID"></a>
+                                                <a class="fs-28 text-success las la-edit" id="btnSeminarDetail" data-id="@item.ID" ></a>
+                                            </div>
                                         </div>
+                                        <br />
 
-                                    }
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-@{Html.RenderAction("Add", "UserSeminar");}
+    @{Html.RenderAction("Add", "UserSeminar");}
+<div id="seminarModalContent"></div>

@@ -32,9 +32,24 @@ namespace KariyerWebUI.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Bir sorun oluştu."+ex.Message);
+                throw new Exception("Bir sorun oluştu." + ex.Message);
             }
             return Json(new { res = true });
         }
+        [Route("seminer-sil/{id}"), HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var data = db.UserSeminars.Find(id);
+            data.DeletionStatus = true;
+            db.SaveChanges();
+            return Redirect("/profil");
+        }
+        [Route("seminer-guncelle/{id}")]
+        public ActionResult Update(int id)
+        {
+            var data = db.UserSeminars.Find(id);
+            return PartialView(data);
+        }
+
     }
 }

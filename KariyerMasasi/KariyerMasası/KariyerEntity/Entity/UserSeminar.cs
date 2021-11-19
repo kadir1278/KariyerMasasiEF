@@ -10,7 +10,7 @@ namespace KariyerEntity.Entity
     public class UserSeminar : LowerBase
     {
         public string Name { get; set; }
-        public DateTime SeminarDate { get; set; }
+        public DateTime Date { get; set; }
         public string Description { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }

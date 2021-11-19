@@ -31,19 +31,6 @@ namespace KariyerWebUI.Controllers
             return View();
         }
 
-
-        [Route("profil/{id}")]
-        [AllowAnonymous]
-        public ActionResult Index(UserProfileViewModel model, int id)
-        {
-            User about = db.Users.Where(x => !x.DeletionStatus && x.ID == id).FirstOrDefault();
-            if (about == null)
-            {
-                return HttpNotFound();
-            }
-            InModel(model, id);
-            return View(model);
-        }
         private void InModel(UserProfileViewModel model, int userID)
         {
             model.UserInformations = db.Users.Include(x => x.BusinessArea).Where(x => !x.DeletionStatus && x.ID == userID).ToList(); //+
