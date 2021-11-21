@@ -400,6 +400,7 @@
     <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
+    <Compile Include="Controllers\UserCertificateController.cs" />
     <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
@@ -410,7 +411,6 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\UserDetailController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -524,6 +524,8 @@
     <Content Include="Views\UserReference\Update.cshtml" />
     <Content Include="Views\UserComputerInformation\Add.cshtml" />
     <Content Include="Views\UserComputerInformation\Update.cshtml" />
+    <Content Include="Views\UserCertificate\Add.cshtml" />
+    <Content Include="Views\UserCertificate\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -535,7 +537,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="File\Company\Logo\" />
     <Folder Include="File\Company\TaxFile\" />
-    <Folder Include="File\User\Certificate\" />
+    <Folder Include="File\User\Certificates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KariyerEntity\KariyerEntity.csproj">

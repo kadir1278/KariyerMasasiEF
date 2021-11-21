@@ -1,0 +1,63 @@
+﻿@model KariyerEntity.Entity.UserCertificate
+@if (Model != null)
+{
+    <div class="modal fade" id="detailCertificateModal" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sertifika Görüntüle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("UpdateCertificate", "UserCertificate", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {@Html.HiddenFor(x => x.ID)
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>İsim</label>
+                            <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="İsim Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tarih</label>
+                            <input type="text" class="form-control mdate" value="@Model.FinishDate.ToString("dd.MM.yyyy")" name="FinishDate" placeholder="Tarih Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Kurum Adı</label>
+                            <input type="text" class="form-control" value="@Model.InstitutionFromName" name="InstitutionFromName" placeholder="Kurum Adı Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Çalışma Alanı</label>
+                            <select required class="custom-select2 form-control" name="LanguageID">
+                                <optgroup label="Çalışma Alanı">
+                                    <option value="@Model.LanguageID">@Model.Language.Name</option>
+                                    @foreach (var item in ViewBag.LanguageID)
+                                    {
+                                        if (item.ID != Model.LanguageID)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    }
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-5" onclick="update_certificate_photo()">
+                            <button type="button" class="file-input btn light btn-primary">Sertifika Ekle</button>
+                        </div>
+                        <div class="form-group col-md-7">
+                            <a href="@Model.File" target="_blank">
+                                <img src="~/Content/images/pdf.png" style="max-height: 200px; max-width: 200px" id="img_tax_file">
+                            </a>
+                            @Html.HiddenFor(s => s.File)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-success light ">Güncelle</button>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+}

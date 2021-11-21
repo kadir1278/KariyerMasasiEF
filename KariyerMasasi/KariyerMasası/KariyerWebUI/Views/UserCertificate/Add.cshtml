@@ -1,0 +1,54 @@
+﻿@model KariyerEntity.Entity.UserCertificate
+<div class="modal fade" id="certificateModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sertifika Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="certificate-add-form" method="post" role="form">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>İsim</label>
+                            <input required type="text" class="form-control" name="CertificateName" placeholder="İsim Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>BitirmeTarih</label>
+                            <input required type="text" class="form-control mdate" name="CertificateFinishDate" placeholder="Bitirme Tarihi Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Kurum Adı</label>
+                            <input required type="text" class="form-control" name="CertificateInstitutionFromName" placeholder="Kurum Adı Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Sertifika dili</label>
+                            <select required class="custom-select2 form-control" name="CertificateLanguageID">
+                                <optgroup label="Sertifika Dili">
+                                    @foreach (var item in ViewBag.LanguageID)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12" onclick="upload_certificate_photo()">
+                            <button type="button" class="file-input btn light btn-primary">Sertifika Ekle</button>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="update-photo">
+                                <img hidden style="width: 250px;height: 250px;" class="image" id="img_certificate_photo" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" id="addBtn" class="btn btn-success light">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

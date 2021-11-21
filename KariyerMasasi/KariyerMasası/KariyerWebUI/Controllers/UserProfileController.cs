@@ -33,14 +33,14 @@ namespace KariyerWebUI.Controllers
 
         private void InModel(UserProfileViewModel model, int userID)
         {
-            model.UserInformations = db.Users.Include(x => x.BusinessArea).Where(x => !x.DeletionStatus && x.ID == userID).ToList(); //+
-            model.BusinessInformations = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); //+
-            model.Certificates = db.UserCertificates.Include(x => x.Language).Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); //+
-            model.ComputerInformations = db.UserComputerInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); //+
-            model.Educations = db.UserEducations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList();// +
-            model.Languages = db.UserLanguages.Where(x => !x.DeletionStatus && x.UserID == userID).ToList();// +
-            model.References = db.UserReferences.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); //+
-            model.Seminars = db.UserSeminars.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); //+
+            model.UserInformations = db.Users.Include(x => x.BusinessArea).Where(x => !x.DeletionStatus && x.ID == userID).ToList(); 
+            model.BusinessInformations = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
+            model.Certificates = db.UserCertificates.Include(x => x.Language).Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
+            model.ComputerInformations = db.UserComputerInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
+            model.Educations = db.UserEducations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList();
+            model.Languages = db.UserLanguages.Where(x => !x.DeletionStatus && x.UserID == userID).ToList();
+            model.References = db.UserReferences.Where(x => !x.DeletionStatus && x.UserID == userID).ToList();
+            model.Seminars = db.UserSeminars.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
             model.SpecialDirectories = db.SpecialDirectories.Include(x=>x.UserSpecialType).Where(x => !x.DeletionStatus && x.UserID == userID).ToList();
         }
 

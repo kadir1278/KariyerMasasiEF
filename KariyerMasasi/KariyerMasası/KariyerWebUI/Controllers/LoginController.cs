@@ -3,6 +3,7 @@ using KariyerEntity.Modal;
 using KariyerWebUI.Models;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 using System.Web.Security;
 namespace KariyerWebUI.Controllers
 {
@@ -19,17 +20,14 @@ namespace KariyerWebUI.Controllers
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.EMail, false);
-                var userrole = db.Roles.Where(x => x.DeletionStatus).FirstOrDefault();
+                var userrole = db.UserRoles.Include(x => x.Role).Where(x => !x.DeletionStatus && x.UserID == user.ID).FirstOrDefault();
 
                 LoginViewModel login = new LoginViewModel();
                 login.Name = user.Name;
                 login.Surname = user.Surname;
                 login.Image = user.Photo;
                 login.ID = user.ID;
-                if (userrole != null)
-                {
-                    login.Role = userrole.Name;
-                }
+                login.Role = userrole.Role.Name;
                 Session["loginUser"] = login;
                 return Redirect("/");
             }

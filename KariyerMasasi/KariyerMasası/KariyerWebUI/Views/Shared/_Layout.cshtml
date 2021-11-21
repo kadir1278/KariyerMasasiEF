@@ -1,5 +1,9 @@
 ﻿@{
     var loginUser = Session["loginUser"] as KariyerWebUI.Models.LoginViewModel;
+    //if (loginUser==null)
+    //{
+    //    Response.Redirect("/giris-yap");
+    //}
 }
 
 
@@ -29,8 +33,6 @@
         </div>
     </div>
     <div id="main-wrapper">
-        @if (loginUser != null)
-        {
             <div class="nav-header">
                 <a href="/" class="brand-logo">
                     <img src="~/Content/kariyermasasi/miniLogo.png" class="brand-logo" />
@@ -90,11 +92,10 @@
                 </div>
             </div>
         }
-        <div class=" @(loginUser != null ? "content-body" : "")">
+        <div class="content-body">
             @RenderBody()
         </div>
-        @if (loginUser != null)
-        {
+      
             <div class="header">
                 <div class="header-content">
                     <nav class="navbar navbar-expand">
@@ -133,7 +134,7 @@
                     </nav>
                 </div>
             </div>
-        }
+        
         <div class="footer">
             <div class="row">
                 <div class="col-md-2"></div>
