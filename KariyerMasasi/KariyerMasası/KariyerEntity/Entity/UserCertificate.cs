@@ -12,8 +12,8 @@ namespace KariyerEntity.Entity
         public string CertificateName { get; set; }
         public DateTime CertificateFinishDate { get; set; }
         public string InstitutionFromName { get; set; }
-        public bool Status { get; set; } // bool mu?
-        public string CertificateFile { get; set; } // string mi?
+        public bool Status { get; set; }
+        public string CertificateFile { get; set; }
         public int UserID { get; set; }
         public int LanguageID { get; set; }
         public User User { get; set; }

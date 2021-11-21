@@ -57,3 +57,15 @@ C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEn
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
 C:\Users\kadirari\Desktop\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.dll.config
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.dll
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\KariyerEntity.pdb
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.dll
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.dll
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.xml
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.xml
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CoreCompileInputs.cache
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb

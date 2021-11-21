@@ -400,6 +400,7 @@
     <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
+    <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
     <Compile Include="Controllers\UserSeminarController.cs" />
@@ -521,6 +522,8 @@
     <Content Include="Views\UserSeminar\Update.cshtml" />
     <Content Include="Views\UserReference\Add.cshtml" />
     <Content Include="Views\UserReference\Update.cshtml" />
+    <Content Include="Views\UserComputerInformation\Add.cshtml" />
+    <Content Include="Views\UserComputerInformation\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -64,6 +64,39 @@ $("#Reference-add-form").submit(function (e) {
         }
     });
 });
+$("#computer-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var computer = {
+        Name: $("#computer-add-form").find('[name="computerName"]').val(),
+        Description: $("#computer-add-form").find('[name="computerDescription"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/bilgisayar-bilgisi-ekle",
+        data: computer,
+        success: function () {
+            btnClose.click();
+            bootbox.confirm("Veri Eklendi", function () {
+                window.location.reload();
+            })
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
+        }
+    });
+});
+
 
 $(document).on("click", ("#btnSeminarDetail"), function () {
     var btn = $(this);
@@ -93,5 +126,20 @@ $(document).on("click", ("#btnReferenceDetail"), function () {
         .done(function (partialViewResult) {
             $("#ModalContent").html(partialViewResult);
             $('#detailReferenceModal').modal('show');
+        });
+});
+$(document).on("click", ("#btnComputerDetail"), function () {
+    var btn = $(this);
+    var ID = btn.data("id");
+    $("#ModalContent").html('');
+    $('#detailComputerModal').remove();
+
+    $.ajax({
+        url: "/bilgisayar-bilgisi-guncelle/" + ID,
+        type: "GET",
+    })
+        .done(function (partialViewResult) {
+            $("#ModalContent").html(partialViewResult);
+            $('#detailComputerModal').modal('show');
         });
 });

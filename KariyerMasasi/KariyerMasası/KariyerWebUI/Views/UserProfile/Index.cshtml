@@ -54,11 +54,11 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#seminarModal"><i class="fa fa-plus text-primary mr-2"></i> Seminer Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#referenceModal"><i class="fa fa-plus text-primary mr-2"></i> Referans Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#computerModal"><i class="fa fa-plus text-primary mr-2"></i> Bilgisayar Bilgisi Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Sertifika Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Yabancı Dil Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
-                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Bilgisayar Bilgisi Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
                             </ul>
                         </div>
@@ -114,6 +114,10 @@
                                 <div class="profile-blog pt-3">
                                     <h6><a class="text-black">@item.Name</a></h6>
                                     <p class="mb-0">@item.Description</p>
+                                    <div class="lg-right-end">
+                                        <a class="fs-28 text-danger las la-times-circle" href="/bilgisayar-bilgisi-sil/@item.ID"></a>
+                                        <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnComputerDetail" data-id="@item.ID"></a>
+                                    </div>
                                 </div>
                                 <br />
                             }
@@ -152,25 +156,25 @@
                                     <br />
                                     @foreach (var item in Model.References)
                                     {
-                                <div class="profile-personal-info">
-                                    <h4 class="text-primary mb-4">Referans Bilgileri</h4>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı Soyadı <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.NameSurname</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Email <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.EMail</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Telefon <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.Phone</span></div>
-                                    </div>
-                                    <div class="lg-right-end">
-                                        <a class="fs-28 text-danger las la-times-circle" href="/referans-sil/@item.ID"></a>
-                                        <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnReferenceDetail" data-id="@item.ID"></a>
-                                    </div>
-                                </div>
+                                        <div class="profile-personal-info">
+                                            <h4 class="text-primary mb-4">Referans Bilgileri</h4>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı Soyadı <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.NameSurname</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Email <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.EMail</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Telefon <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Phone</span></div>
+                                            </div>
+                                            <div class="lg-right-end">
+                                                <a class="fs-28 text-danger las la-times-circle" href="/referans-sil/@item.ID"></a>
+                                                <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnReferenceDetail" data-id="@item.ID"></a>
+                                            </div>
+                                        </div>
 
                                     }
                                 </div>
@@ -328,5 +332,6 @@
 </div>
 @{Html.RenderAction("Add", "UserSeminar");}
 @{Html.RenderAction("Add", "UserReference");}
+@{Html.RenderAction("Add", "UserComputerInformation");}
 
 <div id="ModalContent"></div>
