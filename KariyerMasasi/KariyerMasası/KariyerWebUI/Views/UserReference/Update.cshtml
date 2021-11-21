@@ -1,30 +1,30 @@
-﻿@model KariyerEntity.Entity.UserSeminar
+﻿@model KariyerEntity.Entity.UserReference
 @if (Model != null)
 {
-    <div class="modal fade" id="detailSeminarModal" aria-hidden="true">
+    <div class="modal fade" id="detailReferenceModal" aria-hidden="true">
         <div class="modal-dialog " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Seminer Görüntüle</h5>
+                    <h5 class="modal-title">Referans Görüntüle</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    @using (Html.BeginForm("UpdateSeminar", "UserSeminar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("UpdateSeminar", "UserReference", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {@Html.HiddenFor(x => x.ID)
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>İsim</label>
-                            <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="İsim Giriniz...">
+                            <label>İsim Soyisim</label>
+                            <input type="text" class="form-control" value="@Model.NameSurname" name="NameSurname" placeholder="İsim Soyisim Giriniz...">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Tarih</label>
-                            <input type="text" class="form-control mdate" value="@Model.Date.ToString("dd.MM.yyyy")" name="Date" placeholder="Tarih Giriniz...">
+                            <label>Telefon</label>
+                            <input type="tel" class="form-control" value="@Model.Phone" name="Phone" placeholder="Telefon Giriniz...">
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Açıklama</label>
-                            <input type="text" class="form-control" value="@Model.Description" name="Description" placeholder="Açıklama Giriniz...">
+                            <label>E-Mail</label>
+                            <input type="email" class="form-control" value="@Model.EMail" name="EMail" placeholder="E-Mail Giriniz...">
                         </div>
                         
                     </div>

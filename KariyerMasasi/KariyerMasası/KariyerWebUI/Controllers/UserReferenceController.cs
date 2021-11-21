@@ -9,15 +9,15 @@ using System.Web.Mvc;
 
 namespace KariyerWebUI.Controllers
 {
-    public class UserSeminarController : Controller
+    public class UserReferenceController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("seminer"), HttpGet]
+        [Route("referans"), HttpGet]
         public ActionResult Index() => View();
-        [Route("seminer-ekle"), HttpGet]
+        [Route("referans-ekle"), HttpGet]
         public ActionResult Add() => PartialView();
-        [Route("seminer-ekle"), HttpPost]
-        public JsonResult Add(UserSeminar model)
+        [Route("referans-ekle"), HttpPost]
+        public JsonResult Add(UserReference model)
         {
             var loginUser = Session["loginUser"] as LoginViewModel;
 
@@ -27,7 +27,7 @@ namespace KariyerWebUI.Controllers
                 model.DeletionStatus = false;
                 model.CreatedTime = DateTime.Now;
                 model.UpdatedTime = DateTime.Now;
-                db.UserSeminars.Add(model);
+                db.UserReferences.Add(model);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -36,34 +36,33 @@ namespace KariyerWebUI.Controllers
             }
             return Json(new { res = true });
         }
-        [Route("seminer-sil/{id}"), HttpGet]
+        [Route("referans-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
-            var data = db.UserSeminars.Find(id);
+            var data = db.UserReferences.Find(id);
             data.DeletionStatus = true;
             db.SaveChanges();
             return Redirect("/profil");
         }
-        [Route("seminer-guncelle/{id}"), HttpGet]
+        [Route("referans-guncelle/{id}"), HttpGet]
         public ActionResult Update(int id)
         {
-            var data = db.UserSeminars.Find(id);
+            var data = db.UserReferences.Find(id);
             return PartialView(data);
         }
-        [Route("seminer-guncelle/{id}"), HttpPost]
-        public ActionResult UpdateSeminar(UserSeminar model)
+        [Route("referans-guncelle/{id}"), HttpPost]
+        public ActionResult UpdateSeminar(UserReference model)
         {
             if (ModelState.IsValid)
             {
-                var data = db.UserSeminars.Where(x => !x.DeletionStatus && x.ID == model.ID).FirstOrDefault();
-                data.Name = model.Name;
-                data.Date = model.Date;
-                data.Description = model.Description;
+                var data = db.UserReferences.Where(x => !x.DeletionStatus && x.ID == model.ID).FirstOrDefault();
+                data.NameSurname = model.NameSurname;
+                data.Phone = model.Phone;
+                data.EMail = model.EMail;
                 data.UpdatedTime = DateTime.Now;
                 db.SaveChanges();
             }
             return Redirect("/profil");
         }
-
     }
 }
