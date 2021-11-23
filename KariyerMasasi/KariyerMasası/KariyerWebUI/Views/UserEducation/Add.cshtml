@@ -1,0 +1,48 @@
+﻿@model KariyerEntity.Entity.UserEducation
+<div class="modal fade" id="educationModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eğitim Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="education-add-form" method="post" role="form">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Kurum Adı</label>
+                            <input type="text" class="form-control" name="EducationSchoolName" placeholder="Kurum Adı Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Mezun Durumu</label>
+                            <input type="text" class="form-control" name="EducationGraduationStatus" placeholder="Mezun Durumu Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Eğitim Seviyesi</label>
+                            <input type="text" class="form-control"  name="EducationGraduationGrade" placeholder="Eğitim Seviyesi Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Departman</label>
+                            <input type="text" class="form-control" name="EducationDepartment" placeholder="Departman Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Mezun Tarihi</label>
+                            <input type="text" class="form-control mdate"  name="EducationGraduationYear" placeholder="Mezun Tarihi Giriniz...">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Açıklama</label>
+                            <input type="text" class="form-control" name="EducationDescription" placeholder="Açıklama Giriniz...">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" id="addBtn" class="btn btn-success light">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

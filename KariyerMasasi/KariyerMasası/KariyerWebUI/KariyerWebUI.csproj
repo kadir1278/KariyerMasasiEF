@@ -404,6 +404,7 @@
     <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
+    <Compile Include="Controllers\UserEducation.cs" />
     <Compile Include="Controllers\UserSeminarController.cs" />
     <Compile Include="Controllers\UserSpecialTypeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -526,6 +527,8 @@
     <Content Include="Views\UserComputerInformation\Update.cshtml" />
     <Content Include="Views\UserCertificate\Add.cshtml" />
     <Content Include="Views\UserCertificate\Update.cshtml" />
+    <Content Include="Views\UserEducation\Add.cshtml" />
+    <Content Include="Views\UserEducation\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

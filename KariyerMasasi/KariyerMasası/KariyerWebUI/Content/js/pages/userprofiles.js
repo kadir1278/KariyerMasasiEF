@@ -131,6 +131,42 @@ $("#certificate-add-form").submit(function (e) {
         }
     });
 });
+$("#education-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var education = {
+        SchoolName: $("#education-add-form").find('[name="EducationSchoolName"]').val(),
+        GraduationYear: $("#education-add-form").find('[name="EducationGraduationYear"]').val(),
+        GraduationStatus: $("#education-add-form").find('[name="EducationGraduationStatus"]').val(),
+        GraduationGrade: $("#education-add-form").find('[name="EducationGraduationGrade"]').val(),
+        Department: $("#education-add-form").find('[name="EducationDepartment"]').val(),
+        Description: $("#education-add-form").find('[name="EducationDescription"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/egitim-ekle",
+        data: education,
+        success: function () {
+            btnClose.click();
+            bootbox.confirm("Veri Eklendi", function () {
+                window.location.reload();
+            })
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
+        }
+    });
+});
 
 
 $(document).on("click", ("#btnSeminarDetail"), function () {
@@ -191,6 +227,21 @@ $(document).on("click", ("#btnCertificateDetail"), function () {
         .done(function (partialViewResult) {
             $("#ModalContent").html(partialViewResult);
             $('#detailCertificateModal').modal('show');
+        });
+});
+$(document).on("click", ("#btnEducationDetail"), function () {
+    var btn = $(this);
+    var ID = btn.data("id");
+    $("#ModalContent").html('');
+    $('#detailEducationModal').remove();
+
+    $.ajax({
+        url: "/egitim-guncelle/" + ID,
+        type: "GET",
+    })
+        .done(function (partialViewResult) {
+            $("#ModalContent").html(partialViewResult);
+            $('#detailEducationModal').modal('show');
         });
 });
 

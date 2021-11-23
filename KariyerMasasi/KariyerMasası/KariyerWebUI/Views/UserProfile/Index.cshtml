@@ -56,9 +56,10 @@
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#referenceModal"><i class="fa fa-plus text-primary mr-2"></i> Referans Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#computerModal"><i class="fa fa-plus text-primary mr-2"></i> Bilgisayar Bilgisi Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#certificateModal"><i class="fa fa-plus text-primary mr-2"></i> Sertifika Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#educationModal"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
+
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Yabancı Dil Ekle</li>
-                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
                             </ul>
                         </div>
@@ -182,29 +183,29 @@
                                     <br />
                                     @foreach (var item in Model.Certificates)
                                     {
-                                <div class="profile-personal-info">
-                                    <h4 class="text-primary mb-4">Sertifika Bilgileri</h4>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.Name</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Tarihi <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.FinishDate.ToString("dd.MM.yyyy")</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Kurum Adı <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.InstitutionFromName</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Dili <span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.Language.Name</span></div>
-                                    </div>
-                                    <div class="lg-right-end">
-                                        <a class="fs-28 text-danger las la-times-circle" href="/sertifika-sil/@item.ID"></a>
-                                        <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnCertificateDetail" data-id="@item.ID"></a>
-                                    </div>
-                                </div>
+                                        <div class="profile-personal-info">
+                                            <h4 class="text-primary mb-4">Sertifika Bilgileri</h4>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Name</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Tarihi <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.FinishDate.ToString("dd.MM.yyyy")</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Kurum Adı <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.InstitutionFromName</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Dili <span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Language.Name</span></div>
+                                            </div>
+                                            <div class="lg-right-end">
+                                                <a class="fs-28 text-danger las la-times-circle" href="/sertifika-sil/@item.ID"></a>
+                                                <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnCertificateDetail" data-id="@item.ID"></a>
+                                            </div>
+                                        </div>
 
                                     }
                                 </div>
@@ -268,33 +269,37 @@
                                     <br />
                                     @foreach (var item in Model.Educations)
                                     {
-                                        <div class="profile-personal-info">
-                                            <h4 class="text-primary mb-4">Üniversite Bilgileri</h4>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.SchoolName</span></div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Durumu<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.GraduationStatus</span></div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Mezun Tarihi<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.GraduationYear.ToString("dd.MM.yyyy")</span></div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Eğitim Seviyesi<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.GraduationGrade</span></div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Departman<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.Department</span></div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Açıklama<span class="pull-right">:</span></h5></div>
-                                                <div class="col-sm-9 col-7"><span>@item.Description</span></div>
-                                            </div>
-                                        </div>
+                                <div class="profile-personal-info">
+                                    <h4 class="text-primary mb-4">Üniversite Bilgileri</h4>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Adı<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.SchoolName</span></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Durumu<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.GraduationStatus</span></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Mezun Tarihi<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.GraduationYear.ToString("dd.MM.yyyy")</span></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Eğitim Seviyesi<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.GraduationGrade</span></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Departman<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.Department</span></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Açıklama<span class="pull-right">:</span></h5></div>
+                                        <div class="col-sm-9 col-7"><span>@item.Description</span></div>
+                                    </div>
+                                    <div class="lg-right-end">
+                                        <a class="fs-28 text-danger las la-times-circle" href="/egitim-sil/@item.ID"></a>
+                                        <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnEducationDetail" data-id="@item.ID"></a>
+                                    </div>
+                                </div>
 
                                     }
                                 </div>
@@ -338,5 +343,7 @@
 @{Html.RenderAction("Add", "UserReference");}
 @{Html.RenderAction("Add", "UserComputerInformation");}
 @{Html.RenderAction("Add", "UserCertificate");}
+@{Html.RenderAction("Add", "UserEducation");}
+
 
 <div id="ModalContent"></div>
