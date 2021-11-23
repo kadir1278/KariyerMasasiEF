@@ -167,6 +167,41 @@ $("#education-add-form").submit(function (e) {
         }
     });
 });
+$("#language-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var lang = {
+        SpeakingLevel: $("#language-add-form").find('[name="LangSpeakingLevel"]').val(),
+        WritingLevel: $("#language-add-form").find('[name="LangWritingLevel"]').val(),
+        ListeningLevel: $("#language-add-form").find('[name="LangListeningLevel"]').val(),
+        Description: $("#language-add-form").find('[name="LangSeminarDescription"]').val(),
+        LanguageID: $("#language-add-form").find('[name="LangLanguageID"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/kullanici-dil-ekle",
+        data: lang,
+        success: function () {
+            btnClose.click();
+            bootbox.confirm("Veri Eklendi", function () {
+                window.location.reload();
+            })
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
+        }
+    });
+});
 
 
 $(document).on("click", ("#btnSeminarDetail"), function () {
@@ -242,6 +277,21 @@ $(document).on("click", ("#btnEducationDetail"), function () {
         .done(function (partialViewResult) {
             $("#ModalContent").html(partialViewResult);
             $('#detailEducationModal').modal('show');
+        });
+});
+$(document).on("click", ("#btnLanguageDetail"), function () {
+    var btn = $(this);
+    var ID = btn.data("id");
+    $("#ModalContent").html('');
+    $('#detailLanguageModal').remove();
+
+    $.ajax({
+        url: "/kullanici-dil-guncelle/" + ID,
+        type: "GET",
+    })
+        .done(function (partialViewResult) {
+            $("#ModalContent").html(partialViewResult);
+            $('#detailLanguageModal').modal('show');
         });
 });
 
