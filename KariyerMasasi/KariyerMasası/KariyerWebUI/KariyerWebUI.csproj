@@ -402,6 +402,7 @@
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\UserCertificateController.cs" />
     <Compile Include="Controllers\UserComputerInformationController.cs" />
+    <Compile Include="Controllers\UserBusinessInformationController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
     <Compile Include="Controllers\UserEducationController.cs" />
@@ -532,6 +533,8 @@
     <Content Include="Views\UserEducation\Update.cshtml" />
     <Content Include="Views\UserLanguage\Add.cshtml" />
     <Content Include="Views\UserLanguage\Update.cshtml" />
+    <Content Include="Views\UserBusinessInformation\Add.cshtml" />
+    <Content Include="Views\UserBusinessInformation\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

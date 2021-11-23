@@ -34,7 +34,7 @@
 $("#Reference-add-form").submit(function (e) {
     e.preventDefault();
     var btnClose = document.getElementById("closeUser");
-    var seminar = {
+    var reference = {
         NameSurname: $("#Reference-add-form").find('[name="ReferenceNameSurname"]').val(),
         Phone: $("#Reference-add-form").find('[name="ReferencePhone"]').val(),
         EMail: $("#Reference-add-form").find('[name="ReferenceEMail"]').val(),
@@ -42,7 +42,7 @@ $("#Reference-add-form").submit(function (e) {
     $.ajax({
         type: "POST",
         url: "/referans-ekle",
-        data: seminar,
+        data: reference,
         success: function () {
             btnClose.click();
             bootbox.confirm("Veri Eklendi", function () {
@@ -99,7 +99,7 @@ $("#computer-add-form").submit(function (e) {
 $("#certificate-add-form").submit(function (e) {
     e.preventDefault();
     var btnClose = document.getElementById("closeUser");
-    var computer = {
+    var certificate = {
         Name: $("#certificate-add-form").find('[name="CertificateName"]').val(),
         FinishDate: $("#certificate-add-form").find('[name="CertificateFinishDate"]').val(),
         InstitutionFromName: $("#certificate-add-form").find('[name="CertificateInstitutionFromName"]').val(),
@@ -109,7 +109,7 @@ $("#certificate-add-form").submit(function (e) {
     $.ajax({
         type: "POST",
         url: "/sertifika-ekle",
-        data: computer,
+        data: certificate,
         success: function () {
             btnClose.click();
             bootbox.confirm("Veri Eklendi", function () {
@@ -181,6 +181,41 @@ $("#language-add-form").submit(function (e) {
         type: "POST",
         url: "/kullanici-dil-ekle",
         data: lang,
+        success: function () {
+            btnClose.click();
+            bootbox.confirm("Veri Eklendi", function () {
+                window.location.reload();
+            })
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            var iframe = document.createElement('iframe');
+            $('#errorContent').html(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(xhr.responseText);
+            iframe.contentWindow.document.close();
+            iframe.onload = function () {
+                console.log(iframe.contentWindow.document.title);
+                bootbox.alert(iframe.contentWindow.document.title)
+                btnClose.click();
+            };
+        }
+    });
+});
+$("#business-add-form").submit(function (e) {
+    e.preventDefault();
+    var btnClose = document.getElementById("closeUser");
+    var business = {
+        CompanyName: $("#business-add-form").find('[name="BusinessCompanyName"]').val(),
+        StartingDate: $("#business-add-form").find('[name="BusinessStartingDate"]').val(),
+        FinishDate: $("#business-add-form").find('[name="BusinessFinishDate"]').val(),
+        Duty: $("#business-add-form").find('[name="BusinessDuty"]').val(),
+        Description: $("#business-add-form").find('[name="BusinessDescription"]').val(),
+    }
+    $.ajax({
+        type: "POST",
+        url: "/kullanici-is-ekle",
+        data: business,
         success: function () {
             btnClose.click();
             bootbox.confirm("Veri Eklendi", function () {
@@ -292,6 +327,21 @@ $(document).on("click", ("#btnLanguageDetail"), function () {
         .done(function (partialViewResult) {
             $("#ModalContent").html(partialViewResult);
             $('#detailLanguageModal').modal('show');
+        });
+});
+$(document).on("click", ("#btnBusinessDetail"), function () {
+    var btn = $(this);
+    var ID = btn.data("id");
+    $("#ModalContent").html('');
+    $('#detailBusinessModal').remove();
+
+    $.ajax({
+        url: "/kullanici-is-guncelle/" + ID,
+        type: "GET",
+    })
+        .done(function (partialViewResult) {
+            $("#ModalContent").html(partialViewResult);
+            $('#detailBusinessModal').modal('show');
         });
 });
 
