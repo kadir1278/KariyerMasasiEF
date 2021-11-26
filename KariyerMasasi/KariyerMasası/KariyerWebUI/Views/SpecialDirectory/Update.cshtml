@@ -1,0 +1,42 @@
+﻿@model KariyerEntity.Entity.SpecialDirectory
+@if (Model != null)
+{
+    <div class="modal fade" id="detailSpecialModal" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Özel Durum Görüntüle</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("UpdateSpecial", "SpecialDirectory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {@Html.HiddenFor(x => x.ID)
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Özel Durum</label>
+                            <select required class="custom-select2 form-control" name="UserSpecialTypeID">
+                                <optgroup label="Çalışma Alanı">
+                                    <option value="@Model.UserSpecialTypeID">@Model.UserSpecialType.Name</option>
+                                    @foreach (var item in ViewBag.UserSpecialTypeID)
+                                    {
+                                        if (item.ID != Model.UserSpecialTypeID)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    }
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-success light ">Güncelle</button>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+}

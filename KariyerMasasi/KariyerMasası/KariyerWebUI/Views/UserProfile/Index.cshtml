@@ -59,8 +59,7 @@
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#educationModal"><i class="fa fa-plus text-primary mr-2"></i> Eğitim Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#languageModal"><i class="fa fa-plus text-primary mr-2"></i> Yabancı Dil Ekle</li>
                                 <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#businessModal"><i class="fa fa-plus text-primary mr-2"></i> İş Bilgisi Ekle</li>
-
-                                <li class="dropdown-item" style="cursor:pointer"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
+                                <li class="dropdown-item" style="cursor:pointer" data-toggle="modal" data-target="#specialModal"><i class="fa fa-plus text-primary mr-2"></i> Özel Durum Ekle</li>
                             </ul>
                         </div>
                     </div>
@@ -95,20 +94,6 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="text-primary d-inline">Özel Durum</h3>
-                            @foreach (var item in Model.SpecialDirectories)
-                            {
-                                <div class="profile-blog pt-3">
-                                    <h6><a class="text-black">@item.UserSpecialType.Name</a></h6>
-                                </div>
-                                <br />
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
                             <h3 class="text-primary d-inline">Bilgisayar Bilgisi</h3>
                             @foreach (var item in Model.ComputerInformations)
                             {
@@ -125,6 +110,27 @@
                         </div>
                     </div>
                 </div>
+                @if (Model.SpecialDirectories.Count != 0)
+                {
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="text-primary d-inline">Özel Durum</h3>
+                                @foreach (var item in Model.SpecialDirectories)
+                                {
+                                    <div class="profile-blog pt-3">
+                                        <h6><a class="text-black">@item.UserSpecialType.Name</a></h6>
+                                        <div class="lg-right-end">
+                                            <a class="fs-28 text-danger las la-times-circle" href="/kullanici-ozel-durum-sil/@item.ID"></a>
+                                            <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnSpecialDetail" data-id="@item.ID"></a>
+                                        </div>
+                                    </div>
+                                    <br />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
         <div class="col-xl-8">
@@ -213,33 +219,33 @@
                                     <br />
                                     @foreach (var item in Model.BusinessInformations)
                                     {
-                                <div class="profile-personal-info">
-                                    <h4 class="text-primary mb-4">İş Bilgileri</h4>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">İsim<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.CompanyName</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Başlangıç Tarih<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.StartingDate.ToString("dd.MM.yyyy")</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Bitiş Tarih<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.FinishDate.ToString("dd.MM.yyyy")</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Görev<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.Duty</span></div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-3 col-5"><h5 class="f-w-500">Açıklama<span class="pull-right">:</span></h5></div>
-                                        <div class="col-sm-9 col-7"><span>@item.Description</span></div>
-                                    </div>
-                                    <div class="lg-right-end">
-                                        <a class="fs-28 text-danger las la-times-circle" href="/kullanici-is-sil/@item.ID"></a>
-                                        <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnBusinessDetail" data-id="@item.ID"></a>
-                                    </div>
-                                </div>
+                                        <div class="profile-personal-info">
+                                            <h4 class="text-primary mb-4">İş Bilgileri</h4>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">İsim<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.CompanyName</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Başlangıç Tarih<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.StartingDate.ToString("dd.MM.yyyy")</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Bitiş Tarih<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.FinishDate.ToString("dd.MM.yyyy")</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Görev<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Duty</span></div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-sm-3 col-5"><h5 class="f-w-500">Açıklama<span class="pull-right">:</span></h5></div>
+                                                <div class="col-sm-9 col-7"><span>@item.Description</span></div>
+                                            </div>
+                                            <div class="lg-right-end">
+                                                <a class="fs-28 text-danger las la-times-circle" href="/kullanici-is-sil/@item.ID"></a>
+                                                <a class="fs-28 text-success las la-edit " style="cursor:pointer;" id="btnBusinessDetail" data-id="@item.ID"></a>
+                                            </div>
+                                        </div>
 
                                     }
                                 </div>
@@ -355,6 +361,7 @@
 @{Html.RenderAction("Add", "UserEducation");}
 @{Html.RenderAction("Add", "UserLanguage");}
 @{Html.RenderAction("Add", "UserBusinessInformation");}
+@{Html.RenderAction("Add", "SpecialDirectory");}
 
 
 <div id="ModalContent"></div>

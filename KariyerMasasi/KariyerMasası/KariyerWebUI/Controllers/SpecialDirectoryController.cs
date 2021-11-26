@@ -14,59 +14,62 @@ namespace KariyerWebUI.Controllers
     public class SpecialDirectoryController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("kullanici-ozel-durum"),HttpGet]
+        [Route("kullanici-ozel-durum"), HttpGet]
         public ActionResult Index() => View();
-        [Route("kullanici-ozel-durum-getir"), HttpGet]
-        public JsonResult GetSpecialDirectoryData()
-        {
-            List<SpecialDirectory> data = new List<SpecialDirectory>();
-            data = db.SpecialDirectories.Where(x => !x.DeletionStatus).Include(x=>User).Include(x=>x.UserSpecialType).ToList();
-            var query = new
-            {
-                Result = from obj in data
-                         select new
-                         {
-                             ID = obj.ID,
-                             User = obj.User.Name,
-                             SpecialType= obj.UserSpecialType.Name,
-                         }
-            };
-            return Json(query, JsonRequestBehavior.AllowGet);
-        }
         [Route("kullanici-ozel-durum-ekle"), HttpGet]
-        public ActionResult Add(SpecialDirectoryViewModel model)
+        public ActionResult Add()
         {
-            model.Users = db.Users.Where(x => !x.DeletionStatus).ToList();
-            model.UserSpecialTypes = db.UserSpecialTypes.Where(x => !x.DeletionStatus).ToList();
-            return PartialView(model);
+            var data = db.UserSpecialTypes.Where(x => !x.DeletionStatus).ToList();
+            ViewBag.UserSpecialTypeID = data;
+            return PartialView();
         }
-        [Route("kullanici-ozel-durum-ekle"),HttpPost]
-        public JsonResult AddSpecial(SpecialDirectory model)
+        [Route("kullanici-ozel-durum-ekle"), HttpPost]
+        public JsonResult Add(SpecialDirectory model)
         {
-            var data = db.SpecialDirectories.Where(x => !x.DeletionStatus && x.UserID == model.UserID&&x.UserSpecialTypeID==model.UserSpecialTypeID).ToList();
+            var loginUser = Session["loginUser"] as LoginViewModel;
 
-            if (data.Count() == 0)
+            try
             {
+                model.UserID = loginUser.ID;
+                model.DeletionStatus = false;
                 model.CreatedTime = DateTime.Now;
                 model.UpdatedTime = DateTime.Now;
-                model.DeletionStatus = false;
                 db.SpecialDirectories.Add(model);
                 db.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                var error = db.SpecialDirectories.Include(x => x.UserSpecialType).Include(x => x.User).Where(x => !x.DeletionStatus && x.UserID == model.UserID && x.UserSpecialTypeID == model.UserSpecialTypeID).FirstOrDefault();
-                throw new Exception(error.UserSpecialType.Name.ToUpper() + " Özel Durumuna " + error.User.Name.ToUpper() + " Kullanıcısı Zaten Sahip");
+                throw new Exception("Bir sorun oluştu." + ex.Message);
             }
             return Json(new { res = true });
         }
-        [Route("kullanici-ozel-durum-sil/{id}"),HttpGet]
+        [Route("kullanici-ozel-durum-sil/{id}"), HttpGet]
         public ActionResult Delete(int id)
         {
             var data = db.SpecialDirectories.Find(id);
             data.DeletionStatus = true;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("/profil");
         }
+        [Route("kullanici-ozel-durum-guncelle/{id}"), HttpGet]
+        public ActionResult Update(int id)
+        {
+            var data = db.SpecialDirectories.Find(id);
+            ViewBag.UserSpecialTypeID = db.UserSpecialTypes.Where(x => !x.DeletionStatus).ToList();
+            return PartialView(data);
+        }
+        [Route("kullanici-ozel-durum-guncelle/{id}"), HttpPost]
+        public ActionResult UpdateSpecial(SpecialDirectory model)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = db.SpecialDirectories.Where(x => !x.DeletionStatus && x.ID == model.ID).FirstOrDefault();
+                data.UserSpecialTypeID = model.UserSpecialTypeID;
+                data.UpdatedTime = DateTime.Now;
+                db.SaveChanges();
+            }
+            return Redirect("/profil");
+        }
+
     }
 }

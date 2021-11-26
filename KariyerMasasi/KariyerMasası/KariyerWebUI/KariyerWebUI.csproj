@@ -248,7 +248,6 @@
     <Content Include="Content\js\pages\userspecialtypes.js" />
     <Content Include="Content\js\pages\role.js" />
     <Content Include="Content\js\pages\userrole.js" />
-    <Content Include="Content\js\pages\specialdirectories.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
     <Content Include="Content\js\styleSwitcher.js" />
@@ -510,8 +509,6 @@
     <Content Include="Views\Language\Add.cshtml" />
     <Content Include="Views\BusinessArea\Add.cshtml" />
     <Content Include="Views\BusinessArea\Index.cshtml" />
-    <Content Include="Views\SpecialDirectory\Index.cshtml" />
-    <Content Include="Views\SpecialDirectory\Add.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
@@ -535,6 +532,8 @@
     <Content Include="Views\UserLanguage\Update.cshtml" />
     <Content Include="Views\UserBusinessInformation\Add.cshtml" />
     <Content Include="Views\UserBusinessInformation\Update.cshtml" />
+    <Content Include="Views\SpecialDirectory\Add.cshtml" />
+    <Content Include="Views\SpecialDirectory\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
