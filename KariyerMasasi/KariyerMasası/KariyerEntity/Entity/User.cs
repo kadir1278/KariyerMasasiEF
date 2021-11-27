@@ -20,6 +20,9 @@ namespace KariyerEntity.Entity
             this.UserSeminars = new HashSet<UserSeminar>();
             this.UserRoles = new HashSet<UserRole>();
             this.SpecialDirectories = new HashSet<SpecialDirectory>();
+            this.Meetings = new HashSet<Meeting>();
+            this.JobAdvertisementApplications = new HashSet<JobAdvertisementApplication>();
+
         }
         public string Photo { get; set; }
         public string Name { get; set; }
@@ -51,6 +54,9 @@ namespace KariyerEntity.Entity
         public virtual ICollection<UserSeminar> UserSeminars { get; set; }
         public virtual ICollection<SpecialDirectory> SpecialDirectories { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Meeting> Meetings { get; set; }
+        public virtual ICollection<JobAdvertisementApplication> JobAdvertisementApplications { get; set; }
+
 
     }
 }

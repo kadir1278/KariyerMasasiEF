@@ -12,6 +12,8 @@ namespace KariyerEntity.Entity
         public Company()
         {
             this.CompanyUsers = new HashSet<CompanyUser>();
+            this.JobAdvertisements = new HashSet<JobAdvertisement>();
+            this.Meetings = new HashSet<Meeting>();
         }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -32,6 +34,9 @@ namespace KariyerEntity.Entity
         public bool PaymentStatus { get; set; }
 
         public virtual ICollection<CompanyUser> CompanyUsers { get; set; }
+        public virtual ICollection<JobAdvertisement> JobAdvertisements { get; set; }
+        public virtual ICollection<Meeting> Meetings { get; set; }
+
     }
 }
 

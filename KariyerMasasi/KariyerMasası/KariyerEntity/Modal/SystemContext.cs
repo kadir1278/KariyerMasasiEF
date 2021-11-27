@@ -38,6 +38,11 @@ namespace KariyerEntity.Modal
         public DbSet<UserSeminar> UserSeminars { get; set; }
         public DbSet<SpecialDirectory> SpecialDirectories { get; set; }
         public DbSet<Role>Roles { get; set; }
-        public DbSet<UserRole>UserRoles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<JobAdvertisement> JobAdvertisements { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
+        public DbSet<JobAdvertisementApplication> JobAdvertisementApplications { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
     }
 }
