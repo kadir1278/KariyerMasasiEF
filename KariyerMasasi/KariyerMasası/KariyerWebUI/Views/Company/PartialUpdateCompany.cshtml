@@ -66,6 +66,22 @@
                             </optgroup>
                         </select>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>Departman</label>
+                        <select required class="custom-select2 form-control" name="DepartmentID">
+                            <optgroup label="Departman">
+                                <option value="@Model.DepartmentID">@Model.Department.Name</option>
+                                @foreach (var item in ViewBag.DepartmentID)
+                                {
+                                    if (item.ID != Model.DepartmentID)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+                                }
+                            </optgroup>
+                        </select>
+                    </div>
+
                     <div class="form-group col-md-12">
                         <label>Adres</label>
                         <textarea required class="form-control" rows="4" name="ress" id="comment" placeholder="Adres Giriniz...">@Model.Address"</textarea>

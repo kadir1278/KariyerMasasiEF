@@ -18,13 +18,15 @@ namespace KariyerWebUI.Controllers
         [Route("PartialAddCompany"), HttpGet]
         public ActionResult PartialAddCompany()
         {
-            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList(); ;
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
+            ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
             return PartialView();
         }
         [Route("PartialUpdateCompany/{id}"), HttpGet]
         public ActionResult PartialUpdateCompany(int id)
         {
-            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList(); ;
+            ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
+            ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
             var data = db.Companies.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
@@ -131,6 +133,7 @@ namespace KariyerWebUI.Controllers
             data.ProgramState = model.ProgramState;
             data.GeneralIsActiveStatus = model.GeneralIsActiveStatus;
             data.PaymentStatus = model.PaymentStatus;
+            data.DepartmentID = model.DepartmentID;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

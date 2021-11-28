@@ -29,6 +29,8 @@ namespace KariyerEntity.Entity
         public string TaxFile { get; set; }
         public int BusinessAreaID { get; set; }
         public BusinessArea BusinessArea { get; set; }
+        public int DepartmentID { get; set; }
+        public Department Department { get; set; }
         public bool ProgramState { get; set; }
         public bool GeneralIsActiveStatus { get; set; }
         public bool PaymentStatus { get; set; }

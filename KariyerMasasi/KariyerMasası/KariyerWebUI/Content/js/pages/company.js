@@ -146,6 +146,7 @@ $("#company-add-form").submit(function (e) {
         TaxNumber: $("#company-add-form").find('[name="AddTaxNumber"]').val(),
         TaxAddress: $("#company-add-form").find('[name="AddTaxAddress"]').val(),
         BusinessAreaID: $("#company-add-form").find('[name="AddBusinessAreaID"]').val(),
+        DepartmentID: $("#company-add-form").find('[name="AddDepartmentID"]').val(),
         TaxFile: $("#img_tax_file").attr("alt"),
         Logo: $("#img_company_photo").attr("src"),
     }
