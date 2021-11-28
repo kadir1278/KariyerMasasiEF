@@ -240,6 +240,7 @@
     <Content Include="Content\js\material-date-picker-init.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\pages\department.js" />
+    <Content Include="Content\js\pages\register.js" />
     <Content Include="Content\js\pages\userprofiles.js" />
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
@@ -401,6 +402,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserCertificateController.cs" />
     <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserBusinessInformationController.cs" />
@@ -538,6 +540,8 @@
     <Content Include="Views\SpecialDirectory\Update.cshtml" />
     <Content Include="Views\Department\Add.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Register\CompanyRegister.cshtml" />
+    <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

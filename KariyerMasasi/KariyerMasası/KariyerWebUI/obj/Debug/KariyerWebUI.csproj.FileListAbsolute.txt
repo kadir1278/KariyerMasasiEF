@@ -230,7 +230,6 @@ C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\Kariyer
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\bin\System.Web.Helpers.xml
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\bin\System.Web.Mvc.xml
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csprojAssemblyReference.cache
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.CoreCompileInputs.cache
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.CopyComplete
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.dll
@@ -472,3 +471,4 @@ E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\Ka
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.CopyComplete
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.dll
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.pdb
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerWebUI\obj\Debug\KariyerWebUI.csproj.AssemblyReference.cache

@@ -1,0 +1,105 @@
+﻿﻿
+@{ Layout = null; }
+
+
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Kariyer Masası Giriş Ekranı</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Login/img/favicon.png">
+    <link rel="stylesheet" href="~/Content/Login/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Login/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/Login/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+
+    <link href="~/Content/Login/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
+        </div>
+    </div>
+    <section class="fxt-template-animation fxt-template-layout31">
+        <span class="fxt-shape fxt-animation-active"></span>
+        <div class="fxt-content-wrap">
+            <div class="fxt-heading-content">
+                <div class="fxt-inner-wrap">
+                    <div class="fxt-transformY-50 fxt-transition-delay-3">
+                        <a href="login-31.html" class="fxt-logo"><img src="~/Content/Login/img/logo-31.png" alt="Logo"></a>
+                    </div>
+                    <div class="fxt-login-option">
+                        <ul>
+                            <li class="fxt-transformY-50 fxt-transition-delay-6"><a href="/giris-yap">Giriş Yap</a></li>
+                            <li class="fxt-transformY-50 fxt-transition-delay-7"><a href="#">Yeni Bireysel Hesap Oluştur</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fxt-form-content">
+                <div class="fxt-page-switcher">
+                    <ul class="nav nav-pills">                    
+                        <li class="nav-item"><a data-toggle="tab" class="fxt-btn-fill active" href="#company_info">Şirket Bilgileri</a></li>
+                        <li class="nav-item ml-3"><a data-toggle="tab" class="fxt-btn-fill" href="#login_info">Giriş Bilgileri</a></li>
+                    </ul>
+                </div>
+                <div class="fxt-main-form">
+                    <form method="POST">
+                        <div class="tab-content">
+                            <div id="company_info" class="tab-pane active">
+                                
+                                @Html.Partial("PartialCompanyRegister")
+                            </div>
+                            <div id="login_info" class="tab-pane fade">
+                                <h3>Giriş Bilgileri</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="email" id="email" class="form-control" name="email" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="password" type="password" class="form-control" name="password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
+                                            <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="password" type="password" class="form-control" name="password" placeholder="Şifrenizi doğrulayın." required="required">
+                                            <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button type="submit" class="fxt-btn-fill">Kaydol</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Content/Login/js/jquery-3.5.0.min.js"></script>
+    <script src="~/Content/Login/js/popper.min.js"></script>
+    <script src="~/Content/Login/js/bootstrap.min.js"></script>
+    <script src="~/Content/Login/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/Login/js/validator.min.js"></script>
+    <script src="~/Content/Login/js/main.js"></script>
+    <script src="~/Content/js/pages/register.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+</body>
+</html>

@@ -29,7 +29,6 @@ C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\Kariyer
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.xml
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csprojAssemblyReference.cache
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CoreCompileInputs.cache
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
 C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
@@ -68,3 +67,4 @@ E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\K
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.AssemblyReference.cache
