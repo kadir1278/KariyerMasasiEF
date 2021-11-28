@@ -8,14 +8,18 @@ namespace KariyerWebUI.Controllers
 {
     public class RegisterController : Controller
     {
-        // GET: Register
-        public ActionResult UserRegister()
-        {
-            return View();
-        }
+        [Route("kullanici-kayit"), HttpGet]
+        public ActionResult UserRegister() => View();
+
+
+
+        [Route("kullanici-tip"),HttpGet]
+        public PartialViewResult PartialUserType() => PartialView();
 
         [Route("sirket-kayit"), HttpGet]
         public ActionResult CompanyRegister() => View();
+
+        
 
     }
 }

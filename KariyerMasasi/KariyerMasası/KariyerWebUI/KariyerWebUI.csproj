@@ -240,13 +240,14 @@
     <Content Include="Content\js\material-date-picker-init.js" />
     <Content Include="Content\js\moment.min.js" />
     <Content Include="Content\js\pages\department.js" />
-    <Content Include="Content\js\pages\register.js" />
+    <Content Include="Content\js\pages\companyregister.js" />
     <Content Include="Content\js\pages\userprofiles.js" />
     <Content Include="Content\js\pages\admin.js" />
     <Content Include="Content\js\pages\company.js" />
     <Content Include="Content\js\pages\companyuser.js" />
     <Content Include="Content\js\pages\businessarea.js" />
     <Content Include="Content\js\pages\custom.js" />
+    <Content Include="Content\js\pages\userregister.js" />
     <Content Include="Content\js\pages\userspecialtypes.js" />
     <Content Include="Content\js\pages\role.js" />
     <Content Include="Content\js\pages\userrole.js" />
@@ -542,6 +543,8 @@
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Register\CompanyRegister.cshtml" />
     <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
+    <Content Include="Views\Register\UserRegister.cshtml" />
+    <Content Include="Views\Register\PartialUserType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

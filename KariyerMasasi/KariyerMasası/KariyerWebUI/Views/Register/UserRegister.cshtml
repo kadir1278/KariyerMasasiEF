@@ -1,7 +1,4 @@
-﻿﻿
-@{ Layout = null; }
-
-
+﻿@{ Layout = null; }
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -46,17 +43,82 @@
             </div>
             <div class="fxt-form-content">
                 <div class="fxt-page-switcher">
-                    <ul class="nav nav-pills">                    
-                        <li class="nav-item"><a data-toggle="tab" class="fxt-btn-fill active" href="#company_info">Şirket Bilgileri</a></li>
+
+                    <ul class="nav nav-pills ">
+                        <li class="nav-item"><a data-toggle="tab" class="fxt-btn-fill active" href="#user_info">Şirket Bilgileri</a></li>
                         <li class="nav-item ml-3"><a data-toggle="tab" class="fxt-btn-fill" href="#login_info">Giriş Bilgileri</a></li>
                     </ul>
                 </div>
                 <div class="fxt-main-form">
                     <form method="POST">
                         <div class="tab-content">
-                            <div id="company_info" class="tab-pane active">
-                                
-                                @Html.Partial("PartialCompanyRegister")
+                            <div id="user_info" class="tab-pane active">
+                                <h3>Kişisel Bilgiler</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" id="name" class="form-control" name="Name" placeholder="İsim" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="surname" type="text" class="form-control" name="Surname" placeholder="Soyisim" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" id="phone" class="form-control" name="Phone" placeholder="Telefon" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select required class="form-control" name="Gender">
+                                                <option value="" disabled selected>Cinsiyet</option>
+                                                <option value="Erkek">Erkek</option>
+                                                <option value="Kadın">Kadın</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="Town" placeholder="Semt" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="City" placeholder="Şehir" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="Country" placeholder="Ülke" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea name="Address" class="form-control" placeholder="Adres"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" id="type">
+                                        <div class="form-group">
+                                            <select class="form-control" id="type-select">
+                                                <option value="" disabled selected>Kullanıcı tipi seçin</option>
+                                                <option value="Özel Durum">Özel Durum</option>
+                                                <option value="Öğrenci">Öğrenci</option>
+                                                <option value="Mezun">Mezun</option>
+                                                <option value="Stajyer">Stajyer</option>
+                                                <option value="Rehber">Rehber</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="file" name="Image" id="Image" class="form-control" hidden />
+                                            <label for="Image" class="fxt-btn-fill text-center">Fotoğraf yükle</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div id="login_info" class="tab-pane fade">
                                 <h3>Giriş Bilgileri</h3>
@@ -98,7 +160,7 @@
     <script src="~/Content/Login/js/imagesloaded.pkgd.min.js"></script>
     <script src="~/Content/Login/js/validator.min.js"></script>
     <script src="~/Content/Login/js/main.js"></script>
-    <script src="~/Content/js/pages/companyregister.js"></script>
+    <script src="~/Content/js/pages/userregister.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 </body>
