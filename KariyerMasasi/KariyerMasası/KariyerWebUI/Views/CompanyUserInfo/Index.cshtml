@@ -1,39 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "SertifikaListesi";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
+@model IEnumerable<KariyerEntity.Entity.CompanyUser>
 
 @section Scripts{
-    <script>
-        async function GetData() {
-            var searchText = document.getElementById("search").value;
-            var url = '' + searchText;
-            $('#example').html("");
-            var thead =
-                '<thead class="thead-primary"><tr>' +
-                '<th class="sorting_asc">Sertifika</th>' +
-                '<th class="sorting_asc">İsim</th>' +
-                '<th class="sorting_asc">Tarih Aralığı</th>' +
-                '<th class="sorting_asc">Kurum</th>' +
-                '<th class="sorting_asc">Sertifika No</th>' +
-                '<th class="sorting_asc">İşlemler</th>' +
-                '</tr></thead>';
-            $('#example').append(thead);
-
-    </script>
+    <script src="~/Content/js/pages/companyuser.js"></script>
 }
 
+<!-- CompanyID degismeyecegi icin onu ordan sildim sana biraktim id yollama isini  -->
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Sertifikalarım</h3>
+            <h3 class="card-title">Şirket Personel Listesi</h3>
         </div>
         <div class="card-body">
             <div class="row">
+                <div class="col-md-9">
+                    <button class="btn light btn-info" id="btnDataAdd" data-toggle="modal" data-target="#basicModal">Kullanıcı Ekle</button>
+                </div>
                 <div class="col-md-3">
                     <div class="input-group search-area d-xl-inline-flex d-none">
                         <input id="search" type="text" class="form-control" placeholder="Arama...">
@@ -51,5 +38,5 @@
         </div>
     </div>
 </div>
-
-
+@{Html.RenderAction("PartialAddCompanyUser", "CompanyUserInfo");}
+<div id="modalContent"></div>

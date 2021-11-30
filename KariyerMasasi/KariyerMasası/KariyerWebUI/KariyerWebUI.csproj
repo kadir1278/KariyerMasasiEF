@@ -404,16 +404,23 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CompanyOtherCompaniesController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyInfoController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
+    <Compile Include="Controllers\CompanyUserInfoController.cs" />
     <Compile Include="Controllers\CompanyViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\LobyController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\CompanySavedCVController.cs" />
     <Compile Include="Controllers\UserCertificateController.cs" />
+    <Compile Include="Controllers\UserCertificateInfoController.cs" />
     <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserBusinessInformationController.cs" />
+    <Compile Include="Controllers\UserCVController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
     <Compile Include="Controllers\UserEducationController.cs" />
@@ -553,7 +560,6 @@
     <Content Include="Views\Register\CompanyRegister.cshtml" />
     <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <Content Include="Views\Register\UserRegister.cshtml" />
-    <Content Include="Views\Shared\_CompanyLayout.cshtml" />
     <Content Include="Views\CompanyViews\Index.cshtml" />
     <Content Include="Views\CompanyViews\DigerFirmalar.cshtml" />
     <Content Include="Views\CompanyViews\SirketKullanici.cshtml" />
@@ -561,12 +567,23 @@
     <Content Include="Views\CompanyViews\PartialSirketKullaniciEkle.cshtml" />
     <Content Include="Views\CompanyViews\PartialSirketKullaniciGuncelle.cshtml" />
     <Content Include="Views\CompanyViews\Meetings.cshtml" />
-    <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\UserViews\UserApplication.cshtml" />
     <Content Include="Views\UserViews\Ozgecmis.cshtml" />
     <Content Include="Views\UserViews\SertifikaListesi.cshtml" />
     <Content Include="Views\UserViews\SertifikaOlustur.cshtml" />
     <Content Include="Views\UserViews\KullaniciToplantilar.cshtml" />
+    <Content Include="Views\CompanyInfo\Index.cshtml" />
+    <Content Include="Views\SavedCV\Index.cshtml" />
+    <Content Include="Views\Loby\Index.cshtml" />
+    <Content Include="Views\CompanyOtherCompanies\Index.cshtml" />
+    <Content Include="Views\CompanyUserInfo\Index.cshtml" />
+    <Content Include="Views\CompanyUserInfo\PartialAddCompanyUser.cshtml" />
+    <Content Include="Views\CompanyUserInfo\PartialUpdateCompanyUser.cshtml" />
+    <Content Include="Views\UserCertificate\Index.cshtml" />
+    <Content Include="Views\UserCertificateInfo\Index.cshtml" />
+    <Content Include="Views\UserCertificateInfo\Add.cshtml" />
+    <Content Include="Views\UserCV\Index.cshtml" />
+    <Content Include="Views\CompanySavedCV\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DigerFirmalar";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-                @foreach (var firma in Model)
+                @foreach (var firma in Model) // login olan sirketin gelmemesi icin sorgu?
                 {
                     <div class="card">
                         <div class="card-header">

@@ -1,36 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "SertifikaListesi";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
-@section Scripts{
-    <script>
-        async function GetData() {
-            var searchText = document.getElementById("search").value;
-            var url = '' + searchText;
-            $('#example').html("");
-            var thead =
-                '<thead class="thead-primary"><tr>' +
-                '<th class="sorting_asc">Sertifika</th>' +
-                '<th class="sorting_asc">İsim</th>' +
-                '<th class="sorting_asc">Tarih Aralığı</th>' +
-                '<th class="sorting_asc">Kurum</th>' +
-                '<th class="sorting_asc">Sertifika No</th>' +
-                '<th class="sorting_asc">İşlemler</th>' +
-                '</tr></thead>';
-            $('#example').append(thead);
-
-    </script>
-}
+<!-- Kaydedilen CV lerin listesi gelicek -->
 
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Sertifikalarım</h3>
+            <h3 class="card-title">Kaydedilen Özgeçmişler</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -51,5 +30,6 @@
         </div>
     </div>
 </div>
+
 
 

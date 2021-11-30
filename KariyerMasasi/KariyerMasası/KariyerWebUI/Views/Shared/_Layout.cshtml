@@ -23,6 +23,7 @@
     <link href="~/Content/css/default.date.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/css/style.css" rel="stylesheet" />
+    @RenderSection("Heads",required:false)
 </head>
 <body>
     <div id="preloader">
@@ -51,15 +52,15 @@
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
                     @*<li>
-                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                <i class="flaticon-025-dashboard"></i>
-                                <span class="nav-text">Kullanıcı Ayarları</span>
-                            </a>
-                            <ul aria-expanded="false" class="mm-collapse">
-                                <li><a href="/kullanici-ozel-durum">Kullanıcı Özel Durum</a></li>
-                            </ul>
-                        </li>*@
-                    
+            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <i class="flaticon-025-dashboard"></i>
+                <span class="nav-text">Kullanıcı Ayarları</span>
+            </a>
+            <ul aria-expanded="false" class="mm-collapse">
+                <li><a href="/kullanici-ozel-durum">Kullanıcı Özel Durum</a></li>
+            </ul>
+        </li>*@
+
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
@@ -86,6 +87,60 @@
                             <li><a href="/sirket-personel">Personel</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="/sirket-basvurulari" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Lobi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/diger-firmalar" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Diğer Firmalar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/toplantilar" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Toplantılar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sirket-bilgilerini-guncelle" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Şirket Bilgileri</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sirket-kullanicilari" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Şirket Kullanıcıları</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Kayıtlı Özgeçmişler</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/kullanici-ozgecmis" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Özgeçmiş</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Sertifikalarım</span>
+                        </a>
+                        <ul aria-expanded="false" class="mm-collapse">
+                            <li><a href="/kullanici-sertifika">Sertifikaları Listele</a></li>
+                            <li><a href="/kullanici-sertifika-olustur">Sertifika Oluştur</a></li>
+                        </ul>
+                    </li>
+                   
                 </ul>
                 <div class="copyright">
                     <p><strong>360MEKA</strong> © @DateTime.Now.Year All Rights Reserved</p>

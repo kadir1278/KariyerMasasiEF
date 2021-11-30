@@ -1,45 +1,36 @@
-﻿@{
+﻿
+@{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<!-- Bu sayfaya sirkete basvuru yapan User larin 
-    
-    Resim - Unvan - Ad Soyad - CV Gor - CV Kaydet - Gorus       olucak
-    
-    CV Kaydet butonu CV yi Kayitli Ozgecmislere gondericek
-    -->
-
-@model IEnumerable<KariyerEntity.Entity.User>
 
 @section Scripts{
     <script>
         async function GetData() {
             var searchText = document.getElementById("search").value;
-            var url = '/basvuru-getir/' + searchText;
+            var url = '' + searchText;
             $('#example').html("");
             var thead =
                 '<thead class="thead-primary"><tr>' +
-                '<th class="sorting_asc">Resim</th>' +
-                '<th class="sorting_asc">Unvan</th>' +
-                '<th class="sorting_asc">Ad Soyad</th>' +
-                '<th class="sorting_asc">CV Gor</th>' +
-                '<th class="sorting_asc">CV Kaydet</th>' +
-                '<th class="sorting_asc">Gorus</th>' +
+                '<th class="sorting_asc">Sertifika</th>' +
+                '<th class="sorting_asc">İsim</th>' +
+                '<th class="sorting_asc">Tarih Aralığı</th>' +
+                '<th class="sorting_asc">Kurum</th>' +
+                '<th class="sorting_asc">Sertifika No</th>' +
+                '<th class="sorting_asc">İşlemler</th>' +
                 '</tr></thead>';
             $('#example').append(thead);
-            
+
     </script>
-    
 }
 
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Başvurular</h3>
+            <h3 class="card-title">Sertifikalarım</h3>
         </div>
         <div class="card-body">
-            <div class="row">               
+            <div class="row">
                 <div class="col-md-3">
                     <div class="input-group search-area d-xl-inline-flex d-none">
                         <input id="search" type="text" class="form-control" placeholder="Arama...">
@@ -57,4 +48,7 @@
         </div>
     </div>
 </div>
+
+
+
 

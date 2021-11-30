@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Ozgecmis";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @section Scripts{
     <script src="~/Content/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <script src="~/Content/vendor/yearpicker/yearpicker.js"></script>
@@ -256,7 +257,7 @@
                     </div>
                     <div class="card-body">
                         <textarea class="form-control" name="hobies"></textarea>
-                    </div>                
+                    </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
@@ -289,13 +290,17 @@
                         </div>
                         <a href="javascript:addReference()">Bir tane daha ekle</a>
                     </div>
-                    
-                </div>
 
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
             </form>
         </div>
 
     </div>
 </div>
+
+
 
 

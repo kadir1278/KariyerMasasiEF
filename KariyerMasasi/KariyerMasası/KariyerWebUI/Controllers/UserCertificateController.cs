@@ -14,7 +14,10 @@ namespace KariyerWebUI.Controllers
     {
         private SystemContext db = new SystemContext();
         [Route("sertifika"), HttpGet]
-        public ActionResult Index() => View();
+        public ActionResult Index()
+        {
+            return View();
+        }
         [Route("sertifika-ekle"), HttpGet]
         public ActionResult Add()
         {

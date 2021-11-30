@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "SirketKullanici";
-    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @model IEnumerable<KariyerEntity.Entity.CompanyUser>
@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-@{Html.RenderAction("PartialSirketKullaniciEkle", "CompanyViews");}
+@{Html.RenderAction("sirket-kullanicisi-ekle", "CompanyViews");}
 <div id="modalContent"></div>
 
 
