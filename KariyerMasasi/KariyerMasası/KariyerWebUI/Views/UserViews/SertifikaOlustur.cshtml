@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "SertifikaOlustur";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@section Scripts{
+    <script src="~/Content/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/Content/vendor/yearpicker/yearpicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap.datepicker/0.1/js/bootstrap-datepicker.js"></script>
+    <script>
+      $('.pick-year').yearpicker();
+    </script>
+}
+
+@section Heads{
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" />
+    <link rel="stylesheet" href="~/Content/vendor/yearpicker/yearpicker.css" />
+
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Sertifika Oluştur</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        Sertifika Adı
+                        <input type="text" name="name" class="form-control" value="">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        Sertifika Numarası
+                        <input type="text" name="certificate_no" class="form-control" value="">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        Kurum Adı
+                        <input type="text" name="institution" class="form-control" value="">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        Başlangıç Yılı
+                        <input type="text" name="start_year" class="form-control pick-year" readonly value="">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        Bitiş Yılı
+                        <input type="text" name="end_year" class="form-control pick-year" readonly value="">
+                    </div>
+
+                    @* Sertifika dosyasi gelicek dosya yuklemeyi sen js ile yapiyosun o yuzden eklemedim buraya  *@
+
+                    <div class="col-md-3 mt-3">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+

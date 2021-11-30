@@ -239,6 +239,8 @@
     <Content Include="Content\js\login-form.js" />
     <Content Include="Content\js\material-date-picker-init.js" />
     <Content Include="Content\js\moment.min.js" />
+    <Content Include="Content\js\pages\CompanyUI\companyinfo.js" />
+    <Content Include="Content\js\pages\CompanyUI\companyuser.js" />
     <Content Include="Content\js\pages\department.js" />
     <Content Include="Content\js\pages\companyregister.js" />
     <Content Include="Content\js\pages\userprofiles.js" />
@@ -253,6 +255,7 @@
     <Content Include="Content\js\pages\userrole.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
+    <Content Include="Content\js\pages\UserUI\ozgecmis.js" />
     <Content Include="Content\js\styleSwitcher.js" />
     <Content Include="Content\kariyermasasi\pdf.png" />
     <Content Include="Content\kariyermasasi\Logo.png" />
@@ -361,6 +364,8 @@
     <Content Include="Content\vendor\toastr\css\toastr.min.css" />
     <Content Include="Content\vendor\toastr\js\toastr.min.js" />
     <Content Include="Content\vendor\wnumb\wNumb.js" />
+    <Content Include="Content\vendor\yearpicker\yearpicker.css" />
+    <Content Include="Content\vendor\yearpicker\yearpicker.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -386,6 +391,7 @@
     <Content Include="Content\Login\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Login\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\Login\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="Views\CompanyViews\Application.cshtml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -400,6 +406,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
+    <Compile Include="Controllers\CompanyViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -419,6 +426,7 @@
     <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
+    <Compile Include="Controllers\UserViewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -426,6 +434,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SpecialDirectoryViewModel.cs" />
     <Compile Include="Models\UserProfileViewModel.cs" />
+    <Compile Include="Models\UserRegisterViewModel.cs" />
     <Compile Include="Models\UserRoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
@@ -544,7 +553,20 @@
     <Content Include="Views\Register\CompanyRegister.cshtml" />
     <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <Content Include="Views\Register\UserRegister.cshtml" />
-    <Content Include="Views\Register\PartialUserType.cshtml" />
+    <Content Include="Views\Shared\_CompanyLayout.cshtml" />
+    <Content Include="Views\CompanyViews\Index.cshtml" />
+    <Content Include="Views\CompanyViews\DigerFirmalar.cshtml" />
+    <Content Include="Views\CompanyViews\SirketKullanici.cshtml" />
+    <Content Include="Views\CompanyViews\SirketBilgi.cshtml" />
+    <Content Include="Views\CompanyViews\PartialSirketKullaniciEkle.cshtml" />
+    <Content Include="Views\CompanyViews\PartialSirketKullaniciGuncelle.cshtml" />
+    <Content Include="Views\CompanyViews\Meetings.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\UserViews\UserApplication.cshtml" />
+    <Content Include="Views\UserViews\Ozgecmis.cshtml" />
+    <Content Include="Views\UserViews\SertifikaListesi.cshtml" />
+    <Content Include="Views\UserViews\SertifikaOlustur.cshtml" />
+    <Content Include="Views\UserViews\KullaniciToplantilar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

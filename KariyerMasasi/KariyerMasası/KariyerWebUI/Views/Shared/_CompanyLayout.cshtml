@@ -1,13 +1,4 @@
-﻿@{
-    var loginUser = Session["loginUser"] as KariyerWebUI.Models.LoginViewModel;
-    //if (loginUser==null)
-    //{
-    //    Response.Redirect("/giris-yap");
-    //}
-}
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -23,6 +14,7 @@
     <link href="~/Content/css/default.date.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 </head>
 <body>
     <div id="preloader">
@@ -50,41 +42,41 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    @*<li>
-                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                <i class="flaticon-025-dashboard"></i>
-                                <span class="nav-text">Kullanıcı Ayarları</span>
-                            </a>
-                            <ul aria-expanded="false" class="mm-collapse">
-                                <li><a href="/kullanici-ozel-durum">Kullanıcı Özel Durum</a></li>
-                            </ul>
-                        </li>*@
-                    
                     <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <a href="/sirket-basvurulari" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Admin Ayarları</span>
+                            <span class="nav-text">Başvurular</span>
                         </a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/yonetici">Yöneticiler</a></li>
-                            <li><a href="/kullanici">Kullanıcılar</a></li>
-                            <li><a href="/yetki">Yetkiler</a></li>
-                            <li><a href="/kullanici-yetki">Kullanıcı Yetkileri</a></li>
-                            <li><a href="/dil">Dil</a></li>
-                            <li><a href="/calisma-alani">Çalışma Alanı</a></li>
-                            <li><a href="/ozel-durum-tip">Özel Durum Tipi</a></li>
-                            <li><a href="/departman">Departman</a></li>
-                        </ul>
                     </li>
                     <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <a href="/diger-firmalar" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Diğer Firmalar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Toplantılar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sirket-bilgi" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Şirket Bilgileri</span>
                         </a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/sirket">Şirket</a></li>
-                            <li><a href="/sirket-personel">Personel</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="/sirket-kullanici" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Şirket Kullanıcıları</span>
+                        </a>
+                    </li>                  
+                    <li>
+                        <a href="/toplantilar" aria-expanded="false">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Kayıtlı Özgeçmişler</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="copyright">
@@ -114,10 +106,10 @@
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="@loginUser.Image" alt="">
+                                    <img src="" alt="">
                                     <div class="header-info">
-                                        <span class="fs-20 font-w500">@loginUser.Name @loginUser.Surname</span>
-                                        <small>@loginUser.Role</small>
+                                        <span class="fs-20 font-w500"></span>
+                                        <small></small>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -165,7 +157,6 @@
     @*<script src="~/Content/js/jquery.dataTables.min.js"></script>*@
     <script src="~/Content/js/pages/custom.js"></script>
     @RenderSection("Scripts", required: false)
-
     <!-- All init script -->
 </body>
 </html>
