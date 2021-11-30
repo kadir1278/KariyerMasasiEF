@@ -391,7 +391,6 @@
     <Content Include="Content\Login\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Login\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\Login\webfonts\fa-solid-900d41d.eot" />
-    <Content Include="Views\CompanyViews\Application.cshtml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -409,7 +408,6 @@
     <Compile Include="Controllers\CompanyInfoController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
     <Compile Include="Controllers\CompanyUserInfoController.cs" />
-    <Compile Include="Controllers\CompanyViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -433,7 +431,6 @@
     <Compile Include="Controllers\SpecialDirectoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
-    <Compile Include="Controllers\UserViewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -560,20 +557,7 @@
     <Content Include="Views\Register\CompanyRegister.cshtml" />
     <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <Content Include="Views\Register\UserRegister.cshtml" />
-    <Content Include="Views\CompanyViews\Index.cshtml" />
-    <Content Include="Views\CompanyViews\DigerFirmalar.cshtml" />
-    <Content Include="Views\CompanyViews\SirketKullanici.cshtml" />
-    <Content Include="Views\CompanyViews\SirketBilgi.cshtml" />
-    <Content Include="Views\CompanyViews\PartialSirketKullaniciEkle.cshtml" />
-    <Content Include="Views\CompanyViews\PartialSirketKullaniciGuncelle.cshtml" />
-    <Content Include="Views\CompanyViews\Meetings.cshtml" />
-    <Content Include="Views\UserViews\UserApplication.cshtml" />
-    <Content Include="Views\UserViews\Ozgecmis.cshtml" />
-    <Content Include="Views\UserViews\SertifikaListesi.cshtml" />
-    <Content Include="Views\UserViews\SertifikaOlustur.cshtml" />
-    <Content Include="Views\UserViews\KullaniciToplantilar.cshtml" />
     <Content Include="Views\CompanyInfo\Index.cshtml" />
-    <Content Include="Views\SavedCV\Index.cshtml" />
     <Content Include="Views\Loby\Index.cshtml" />
     <Content Include="Views\CompanyOtherCompanies\Index.cshtml" />
     <Content Include="Views\CompanyUserInfo\Index.cshtml" />
