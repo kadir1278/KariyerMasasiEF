@@ -559,7 +559,7 @@
     <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <Content Include="Views\Register\UserRegister.cshtml" />
     <Content Include="Views\CompanyInfo\Index.cshtml" />
-    <Content Include="Views\Loby\Index.cshtml" />
+    <Content Include="Views\Loby\Customer.cshtml" />
     <Content Include="Views\CompanyOtherCompanies\Index.cshtml" />
     <Content Include="Views\CompanyUserInfo\Index.cshtml" />
     <Content Include="Views\CompanyUserInfo\PartialAddCompanyUser.cshtml" />
@@ -570,6 +570,7 @@
     <Content Include="Views\UserCV\Index.cshtml" />
     <Content Include="Views\CompanySavedCV\Index.cshtml" />
     <Content Include="Views\Meeting\Index.cshtml" />
+    <Content Include="Views\Loby\Company.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

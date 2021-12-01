@@ -8,8 +8,13 @@ namespace KariyerWebUI.Controllers
 {
     public class LobyController : Controller
     {
-        [Route("lobi"),HttpGet]
-        public ActionResult Index()
+        [Route("kullanici-lobi"),HttpGet]
+        public ActionResult Customer()
+        {
+            return View();
+        }
+        [Route("sirket-lobi"), HttpGet]
+        public ActionResult Company()
         {
             return View();
         }

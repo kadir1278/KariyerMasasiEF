@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="col-12">
+    <div class="card">
+        @*<div class="card-header">
+                <h3 class="card-title"></h3>
+            </div>*@
+        <div class="card-body">
+            <div class="row">
+                @*<div class="col-md-9">
+                <button class="btn light btn-info" id="btnDataAdd" data-toggle="modal" data-target="#basicModal">Veri Ekle</button>
+            </div>*@
+                <div class="card-header">
+                    <h3 class="card-title">Şehire Göre Filtrele</h3>
+                </div>
+                <div class="col-md-12">
+                    <div class="input-group d-xl-inline-flex">
+                        <input id="search" type="text" class="form-control" placeholder="Şehire Göre Filtrele...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-header col-md-12">
+                    <h3 class="card-title">Yaşa Göre Filtrele</h3>
+                </div>
+                <div class="col-md-6 mt-lg-3">
+                    <div class="input-group d-xl-inline-flex">
+                        <input id="search" type="text" class="form-control" placeholder="Minimum Yaş...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-lg-3">
+                    <div class="input-group d-xl-inline-flex">
+                        <input id="search" type="text" class="form-control" placeholder="Maximum Yaş...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-header col-md-12">
+                    <h3 class="card-title">İş Tecrübesine Göre Filtrele</h3>
+                </div>
+                <div class="col-md-6 mt-lg-3">
+                    <div class="input-group d-xl-inline-flex ">
+                        <input id="search" type="text" class="form-control" placeholder="Minimum Yıl...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-lg-3">
+                    <div class="input-group d-xl-inline-flex ">
+                        <input id="search" type="text" class="form-control" placeholder="Maximum Yıl...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            @*<div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 55vh; width: 100%;">
+            <table id="example" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+            </table>
+        </div>*@
+
+            <div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 55vh; width: 100%;">
+                <table id="example" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th class="sorting_asc">Resim</th>
+                            <th class="sorting_asc">Ünvan</th>
+                            <th class="sorting_asc">Ad Soyad</th>
+                            <th class="sorting_asc">CV Gör</th>
+                            <th class="sorting_asc">CV Kaydet</th>
+                            <th class="sorting_asc">Görüş</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
