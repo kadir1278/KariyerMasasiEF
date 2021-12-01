@@ -412,6 +412,7 @@
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LobyController.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\CompanySavedCVController.cs" />
     <Compile Include="Controllers\UserCertificateController.cs" />
@@ -568,6 +569,7 @@
     <Content Include="Views\UserCertificateInfo\Add.cshtml" />
     <Content Include="Views\UserCV\Index.cshtml" />
     <Content Include="Views\CompanySavedCV\Index.cshtml" />
+    <Content Include="Views\Meeting\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
