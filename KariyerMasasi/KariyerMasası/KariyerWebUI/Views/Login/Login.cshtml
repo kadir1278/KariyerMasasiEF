@@ -1,5 +1,4 @@
-﻿﻿
-@{ Layout = null; }
+﻿@{ Layout = null; }
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -43,20 +42,26 @@
             </div>
             <div class="fxt-form-content">
                 @*<div class="fxt-page-switcher">
-                    <h2 class="fxt-page-title mr-3">Kariyer Masası Giriş Ekranı</h2>
-                    <div class="fxt-login-option">
-                        <ul>
-                            <ul class="fxt-switcher-wrap">
-                                <li><a href="login-31.html" class="fxt-switcher-btn">Kurumsal</a></li>
-                                <li><a href="register-31.html" class="fxt-switcher-btn active">Bireysel</a></li>
+                        <h2 class="fxt-page-title mr-3">Kariyer Masası Giriş Ekranı</h2>
+                        <div class="fxt-login-option">
+                            <ul>
+                                <ul class="fxt-switcher-wrap">
+                                    <li><a href="login-31.html" class="fxt-switcher-btn">Kurumsal</a></li>
+                                    <li><a href="register-31.html" class="fxt-switcher-btn active">Bireysel</a></li>
+                                </ul>
                             </ul>
-                        </ul>
-                    </div>
-                </div>*@
+                        </div>
+                    </div>*@
                 <div class="fxt-main-form">
                     <div class="fxt-inner-wrap">
                         <form method="POST">
                             <div class="row">
+                                @if (ViewBag.LoginError != null)
+                                {
+                                    <div class="col-12">
+                                        <p class="text-white fa fa-star-of-life">@ViewBag.LoginError</p>
+                                    </div>
+                                }
                                 <div class="col-12">
                                     <div class="form-group">
                                         <input type="email" id="email" class="form-control" name="email" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">

@@ -45,40 +45,159 @@
                 </div>
             </div>
             <div class="fxt-form-content">
-                <div class="fxt-page-switcher">
-                    <ul class="nav nav-pills">                    
-                        <li class="nav-item"><a data-toggle="tab" class="fxt-btn-fill active" href="#company_info">Şirket Bilgileri</a></li>
-                        <li class="nav-item ml-3"><a data-toggle="tab" class="fxt-btn-fill" href="#login_info">Giriş Bilgileri</a></li>
-                    </ul>
-                </div>
                 <div class="fxt-main-form">
                     <form method="POST">
                         <div class="tab-content">
                             <div id="company_info" class="tab-pane active">
-                                
-                                @Html.Partial("PartialCompanyRegister")
-                            </div>
-                            <div id="login_info" class="tab-pane fade">
-                                <h3>Giriş Bilgileri</h3>
+                                <h3>Şirket Bilgileri</h3>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="email" id="email" class="form-control" name="email" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
+                                            <input type="text" id="name" class="form-control" name="Name" placeholder="İsim..." required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input id="surname" type="text" class="form-control" name="Surname" placeholder="Soyisim" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select required class="form-control" name="Gender">
+                                                <option value="Erkek">Erkek</option>
+                                                <option value="Kadın">Kadın</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="Title" class="form-control" placeholder="Ünvan..." />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="file" name="Image" id="Image" class="form-control" hidden />
+                                            <label for="Image" class="fxt-btn-fill text-center">Fotoğraf yükle</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="Phone" placeholder="Telefon" class="form-control" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="Town" placeholder="Semt" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="City" placeholder="Şehir" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="Country" placeholder="Ülke" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input id="password" type="password" class="form-control" name="password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
-                                            <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input id="password" type="password" class="form-control" name="password" placeholder="Şifrenizi doğrulayın." required="required">
-                                            <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                            <textarea name="Address" class="form-control" placeholder="Adres"></textarea>
                                         </div>
                                     </div>
                                 </div>
+                                <h3>Şirket Bilgileri</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <select class="form-control" multiple id="business-area-select">
+                                                @foreach (var item in ViewBag.BusinessAreaID)
+                                                {
+                                                    <option value="@item.ID">@item.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <select class="form-control" multiple id="department-select">
+                                                @foreach (var item in ViewBag.DepartmentID)
+                                                {
+                                                    <option value="@item.ID">@item.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <select class="form-control" multiple id="city-select">
+                                                <option value="İstanbul">İstanbul</option>
+                                                <option value="Ankara">Ankara</option>
+                                                <option value="İzmir">İzmir</option>
+                                                <option value="Bursa">Bursa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="Name" class="form-control" placeholder="Şirket adı" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="file" name="Image" id="CompanyImage" class="form-control" hidden />
+                                            <label for="CompanyImage" class="fxt-btn-fill text-center">Fotoğraf yükle</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="email" name="EMail" class="form-control" placeholder="Şirket e-posta" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="Phone" class="form-control" placeholder="Şirket telefonu" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="Fax" class="form-control" placeholder="Fax Numarası" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="email" name="Town" class="form-control" placeholder="Semt" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="City" class="form-control" placeholder="Şehir" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="Country" class="form-control" placeholder="Ülke" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="Address" placeholder="Adres"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="TaxNumber" class="form-control" placeholder="Vergi Numarası" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="TaxAddress" class="form-control" placeholder="Vergi Dairesi" />
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-12">

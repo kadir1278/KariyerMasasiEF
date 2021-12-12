@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using KariyerWebUI.Models;
 
 namespace KariyerWebUI.Controllers
 {
@@ -17,13 +18,13 @@ namespace KariyerWebUI.Controllers
         [Route("PartialAddCompanyUser"), HttpGet]
         public ActionResult PartialAddCompanyUser()
         {
-            ViewBag.CompanyID = db.Companies.Where(x => !x.DeletionStatus).ToList();
+            //ViewBag.CompanyID = db.Companies.Where(x => !x.DeletionStatus).ToList();
             return PartialView();
         }
         [Route("PartialUpdateCompanyUser/{id}"), HttpGet]
         public ActionResult PartialUpdateCompanyUser(int id)
         {
-            ViewBag.CompanyID = db.Companies.Where(x => !x.DeletionStatus).ToList(); ;
+            //ViewBag.CompanyID = db.Companies.Where(x => !x.DeletionStatus).ToList(); ;
             var data = db.CompanyUsers.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
@@ -38,12 +39,14 @@ namespace KariyerWebUI.Controllers
         [Route("sirket-personel-ekle"), HttpPost]
         public JsonResult Add(CompanyUser model)
         {
+            var loginUser = Session["loginUser"] as LoginViewModel;
             var data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.EMail == model.EMail).ToList();
             if (data.Count() == 0)
             {
                 model.DeletionStatus = false;
                 model.CreatedTime = DateTime.Now;
                 model.UpdatedTime = DateTime.Now;
+                model.CompanyID = loginUser.Company;
                 db.CompanyUsers.Add(model);
                 db.SaveChanges();
             }
@@ -52,7 +55,7 @@ namespace KariyerWebUI.Controllers
                 throw new Exception(model.EMail.ToUpper() + " Sistemde bulunmaktadır.");
             }
             return Json(new { res = true });
-          
+
         }
         [Route("sirket-personel-guncelle"), HttpPost]
         public ActionResult Update(CompanyUser model)
@@ -73,14 +76,17 @@ namespace KariyerWebUI.Controllers
         public JsonResult GetData(string searchText)
         {
             List<CompanyUser> data = new List<CompanyUser>();
+            var loginUser = Session["loginUser"] as LoginViewModel;
+
+            int cmpnyID = loginUser.Company;
 
             if (searchText == "" || searchText == null)
             {
-                data = db.CompanyUsers.Where(x => !x.DeletionStatus).Include(x=>x.Company).ToList();
+                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.CompanyID == cmpnyID).Include(x => x.Company).ToList();
             }
             else
             {
-                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.Name == searchText).Include(x => x.Company).ToList();
+                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.Name == searchText && x.CompanyID == cmpnyID).Include(x => x.Company).ToList();
             }
             var query = new
             {
@@ -94,7 +100,7 @@ namespace KariyerWebUI.Controllers
                              Password = obj.Password,
                              Phone = obj.Phone,
                              Title = obj.Title,
-                             Company=obj.Company.Name
+                             Company = obj.Company.Name
                          }
             };
             return Json(query, JsonRequestBehavior.AllowGet);

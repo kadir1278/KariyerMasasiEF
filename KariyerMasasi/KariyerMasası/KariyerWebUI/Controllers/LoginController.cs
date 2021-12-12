@@ -21,6 +21,7 @@ namespace KariyerWebUI.Controllers
             {
                 FormsAuthentication.SetAuthCookie(user.EMail, false);
                 var userrole = db.UserRoles.Include(x => x.Role).Where(x => !x.DeletionStatus && x.UserID == user.ID).FirstOrDefault();
+                var cmpny = db.CompanyUsers.Include(x => x.Company).Where(x => !x.DeletionStatus && x.EMail == email).FirstOrDefault();
 
                 LoginViewModel login = new LoginViewModel();
                 login.Name = user.Name;
@@ -28,6 +29,7 @@ namespace KariyerWebUI.Controllers
                 login.Image = user.Photo;
                 login.ID = user.ID;
                 login.Role = userrole.Role.Name;
+                login.Company = cmpny.Company.ID;
                 Session["loginUser"] = login;
                 return Redirect("/");
             }

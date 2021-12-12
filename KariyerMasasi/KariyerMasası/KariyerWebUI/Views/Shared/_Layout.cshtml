@@ -23,7 +23,7 @@
     <link href="~/Content/css/default.date.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/css/style.css" rel="stylesheet" />
-    @RenderSection("Heads",required:false)
+    @RenderSection("Heads", required: false)
 </head>
 <body>
     <div id="preloader">
@@ -51,100 +51,54 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    @*<li>
-            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-025-dashboard"></i>
-                <span class="nav-text">Kullanıcı Ayarları</span>
-            </a>
-            <ul aria-expanded="false" class="mm-collapse">
-                <li><a href="/kullanici-ozel-durum">Kullanıcı Özel Durum</a></li>
-            </ul>
-        </li>*@
-
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Admin Ayarları</span>
-                        </a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/yonetici">Yöneticiler</a></li>
-                            <li><a href="/kullanici">Kullanıcılar</a></li>
-                            <li><a href="/yetki">Yetkiler</a></li>
-                            <li><a href="/kullanici-yetki">Kullanıcı Yetkileri</a></li>
-                            <li><a href="/dil">Dil</a></li>
-                            <li><a href="/calisma-alani">Çalışma Alanı</a></li>
-                            <li><a href="/ozel-durum-tip">Özel Durum Tipi</a></li>
-                            <li><a href="/departman">Departman</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Şirket Bilgileri</span>
-                        </a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/sirket">Şirket</a></li>
-                            <li><a href="/sirket-personel">Personel</a></li>
-                        </ul>
-                    </li>
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Lobi Bilgileri</span>
                         </a>
                         <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/kullanici-lobi">Kullanıcı</a></li>
-                            <li><a href="/sirket-lobi">Sirket</a></li>
+                            @if (loginUser.Role == "SIRKET" || loginUser.Role == "ADMIN")
+                            {
+                                <li><a href="/kullanici-lobi">Kullanıcı Lobileri</a></li>
+                            }
+                            @if (loginUser.Role == "KULLANICI" || loginUser.Role == "ADMIN")
+                            {
+                                <li><a href="/sirket-lobi">Sirket Lobileri</a></li>
+                            }
                         </ul>
                     </li>
-                    <li>
-                        <a href="/diger-firmalar" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Diğer Firmalar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/toplantilar" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Toplantılar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/sirket-bilgilerini-guncelle" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Şirket Bilgileri</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/sirket-kullanicilari" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Şirket Kullanıcıları</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/kayitli-ozgecmisler" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Kayıtlı Özgeçmişler</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/kullanici-ozgecmis" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Özgeçmiş</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Sertifikalarım</span>
-                        </a>
-                        <ul aria-expanded="false" class="mm-collapse">
-                            <li><a href="/kullanici-sertifika">Sertifikaları Listele</a></li>
-                            <li><a href="/kullanici-sertifika-olustur">Sertifika Oluştur</a></li>
-                        </ul>
-                    </li>
-                   
+                    @if (loginUser.Role == "ADMIN")
+                    {
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-025-dashboard"></i>
+                                <span class="nav-text">Admin Ayarları</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="/yonetici">Yöneticiler</a></li>
+                                <li><a href="/kullanici">Kullanıcılar</a></li>
+                                <li><a href="/yetki">Yetkiler</a></li>
+                                <li><a href="/kullanici-yetki">Kullanıcı Yetkileri</a></li>
+                                <li><a href="/dil">Dil</a></li>
+                                <li><a href="/calisma-alani">Çalışma Alanı</a></li>
+                                <li><a href="/ozel-durum-tip">Özel Durum Tipi</a></li>
+                                <li><a href="/departman">Departman</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (loginUser.Role == "SIRKET" || loginUser.Role == "ADMIN")
+                    {
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-025-dashboard"></i>
+                                <span class="nav-text">Şirket Bilgileri</span>
+                            </a>
+                            <ul aria-expanded="false" class="mm-collapse">
+                                <li><a href="/sirket">Şirket</a></li>
+                                <li><a href="/sirket-personel">Personel</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 <div class="copyright">
                     <p><strong>360MEKA</strong> © @DateTime.Now.Year All Rights Reserved</p>

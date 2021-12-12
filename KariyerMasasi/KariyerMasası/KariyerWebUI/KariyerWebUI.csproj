@@ -239,8 +239,7 @@
     <Content Include="Content\js\login-form.js" />
     <Content Include="Content\js\material-date-picker-init.js" />
     <Content Include="Content\js\moment.min.js" />
-    <Content Include="Content\js\pages\CompanyUI\companyinfo.js" />
-    <Content Include="Content\js\pages\CompanyUI\companyuser.js" />
+    <Content Include="Content\js\pages\companyuserinfo.js" />
     <Content Include="Content\js\pages\department.js" />
     <Content Include="Content\js\pages\companyregister.js" />
     <Content Include="Content\js\pages\userprofiles.js" />
@@ -255,7 +254,7 @@
     <Content Include="Content\js\pages\userrole.js" />
     <Content Include="Content\js\pages\languages.js" />
     <Content Include="Content\js\pages\user.js" />
-    <Content Include="Content\js\pages\UserUI\ozgecmis.js" />
+    <Content Include="Content\js\pages\ozgecmis.js" />
     <Content Include="Content\js\styleSwitcher.js" />
     <Content Include="Content\kariyermasasi\pdf.png" />
     <Content Include="Content\kariyermasasi\Logo.png" />
@@ -403,23 +402,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CompanyOtherCompaniesController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
-    <Compile Include="Controllers\CompanyInfoController.cs" />
     <Compile Include="Controllers\CompanyUserController.cs" />
-    <Compile Include="Controllers\CompanyUserInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BusinessAreaController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LobyController.cs" />
-    <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\CompanySavedCVController.cs" />
     <Compile Include="Controllers\UserCertificateController.cs" />
-    <Compile Include="Controllers\UserCertificateInfoController.cs" />
     <Compile Include="Controllers\UserComputerInformationController.cs" />
     <Compile Include="Controllers\UserBusinessInformationController.cs" />
-    <Compile Include="Controllers\UserCVController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserReferenceController.cs" />
     <Compile Include="Controllers\UserEducationController.cs" />
@@ -533,7 +525,6 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\UserRole\Add.cshtml" />
     <Content Include="Views\UserRole\Index.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\UserSpecialType\Add.cshtml" />
     <Content Include="Views\UserSpecialType\Index.cshtml" />
     <Content Include="Views\UserProfile\Index.cshtml" />
@@ -543,8 +534,6 @@
     <Content Include="Views\UserReference\Update.cshtml" />
     <Content Include="Views\UserComputerInformation\Add.cshtml" />
     <Content Include="Views\UserComputerInformation\Update.cshtml" />
-    <Content Include="Views\UserCertificate\Add.cshtml" />
-    <Content Include="Views\UserCertificate\Update.cshtml" />
     <Content Include="Views\UserEducation\Add.cshtml" />
     <Content Include="Views\UserEducation\Update.cshtml" />
     <Content Include="Views\UserLanguage\Add.cshtml" />
@@ -556,21 +545,12 @@
     <Content Include="Views\Department\Add.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Register\CompanyRegister.cshtml" />
-    <Content Include="Views\Register\PartialCompanyRegister.cshtml" />
     <Content Include="Views\Register\UserRegister.cshtml" />
-    <Content Include="Views\CompanyInfo\Index.cshtml" />
     <Content Include="Views\Loby\Customer.cshtml" />
-    <Content Include="Views\CompanyOtherCompanies\Index.cshtml" />
-    <Content Include="Views\CompanyUserInfo\Index.cshtml" />
-    <Content Include="Views\CompanyUserInfo\PartialAddCompanyUser.cshtml" />
-    <Content Include="Views\CompanyUserInfo\PartialUpdateCompanyUser.cshtml" />
-    <Content Include="Views\UserCertificate\Index.cshtml" />
-    <Content Include="Views\UserCertificateInfo\Index.cshtml" />
-    <Content Include="Views\UserCertificateInfo\Add.cshtml" />
-    <Content Include="Views\UserCV\Index.cshtml" />
-    <Content Include="Views\CompanySavedCV\Index.cshtml" />
-    <Content Include="Views\Meeting\Index.cshtml" />
     <Content Include="Views\Loby\Company.cshtml" />
+    <Content Include="Views\UserCertificate\Add.cshtml" />
+    <Content Include="Views\UserCertificate\Index.cshtml" />
+    <Content Include="Views\UserCertificate\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
