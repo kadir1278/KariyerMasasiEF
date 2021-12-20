@@ -11,11 +11,9 @@ namespace KariyerEntity.Entity
     {
         public Language()
         {
-            this.UserLanguages = new HashSet<UserLanguage>();
             this.UserCertificates = new HashSet<UserCertificate>();
         }
         public string Name { get; set; }
-        public virtual ICollection<UserLanguage> UserLanguages { get; set; }
         public virtual ICollection<UserCertificate> UserCertificates { get; set; }
     }
 }

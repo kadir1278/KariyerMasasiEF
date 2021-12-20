@@ -69,3 +69,5 @@ E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\K
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.CopyComplete
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.dll
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.pdb
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations.init.resources
+E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.GenerateResource.cache

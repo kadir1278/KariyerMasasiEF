@@ -19,7 +19,6 @@ namespace KariyerEntity.Entity
         public string ContractType { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
-        public bool Guide { get; set; } // Kalksın
         public bool SpecialCase { get; set; } // Özel Durumlumu Başvurabilsin mi ?
         public int CompanyID { get; set; }
         public Company Company { get; set; }

@@ -16,8 +16,16 @@
                             <input required type="text" class="form-control" name="computerName" placeholder="İsim Giriniz...">
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Açıklama</label>
-                            <input required type="text" class="form-control" name="computerDescription" placeholder="Açıklama Giriniz...">
+                            <label>Seviye</label>
+                            <select required class="custom-select2 form-control" name="computerDescription">
+                                <optgroup label="Seviye Seçiniz">
+                                    <option value="Başlangıç">Başlangıç</option>
+                                    <option value="Temel">Temel</option>
+                                    <option value="Orta">Orta</option>
+                                    <option value="İleri">İleri</option>
+                                    <option value="Uzman">Uzman</option>
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

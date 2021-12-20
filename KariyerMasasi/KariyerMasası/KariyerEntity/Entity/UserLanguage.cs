@@ -14,8 +14,7 @@ namespace KariyerEntity.Entity
         public string ListeningLevel { get; set; }
         public string Description { get; set; }
         public int UserID { get; set; }
-        public int LanguageID { get; set; }
+        public string Language { get; set; }
         public User User { get; set; }
-        public Language Language { get; set; }
     }
 }

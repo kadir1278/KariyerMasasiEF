@@ -14,14 +14,7 @@
 
                         <div class="form-group col-md-6">
                             <label>Dil Seçimi</label>
-                            <select required class="custom-select2 form-control" name="LangLanguageID">
-                                <optgroup label="Sertifika Dili">
-                                    @foreach (var item in ViewBag.LanguageID)
-                                    {
-                                        <option value="@item.ID">@item.Name</option>
-                                    }
-                                </optgroup>
-                            </select>
+                            <input required type="text" class="form-control" name="LangLanguage" placeholder="Dil Giriniz...">
                         </div>
 
                         <div class="form-group col-md-6">

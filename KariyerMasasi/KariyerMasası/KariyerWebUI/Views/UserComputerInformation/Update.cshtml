@@ -19,8 +19,17 @@
                             <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="İsim Giriniz...">
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Açıklama</label>
-                            <input type="text" class="form-control" value="@Model.Description" name="Description" placeholder="Açıklama Giriniz...">
+                            <label>Seviye</label>
+                            <select class="custom-select2 form-control" name="Description">
+                                <optgroup label="Seviye Seçiniz">
+                                    <option value="@Model.Description">@Model.Description</option>
+                                    <option @(Model.Description == "Başlangıç" ? "hidden " : "") value="Başlangıç">Başlangıç</option>
+                                    <option @(Model.Description == "Temel" ? "hidden " : "") value="Temel">Temel</option>
+                                    <option @(Model.Description == "Orta" ? "hidden " : "") value="Orta">Orta</option>
+                                    <option @(Model.Description == "İleri" ? "hidden " : "") value="İleri">İleri</option>
+                                    <option @(Model.Description == "Uzman" ? "hidden " : "") value="Uzman">Uzman</option>
+                                </optgroup>
+                            </select>
                         </div>
                         
                     </div>

@@ -175,7 +175,7 @@ $("#language-add-form").submit(function (e) {
         WritingLevel: $("#language-add-form").find('[name="LangWritingLevel"]').val(),
         ListeningLevel: $("#language-add-form").find('[name="LangListeningLevel"]').val(),
         Description: $("#language-add-form").find('[name="LangSeminarDescription"]').val(),
-        LanguageID: $("#language-add-form").find('[name="LangLanguageID"]').val(),
+        LanguageID: $("#language-add-form").find('[name="LangLanguage"]').val(),
     }
     $.ajax({
         type: "POST",
