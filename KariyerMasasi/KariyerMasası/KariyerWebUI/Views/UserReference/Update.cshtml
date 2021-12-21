@@ -26,7 +26,14 @@
                             <label>E-Mail</label>
                             <input type="email" class="form-control" value="@Model.EMail" name="EMail" placeholder="E-Mail Giriniz...">
                         </div>
-                        
+                        <div class="form-group col-md-6">
+                            <label>Şirket Adı</label>
+                            <input type="text" class="form-control" value="@Model.CompanyName" name="ReferenceCompanyName" placeholder="Şirket Adı Giriniz...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Pozisyon</label>
+                            <input type="text" class="form-control" value="@Model.Position" name="ReferencePosition" placeholder="Pozisyon Giriniz...">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="closeUser" class="btn btn-danger light" data-dismiss="modal">Kapat</button>

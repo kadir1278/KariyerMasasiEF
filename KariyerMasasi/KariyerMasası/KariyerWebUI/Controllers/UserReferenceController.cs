@@ -51,7 +51,7 @@ namespace KariyerWebUI.Controllers
             return PartialView(data);
         }
         [Route("referans-guncelle/{id}"), HttpPost]
-        public ActionResult UpdateSeminar(UserReference model)
+        public ActionResult UpdateReference(UserReference model)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +59,8 @@ namespace KariyerWebUI.Controllers
                 data.NameSurname = model.NameSurname;
                 data.Phone = model.Phone;
                 data.EMail = model.EMail;
+                data.Position = model.Position;
+                data.CompanyName = model.CompanyName;
                 data.UpdatedTime = DateTime.Now;
                 db.SaveChanges();
             }

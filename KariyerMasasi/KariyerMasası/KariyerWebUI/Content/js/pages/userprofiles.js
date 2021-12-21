@@ -38,6 +38,8 @@ $("#Reference-add-form").submit(function (e) {
         NameSurname: $("#Reference-add-form").find('[name="ReferenceNameSurname"]').val(),
         Phone: $("#Reference-add-form").find('[name="ReferencePhone"]').val(),
         EMail: $("#Reference-add-form").find('[name="ReferenceEMail"]').val(),
+        CompanyName: $("#Reference-add-form").find('[name="ReferenceCompanyName"]').val(),
+        Position: $("#Reference-add-form").find('[name="ReferencePosition"]').val(),
     }
     $.ajax({
         type: "POST",

@@ -43,13 +43,6 @@
                 </div>
             </div>
             <div class="fxt-form-content">
-                <div class="fxt-page-switcher">
-
-                    @*<ul class="nav nav-pills ">
-                        <li class="nav-item"><a data-toggle="tab" class="fxt-btn-fill active" href="#user_info">Kişisel Bilgileri</a></li>
-                        <li class="nav-item ml-3"><a data-toggle="tab" class="fxt-btn-fill" href="#login_info">Giriş Bilgileri2</a></li>
-                    </ul>*@
-                </div>
                 <div class="fxt-main-form">
                     <form action="kullanici-kayit" method="POST">
                         <div class="tab-content">
@@ -58,12 +51,22 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" id="Name" class="form-control" name="Name" placeholder="İsim" required="required">
+                                            <input type="text" class="form-control" name="Name" placeholder="İsim" required="required">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input id="surname" type="text" class="form-control" name="Surname" placeholder="Soyisim" required="required">
+                                            <input type="text" class="form-control" name="Surname" placeholder="Soyisim" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="EMail" placeholder="EMail" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="Password" placeholder="Şifre" required="required">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -113,31 +116,33 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12" id="special-type" style="display:none">
-                                        <div class="form-group">
-                                            <select class="form-control" name="disabled">
-                                                <option value="" disabled selected>Özel durum seçiniz</option>
-                                                <option value="Görme Engelli">Görme Engelli</option>
+                                        <div class="form-group" id="select-container">
+                                            <select class="form-control" multiple id="special-select">
+                                                @foreach (var item in ViewBag.SpecialType)
+                                                {
+                                                    <option value="@item.Name">@item.Name</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="col-md-12" id="business-area" style="display:none">
                                         <div class="form-group">
                                             <select class="form-control" multiple id="business-area-select">
-                                                <option value="Yazılım">Yazılım</option>
-                                                <option value="Bilgi İşlem">Bilgi İşlem</option>
-                                                <option value="Muhasebe">Muhasebe</option>
-                                                <option value="Finans">Finans</option>
+                                                @foreach (var item in ViewBag.BusinessAreaID)
+                                                {
+                                                    <option value="@item.Name">@item.Name</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12" id="department" style="display:none">
                                         <div class="form-group" id="select-container">
                                             <select class="form-control" multiple id="department-select">
-                                                <option value="Yazılım">Yazılım</option>
-                                                <option value="Bilgi İşlem">Bilgi İşlem</option>
-                                                <option value="Muhasebe">Muhasebe</option>
-                                                <option value="Finans">Finans</option>
+                                                @foreach (var item in ViewBag.DepartmentID)
+                                                {
+                                                    <option value="@item.Name">@item.Name</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -151,7 +156,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <input type="file" name="Image" id="Photo" class="form-control" hidden />
                                             <label for="Image" class="fxt-btn-fill text-center">Fotoğraf yükle</label>
@@ -160,21 +165,21 @@
                                 </div>
                             </div>
                             @*<div id="login_info" class="tab-pane fade">
-                                <h3>Giriş Bilgileri</h3>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="email" id="email" class="form-control" name="EMail" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
+                                    <h3>Giriş Bilgileri</h3>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="email" id="email" class="form-control" name="EMail" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input id="password" type="password" class="form-control" name="Password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
+                                                <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input id="password" type="password" class="form-control" name="Password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
-                                            <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>*@
+                                </div>*@
                         </div>
                         <div class="col-12">
                             <div class="form-group">

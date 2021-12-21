@@ -64,7 +64,7 @@ namespace KariyerWebUI.Controllers
                 data.SpeakingLevel = model.SpeakingLevel;
                 data.WritingLevel = model.WritingLevel;
                 data.ListeningLevel = model.ListeningLevel;
-                data.LanguageID = model.LanguageID;
+                data.Language = model.Language;
                 data.Description = model.Description;
                 data.UpdatedTime = DateTime.Now;
                 db.SaveChanges();

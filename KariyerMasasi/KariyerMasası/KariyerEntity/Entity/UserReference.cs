@@ -12,6 +12,8 @@ namespace KariyerEntity.Entity
         public string NameSurname { get; set; }
         public string Phone { get; set; }
         public string EMail { get; set; }
+        public string CompanyName { get; set; }
+        public string Position { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
     }

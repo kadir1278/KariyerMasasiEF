@@ -9,6 +9,11 @@
         tags: true,
         tokenSeperators: ['/', ',', ',', " "]
     });
+    $("#special-select").select2({
+        placeholder: "Özel Durum",
+        tags: true,
+        tokenSeperators: ['/', ',', ',', " "]
+    });
     $("#city-select").select2({
         placeholder: "Çalışmak istediğiniz şehirler",
         tags: true,
