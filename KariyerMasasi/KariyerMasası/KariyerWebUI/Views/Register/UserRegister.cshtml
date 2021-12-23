@@ -44,7 +44,9 @@
             </div>
             <div class="fxt-form-content">
                 <div class="fxt-main-form">
-                    <form action="kullanici-kayit" method="POST">
+                    @using (Html.BeginForm("UserAdd", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
                         <div class="tab-content">
                             <div id="user_info" class="tab-pane active">
                                 <h3>Kişisel Bilgiler</h3>
@@ -125,7 +127,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-12" id="business-area" style="display:none">
                                         <div class="form-group">
                                             <select class="form-control" multiple id="business-area-select">
@@ -158,37 +160,19 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="file" name="Image" id="Photo" class="form-control" hidden />
-                                            <label for="Image" class="fxt-btn-fill text-center">Fotoğraf yükle</label>
+                                            <input type="file"  name="Photo" class="fxt-btn-fill text-center" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @*<div id="login_info" class="tab-pane fade">
-                                    <h3>Giriş Bilgileri</h3>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="email" id="email" class="form-control" name="EMail" placeholder="Lütfen E-Mail Adresini Giriniz..." required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input id="password" type="password" class="form-control" name="Password" placeholder="Lütfen Şifrenizi Giriniz." required="required">
-                                                <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>*@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <button type="submit" class="fxt-btn-fill">Kaydol</button>
                             </div>
                         </div>
-                    </form>
-
-                </div>
+                    }
+                    </div>
             </div>
         </div>
     </section>

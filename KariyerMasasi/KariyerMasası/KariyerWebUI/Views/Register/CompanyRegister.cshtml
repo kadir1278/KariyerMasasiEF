@@ -46,14 +46,17 @@
             </div>
             <div class="fxt-form-content">
                 <div class="fxt-main-form">
-                    <form method="POST">
+                    @using (Html.BeginForm("CompanyAdd", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
                         <div class="tab-content">
                             <div id="company_info" class="tab-pane active">
-                                <h3>Şirket Bilgileri</h3>
+                                <h3>Şirket Kullanıcı Bilgileri</h3>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <input type="text" id="name" class="form-control" name="Name" placeholder="İsim" required="required">
+                                            @*@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -206,7 +209,7 @@
                                 <button type="submit" class="fxt-btn-fill">Kaydol</button>
                             </div>
                         </div>
-                    </form>
+                    }
 
                 </div>
             </div>
