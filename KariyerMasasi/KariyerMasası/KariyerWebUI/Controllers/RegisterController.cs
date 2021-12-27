@@ -28,7 +28,7 @@ namespace KariyerWebUI.Controllers
             return View();
         }
         [Route("sirket-kayit-ekle"), HttpPost]
-        public ActionResult CompanyAdd(Company company)
+        public ActionResult CompanyAdd(Company company, string[] Business, string[] SpecType, string[] Depart)
         {
             var entity = db.Companies.Where(x => !x.DeletionStatus && x.EMail == company.EMail).FirstOrDefault();
             if (entity == null)
@@ -39,6 +39,47 @@ namespace KariyerWebUI.Controllers
                 company.ProgramState = false;
                 company.GeneralIsActiveStatus = false;
                 company.PaymentStatus = false;
+                if (Business != null)
+                {
+                    foreach (var item in Business)
+                    {
+                        bool businessCheck = db.BusinessAreas.Any(x => x.Name == item);
+                        if (!businessCheck)
+                        {
+                            BusinessArea b = new BusinessArea() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.BusinessAreas.Add(b);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                if (SpecType != null)
+                {
+                    foreach (var item in SpecType)
+                    {
+                        bool specCheck = db.UserSpecialTypes.Any(x => x.Name == item);
+                        if (!specCheck)
+                        {
+                            UserSpecialType spec = new UserSpecialType() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.UserSpecialTypes.Add(spec);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                if (Depart != null)
+                {
+                    foreach (var item in Depart)
+                    {
+                        bool depCheck = db.Departments.Any(x => x.Name == item);
+                        if (!depCheck)
+                        {
+                            Department dep = new Department() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.Departments.Add(dep);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                db.Companies.Add(company);
+                db.SaveChanges();
                 ViewBag.Message = company.EMail + " adresi ile kayıt başvurunuz alınmıştır.";
                 return View();
             }
@@ -49,7 +90,7 @@ namespace KariyerWebUI.Controllers
             }
         }
         [Route("kullanici-kayit-ekle"), HttpPost]
-        public ActionResult UserAdd(User model,string Photo)
+        public ActionResult UserAdd(User model, string Photo, string[] Business, string[] SpecType, string[] Depart)
         {
             var data = db.Users.Where(x => !x.DeletionStatus && x.Name == model.EMail).ToList();
             if (data.Count() == 0)
@@ -70,10 +111,49 @@ namespace KariyerWebUI.Controllers
                 model.DeletionStatus = false;
                 model.CreatedTime = DateTime.Now;
                 model.UpdatedTime = DateTime.Now;
-                db.Users.Add(model);
+                if (Business != null)
+                {
+                    foreach (var item in Business)
+                    {
+                        bool businessCheck = db.BusinessAreas.Any(x => x.Name == item);
+                        if (!businessCheck)
+                        {
+                            BusinessArea b = new BusinessArea() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.BusinessAreas.Add(b);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                if (SpecType != null)
+                {
+                    foreach (var item in SpecType)
+                    {
+                        bool specCheck = db.UserSpecialTypes.Any(x => x.Name == item);
+                        if (!specCheck)
+                        {
+                            UserSpecialType spec = new UserSpecialType() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.UserSpecialTypes.Add(spec);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                if (Depart != null)
+                {
+                    foreach (var item in Depart)
+                    {
+                        bool depCheck = db.Departments.Any(x => x.Name == item);
+                        if (!depCheck)
+                        {
+                            Department dep = new Department() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                            db.Departments.Add(dep);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                // db.Users.Add(model);
                 db.SaveChanges();
-                ViewBag.Message = "Sayın "+model.Name+" "+model.Surname+" giriş yapabilirsiniz";
-                return View();
+                ViewBag.Message = "Sayın " + model.Name + " " + model.Surname + " giriş yapabilirsiniz";
+                return RedirectToAction("giris-yap");
             }
             else
             {

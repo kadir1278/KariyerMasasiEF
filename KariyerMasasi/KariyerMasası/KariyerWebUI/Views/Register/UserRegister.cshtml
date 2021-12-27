@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="col-md-12" id="special-type" style="display:none">
                                         <div class="form-group" id="select-container">
-                                            <select class="form-control" multiple id="special-select">
+                                            <select class="form-control" name="SpecType[]" multiple id="special-select">
                                                 @foreach (var item in ViewBag.SpecialType)
                                                 {
                                                     <option value="@item.Name">@item.Name</option>
@@ -130,7 +130,7 @@
 
                                     <div class="col-md-12" id="business-area" style="display:none">
                                         <div class="form-group">
-                                            <select class="form-control" multiple id="business-area-select">
+                                            <select class="form-control" name="Business[]" multiple id="business-area-select">
                                                 @foreach (var item in ViewBag.BusinessAreaID)
                                                 {
                                                     <option value="@item.Name">@item.Name</option>
@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="col-md-12" id="department" style="display:none">
                                         <div class="form-group" id="select-container">
-                                            <select class="form-control" multiple id="department-select">
+                                            <select class="form-control" name="Depart[]" multiple id="department-select">
                                                 @foreach (var item in ViewBag.DepartmentID)
                                                 {
                                                     <option value="@item.Name">@item.Name</option>
@@ -160,9 +160,10 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="file"  name="Photo" class="fxt-btn-fill text-center" />
+                                            <input type="file" id="Photo" name="Photo" class="fxt-btn-fill text-center" />
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -172,7 +173,7 @@
                             </div>
                         </div>
                     }
-                    </div>
+                </div>
             </div>
         </div>
     </section>
