@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KariyerEntity.Entity.Company>
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+@section Scripts{
+    <script src="~/Content/js/pages/companyPassive.js"></script>
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Onaysız Şirket Listesi</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group search-area d-xl-inline-flex d-none">
+                        <input id="search" type="text" class="form-control" placeholder="Arama...">
+                        <div class="input-group-append">
+                            <button id="search" onclick="GetData()" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="dataTables_scrollBody" style="position: relative; overflow: auto; max-height: 55vh; width: 100%;">
+                <table id="example" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalContent"></div>
+
+
+

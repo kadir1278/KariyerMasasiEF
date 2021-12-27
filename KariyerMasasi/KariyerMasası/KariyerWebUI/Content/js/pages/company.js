@@ -1,6 +1,6 @@
 ﻿async function GetData() {
     var searchText = document.getElementById("search").value;
-    var url = '/sirket-getir/' + searchText;
+    var url = '/sirket-aktif-getir/' + searchText;
     $('#example').html("");
     var thead =
         '<thead class="thead-primary"><tr>' +

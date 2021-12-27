@@ -1,4 +1,4 @@
-﻿using KariyerEntity.Entity;
+﻿    using KariyerEntity.Entity;
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,10 @@ namespace KariyerWebUI.Controllers
     public class CompanyController : Controller
     {
         private SystemContext db = new SystemContext();
-        [Route("sirket"), HttpGet]
-        public ActionResult Index() => View();
+        [Route("sirket-aktif"), HttpGet]
+        public ActionResult IndexActive() => View();
+        [Route("sirket-pasif"), HttpGet]
+        public ActionResult IndexPassive() => View();
         [Route("PartialAddCompany"), HttpGet]
         public ActionResult PartialAddCompany()
         {
@@ -137,18 +139,18 @@ namespace KariyerWebUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("sirket-getir/{searchText?}"), HttpGet]
-        public JsonResult GetData(string searchText)
+        [Route("sirket-aktif-getir/{searchText?}"), HttpGet]
+        public JsonResult GetDataActive(string searchText)
         {
             List<Company> data = new List<Company>();
 
             if (searchText == "" || searchText == null)
             {
-                data = db.Companies.Where(x => !x.DeletionStatus).ToList();
+                data = db.Companies.Where(x => !x.DeletionStatus&&x.GeneralIsActiveStatus).ToList();
             }
             else
             {
-                data = db.Companies.Where(x => !x.DeletionStatus && x.Name == searchText).ToList();
+                data = db.Companies.Where(x => !x.DeletionStatus && x.Name == searchText&&x.GeneralIsActiveStatus).ToList();
             }
             var query = new
             {
@@ -163,6 +165,41 @@ namespace KariyerWebUI.Controllers
                          }
             };
             return Json(query, JsonRequestBehavior.AllowGet);
+        }
+        [Route("sirket-pasif-getir/{searchText?}"), HttpGet]
+        public JsonResult GetDataPassive(string searchText)
+        {
+            List<Company> data = new List<Company>();
+
+            if (searchText == "" || searchText == null)
+            {
+                data = db.Companies.Where(x => !x.DeletionStatus && !x.GeneralIsActiveStatus).ToList();
+            }
+            else
+            {
+                data = db.Companies.Where(x => !x.DeletionStatus && x.Name == searchText && !x.GeneralIsActiveStatus).ToList();
+            }
+            var query = new
+            {
+                Result = from obj in data
+                         select new
+                         {
+                             ID = obj.ID,
+                             Name = obj.Name,
+                             EMail = obj.EMail,
+                             Phone = obj.Phone,
+                             Country = obj.Country,
+                         }
+            };
+            return Json(query, JsonRequestBehavior.AllowGet);
+        }
+        [Route("sirket-onayla/{id}"), HttpGet]
+        public ActionResult SetCompanyActiveStatus(int ID)
+        {
+            var data = db.Companies.Find(ID);
+            data.GeneralIsActiveStatus = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
