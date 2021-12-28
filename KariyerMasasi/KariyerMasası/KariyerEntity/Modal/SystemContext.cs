@@ -43,6 +43,8 @@ namespace KariyerEntity.Modal
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<JobAdvertisementApplication> JobAdvertisementApplications { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<CompanyBusinessArea> CompanyBusinessAreas { get; set; }
+        public DbSet<CompanyDepartment> CompanyDepartments { get; set; }
 
     }
 }

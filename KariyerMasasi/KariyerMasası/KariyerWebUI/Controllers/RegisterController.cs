@@ -27,8 +27,8 @@ namespace KariyerWebUI.Controllers
             ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
             return View();
         }
-        [Route("sirket-kayit-ekle"), HttpPost]
-        public ActionResult CompanyAdd(Company company, string[] Business, string[] SpecType, string[] Depart)
+        [Route("sirket-kayit"), HttpPost]
+        public ActionResult CompanyRegister(Company company, string[] Business, /*string[] SpecType,*/ string[] Depart)
         {
             var entity = db.Companies.Where(x => !x.DeletionStatus && x.EMail == company.EMail).FirstOrDefault();
             if (entity == null)
@@ -49,22 +49,24 @@ namespace KariyerWebUI.Controllers
                             BusinessArea b = new BusinessArea() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
                             db.BusinessAreas.Add(b);
                             db.SaveChanges();
+
+
                         }
                     }
                 }
-                if (SpecType != null)
-                {
-                    foreach (var item in SpecType)
-                    {
-                        bool specCheck = db.UserSpecialTypes.Any(x => x.Name == item);
-                        if (!specCheck)
-                        {
-                            UserSpecialType spec = new UserSpecialType() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
-                            db.UserSpecialTypes.Add(spec);
-                            db.SaveChanges();
-                        }
-                    }
-                }
+                //if (SpecType != null)
+                //{
+                //    foreach (var item in SpecType)
+                //    {
+                //        bool specCheck = db.UserSpecialTypes.Any(x => x.Name == item);
+                //        if (!specCheck)
+                //        {
+                //            UserSpecialType spec = new UserSpecialType() { Name = item, UpdatedTime = DateTime.Now, CreatedTime = DateTime.Now };
+                //            db.UserSpecialTypes.Add(spec);
+                //            db.SaveChanges();
+                //        }
+                //    }
+                //}
                 if (Depart != null)
                 {
                     foreach (var item in Depart)
@@ -80,12 +82,54 @@ namespace KariyerWebUI.Controllers
                 }
                 db.Companies.Add(company);
                 db.SaveChanges();
+                CompanyBusinessArea cba = new CompanyBusinessArea();
+                if (Business != null)
+                {
+                    foreach (var item in Business)
+                    {
+                        cba.CompanyID = db.Companies.Where(x => x.EMail == company.EMail).FirstOrDefault().ID;
+                        cba.BusinessAreaID = db.BusinessAreas.Where(x => x.Name == item).FirstOrDefault().ID;
+                        cba.DeletionStatus = false;
+                        cba.CreatedTime = DateTime.Now;
+                        cba.UpdatedTime = DateTime.Now;
+                        db.SaveChanges();
+                    }
+                }
+                if (Depart!=null)
+                {
+                CompanyDepartment cd = new CompanyDepartment();
+                foreach (var item in Depart)
+                {
+                    cd.CompanyID = db.Companies.Where(x => x.EMail == company.EMail).FirstOrDefault().ID;
+                    cd.DepartmentID = db.Departments.Where(x => x.Name == item).FirstOrDefault().ID;
+                    cd.DeletionStatus = false;
+                    cd.CreatedTime = DateTime.Now;
+                    cd.UpdatedTime = DateTime.Now;
+                    db.SaveChanges();
+                }
+                }
+                //CompanySpecialType cst = new CompanySpecialType();
+                //foreach (var item in SpecType)
+                //{
+                //    cst.CompanyID = db.Companies.Where(x => x.EMail == company.EMail).FirstOrDefault().ID;
+                //    cst.UserSpecialTypeID = db.UserSpecialTypes.Where(x => x.Name == item).FirstOrDefault().ID;
+                //    cst.DeletionStatus = false;
+                //    cst.CreatedTime = DateTime.Now;
+                //    cst.UpdatedTime = DateTime.Now;
+                //    db.SaveChanges();
+                //}
                 ViewBag.Message = company.EMail + " adresi ile kayıt başvurunuz alınmıştır.";
+                ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
+                ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
+
                 return View();
             }
             else
             {
                 ViewBag.Message = "Bu mail adresine kayıtlı bir şirket hesabı bulunmaktadır.";
+                ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
+                ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
+
                 return View();
             }
         }

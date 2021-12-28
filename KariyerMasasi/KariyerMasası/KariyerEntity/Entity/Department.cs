@@ -18,5 +18,6 @@ namespace KariyerEntity.Entity
         public virtual ICollection<JobAdvertisement> JobAdvertisements { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
 
+
     }
 }

@@ -14,6 +14,9 @@ namespace KariyerEntity.Entity
             this.CompanyUsers = new HashSet<CompanyUser>();
             this.JobAdvertisements = new HashSet<JobAdvertisement>();
             this.Meetings = new HashSet<Meeting>();
+            this.CompanyBusinessAreas = new HashSet<CompanyBusinessArea>();
+            this.CompanyDepartments = new HashSet<CompanyDepartment>();
+
         }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -27,10 +30,6 @@ namespace KariyerEntity.Entity
         public string TaxNumber { get; set; }
         public string TaxAddress { get; set; }
         public string TaxFile { get; set; }
-        public int BusinessAreaID { get; set; }
-        public BusinessArea BusinessArea { get; set; }
-        public int DepartmentID { get; set; }
-        public Department Department { get; set; }
         public bool ProgramState { get; set; }
         public bool GeneralIsActiveStatus { get; set; }
         public bool PaymentStatus { get; set; }
@@ -38,6 +37,9 @@ namespace KariyerEntity.Entity
         public virtual ICollection<CompanyUser> CompanyUsers { get; set; }
         public virtual ICollection<JobAdvertisement> JobAdvertisements { get; set; }
         public virtual ICollection<Meeting> Meetings { get; set; }
+        public virtual ICollection<CompanyBusinessArea> CompanyBusinessAreas { get; set; }
+        public virtual ICollection<CompanyDepartment> CompanyDepartments { get; set; }
+
 
     }
 }

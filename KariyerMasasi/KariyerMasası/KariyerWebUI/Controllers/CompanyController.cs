@@ -135,7 +135,6 @@ namespace KariyerWebUI.Controllers
             data.ProgramState = model.ProgramState;
             data.GeneralIsActiveStatus = model.GeneralIsActiveStatus;
             data.PaymentStatus = model.PaymentStatus;
-            data.DepartmentID = model.DepartmentID;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

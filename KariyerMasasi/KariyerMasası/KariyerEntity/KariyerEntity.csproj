@@ -52,6 +52,9 @@
     <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\BusinessArea.cs" />
     <Compile Include="Entity\Company.cs" />
+    <Compile Include="Entity\CompanyBusinessArea.cs" />
+    <Compile Include="Entity\CompanyDepartment.cs" />
+    <Compile Include="Entity\CompanySpecialType.cs" />
     <Compile Include="Entity\CompanyUser.cs" />
     <Compile Include="Entity\Department.cs" />
     <Compile Include="Entity\JobAdvertisement.cs" />
@@ -78,6 +81,22 @@
     <Compile Include="Migrations\202112211922478_init1.Designer.cs">
       <DependentUpon>202112211922478_init1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112281955481_28122021001.cs" />
+    <Compile Include="Migrations\202112281955481_28122021001.Designer.cs">
+      <DependentUpon>202112281955481_28122021001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112282019258_28122021002.cs" />
+    <Compile Include="Migrations\202112282019258_28122021002.Designer.cs">
+      <DependentUpon>202112282019258_28122021002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112282027375_28122021003.cs" />
+    <Compile Include="Migrations\202112282027375_28122021003.Designer.cs">
+      <DependentUpon>202112282027375_28122021003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112282032007_28122021004.cs" />
+    <Compile Include="Migrations\202112282032007_28122021004.Designer.cs">
+      <DependentUpon>202112282032007_28122021004.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modal\SystemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +111,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112211922478_init1.resx">
       <DependentUpon>202112211922478_init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112281955481_28122021001.resx">
+      <DependentUpon>202112281955481_28122021001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112282019258_28122021002.resx">
+      <DependentUpon>202112282019258_28122021002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112282027375_28122021003.resx">
+      <DependentUpon>202112282027375_28122021003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112282032007_28122021004.resx">
+      <DependentUpon>202112282032007_28122021004.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
