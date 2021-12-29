@@ -12,8 +12,11 @@ namespace KariyerEntity.Entity
         public UserSpecialType()
         {
             this.SpecialDirectories = new HashSet<SpecialDirectory>();
+            this.CompanySpecialTypes = new HashSet<CompanySpecialType>();
         }
         public string Name { get; set; }
         public virtual ICollection<SpecialDirectory> SpecialDirectories { get; set; }
+        public virtual ICollection<CompanySpecialType> CompanySpecialTypes { get; set; }
+
     }
 }

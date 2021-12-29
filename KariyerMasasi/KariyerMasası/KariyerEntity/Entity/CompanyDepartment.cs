@@ -10,6 +10,10 @@ namespace KariyerEntity.Entity
     public class CompanyDepartment : LowerBase
     {
         public int CompanyID { get; set; }
+        public Company Company { get; set; }
+
         public int DepartmentID { get; set; }
+        public Department Department { get; set; }
+
     }
 }

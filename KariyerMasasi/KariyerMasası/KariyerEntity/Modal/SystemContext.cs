@@ -45,6 +45,7 @@ namespace KariyerEntity.Modal
         public DbSet<Department> Departments { get; set; }
         public DbSet<CompanyBusinessArea> CompanyBusinessAreas { get; set; }
         public DbSet<CompanyDepartment> CompanyDepartments { get; set; }
+        public DbSet<CompanySpecialType> CompanySpecialTypes{ get; set; }
 
     }
 }

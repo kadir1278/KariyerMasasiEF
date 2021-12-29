@@ -22,7 +22,7 @@
                 '<td>' + data.Result[item].Phone + '</td>' +
                 '<td><div class="d-flex">' +
                 '<a id="btnDetail" style="color:white" class="btn btn-primary shadow btn-xs sharp mr-1" data-id="' + data.Result[item].ID + '"><i class="fa fa-pencil"></i></a>' +
-                '<a id="btnChangeStatus" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-trash"></i></a>' +
+                '<a id="btnChangeStatus" style="color:white" class="btn btn-danger shadow btn-xs sharp" data-id="' + data.Result[item].ID + '"><i class="fa fa-check-circle-o"></i></a>' +
                 '</div></td>' +
                 '</tr></tbody> '
             $('#example').append(deger);
@@ -47,11 +47,12 @@ $(document).on("click", ("#btnDetail"), function () {
         });
 })
 $(document).ready(GetData());
+
 $("#example").on("click", "#btnChangeStatus", function () {
     var btn = $(this);
+    var ID = btn.data("id");
     bootbox.confirm("Onaylamak istediğinize emin misiniz ?", function (result) {
         if (result) {
-            var ID = btn.data("id");
             $.ajax({
                 type: "GET",
                 url: "/sirket-onayla/" + ID,

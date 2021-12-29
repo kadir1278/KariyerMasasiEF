@@ -1,4 +1,4 @@
-﻿    using KariyerEntity.Entity;
+﻿using KariyerEntity.Entity;
 using KariyerEntity.Modal;
 using System;
 using System.Collections.Generic;
@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace KariyerWebUI.Controllers
 {
-        [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public class CompanyController : Controller
     {
         private SystemContext db = new SystemContext();
@@ -29,16 +30,26 @@ namespace KariyerWebUI.Controllers
         {
             ViewBag.BusinessAreaID = db.BusinessAreas.Where(x => !x.DeletionStatus).ToList();
             ViewBag.DepartmentID = db.Departments.Where(x => !x.DeletionStatus).ToList();
+            ViewBag.CompanyDepartment = db.CompanyDepartments.Include(x=>x.Company).Include(x=>x.Department).Where(x => !x.DeletionStatus && x.CompanyID == id).ToList();
             var data = db.Companies.Where(x => x.ID == id).FirstOrDefault();
             return PartialView(data);
         }
         [Route("sirket-sil/{id}"), HttpGet]
         public ActionResult Delete(int ID)
         {
-            var data = db.Companies.Find(ID);
-            data.DeletionStatus = true;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var data = db.Companies.Find(ID);
+                data.DeletionStatus = true;
+                db.SaveChanges();
+                return View("Index");
+            }
+            catch (Exception ex)
+            {
+
+                return View(ex);
+            }
+
         }
         [Route("sirket-ekle"), HttpPost]
         public JsonResult Add(Company model, string Logo, string TaxFile)
@@ -87,7 +98,7 @@ namespace KariyerWebUI.Controllers
             }
             return Json(new { res = true });
 
-           
+
         }
         [Route("sirket-guncelle"), HttpPost]
         public ActionResult Update(Company model, string Logo, string TaxFile)
@@ -145,11 +156,11 @@ namespace KariyerWebUI.Controllers
 
             if (searchText == "" || searchText == null)
             {
-                data = db.Companies.Where(x => !x.DeletionStatus&&x.GeneralIsActiveStatus).ToList();
+                data = db.Companies.Where(x => !x.DeletionStatus && x.GeneralIsActiveStatus).ToList();
             }
             else
             {
-                data = db.Companies.Where(x => !x.DeletionStatus && x.Name == searchText&&x.GeneralIsActiveStatus).ToList();
+                data = db.Companies.Where(x => !x.DeletionStatus && x.Name == searchText && x.GeneralIsActiveStatus).ToList();
             }
             var query = new
             {
@@ -195,10 +206,18 @@ namespace KariyerWebUI.Controllers
         [Route("sirket-onayla/{id}"), HttpGet]
         public ActionResult SetCompanyActiveStatus(int ID)
         {
-            var data = db.Companies.Find(ID);
-            data.GeneralIsActiveStatus = true;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var data = db.Companies.Find(ID);
+                data.GeneralIsActiveStatus = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return View(ex);
+            }
+
         }
     }
 }

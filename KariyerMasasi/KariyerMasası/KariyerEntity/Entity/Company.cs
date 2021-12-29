@@ -39,6 +39,7 @@ namespace KariyerEntity.Entity
         public virtual ICollection<Meeting> Meetings { get; set; }
         public virtual ICollection<CompanyBusinessArea> CompanyBusinessAreas { get; set; }
         public virtual ICollection<CompanyDepartment> CompanyDepartments { get; set; }
+        public virtual ICollection<CompanySpecialType> CompanySpecialTypes { get; set; }
 
 
     }

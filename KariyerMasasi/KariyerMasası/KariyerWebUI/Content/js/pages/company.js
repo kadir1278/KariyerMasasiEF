@@ -30,25 +30,6 @@
 
     })
 }
-$("#example").on("click", "#btnDelete", function () {
-    var btn = $(this);
-    bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
-        if (result) {
-            var ID = btn.data("id");
-            $.ajax({
-                type: "GET",
-                url: "/sirket-sil/" + ID,
-                success: function () {
-                    bootbox.alert("Şirket silme işlemi başarılı.")
-                    GetData();
-                },
-                error: function () {
-                    bootbox.alert("Şirket silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
-                }
-            })
-        }
-    })
-})
 $(document).on("click", ("#btnDetail"), function () {
     var btn = $(this);
     var ID = btn.data("id");
@@ -174,3 +155,22 @@ $("#company-add-form").submit(function (e) {
     });
 });
 $(document).ready(GetData());
+$("#example").on("click", "#btnDelete", function () {
+    var btn = $(this);
+    bootbox.confirm("Silmek istediğinize emin misiniz ?", function (result) {
+        if (result) {
+            var ID = btn.data("id");
+            $.ajax({
+                type: "GET",
+                url: "/sirket-sil/" + ID,
+                success: function () {
+                    bootbox.alert("Şirket silme işlemi başarılı.")
+                    GetData();
+                },
+                error: function () {
+                    bootbox.alert("Şirket silinemedi lütfen tekrar deneyin. Sorunun devam etmesi durumunda 360MEKA ile irtibat kurunuz.");
+                }
+            })
+        }
+    })
+})

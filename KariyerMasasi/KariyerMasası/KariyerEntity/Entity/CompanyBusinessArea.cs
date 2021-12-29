@@ -10,6 +10,10 @@ namespace KariyerEntity.Entity
     public class CompanyBusinessArea:LowerBase
     {
         public int CompanyID { get; set; }
+        public Company Company { get; set; }
+
         public int BusinessAreaID { get; set; }
+        public BusinessArea BusinessArea { get; set; }
+
     }
 }

@@ -55,7 +55,10 @@
                             <label>Çalışma Alanı</label>
                             <select required class="custom-select2 form-control" name="BusinessAreaID">
                                 <optgroup label="Çalışma Alanı">
-                                    <option value="@Model.BusinessAreaID">@Model.BusinessArea.Name</option>
+                                    @foreach (var item in ViewBag.CompanyDepartment)
+                                    {
+                                        <option value="@item.Department.Name">@item.Department.Name</option>
+                                    }
                                     @foreach (var item in ViewBag.BusinessAreaID)
                                     {
                                         if (item.ID != Model.BusinessAreaID)

@@ -82,11 +82,11 @@ namespace KariyerWebUI.Controllers
 
             if (searchText == "" || searchText == null)
             {
-                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.CompanyID == cmpnyID).Include(x => x.Company).ToList();
+                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.CompanyID == cmpnyID&&x.Company.GeneralIsActiveStatus&&!x.Company.DeletionStatus).Include(x => x.Company).ToList();
             }
             else
             {
-                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.Name == searchText && x.CompanyID == cmpnyID).Include(x => x.Company).ToList();
+                data = db.CompanyUsers.Where(x => !x.DeletionStatus && x.Name == searchText && x.CompanyID == cmpnyID&&x.Company.GeneralIsActiveStatus&&!x.Company.DeletionStatus).Include(x => x.Company).ToList();
             }
             var query = new
             {
