@@ -22,7 +22,9 @@ namespace KariyerEntity.Entity
             this.SpecialDirectories = new HashSet<SpecialDirectory>();
             this.Meetings = new HashSet<Meeting>();
             this.JobAdvertisementApplications = new HashSet<JobAdvertisementApplication>();
-
+            this.UserBusinessAreas = new HashSet<UserBusinessArea>();
+            this.UserSpecialTypeCombines = new HashSet<UserSpecialTypeCombine>();
+            this.UserDepartments = new HashSet<UserDepartment>();
         }
         public string Photo { get; set; }
         public string Name { get; set; }
@@ -43,8 +45,6 @@ namespace KariyerEntity.Entity
         public string MarriageStatus { get; set; }
         public bool ProgramState { get; set; }
         public string Hobby { get; set; }
-        public int BusinessAreaID { get; set; }
-        public BusinessArea BusinessArea { get; set; }
         public virtual ICollection<UserEducation> UserEducations { get; set; }
         public virtual ICollection<UserBusinessInformation> UserBusinessInformations { get; set; }
         public virtual ICollection<UserLanguage> UserLanguages { get; set; }
@@ -56,7 +56,9 @@ namespace KariyerEntity.Entity
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<Meeting> Meetings { get; set; }
         public virtual ICollection<JobAdvertisementApplication> JobAdvertisementApplications { get; set; }
-
+        public virtual ICollection<UserBusinessArea> UserBusinessAreas { get; set; }
+        public virtual ICollection<UserSpecialTypeCombine> UserSpecialTypeCombines { get; set; }
+        public virtual ICollection<UserDepartment> UserDepartments { get; set; }
 
     }
 }

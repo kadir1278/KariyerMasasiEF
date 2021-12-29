@@ -104,7 +104,6 @@ namespace KariyerWebUI.Controllers
             data.GeneralIsActive = model.GeneralIsActive;
             data.Description = model.Description;
             data.Title = model.Title;
-            data.BusinessAreaID = model.BusinessAreaID;
             data.MilitaryStatus = model.MilitaryStatus;
             data.Gender = model.Gender;
             data.MarriageStatus = model.MarriageStatus;

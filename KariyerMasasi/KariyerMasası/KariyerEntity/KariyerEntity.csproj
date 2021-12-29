@@ -64,15 +64,18 @@
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\SpecialDirectory.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserBusinessArea.cs" />
     <Compile Include="Entity\UserBusinessInformation.cs" />
     <Compile Include="Entity\UserCertificate.cs" />
     <Compile Include="Entity\UserComputerInformation.cs" />
+    <Compile Include="Entity\UserDepartment.cs" />
     <Compile Include="Entity\UserEducation.cs" />
     <Compile Include="Entity\UserLanguage.cs" />
     <Compile Include="Entity\UserReference.cs" />
     <Compile Include="Entity\UserRole.cs" />
     <Compile Include="Entity\UserSeminar.cs" />
     <Compile Include="Entity\UserSpecialType.cs" />
+    <Compile Include="Entity\UserSpecialTypeCombine.cs" />
     <Compile Include="Migrations\202112202058049_init.cs" />
     <Compile Include="Migrations\202112202058049_init.Designer.cs">
       <DependentUpon>202112202058049_init.cs</DependentUpon>

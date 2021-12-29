@@ -56,7 +56,7 @@ function update_user_photo() {
         reader.onload = function (e) {
             $('#img_update_user_photo').attr('src', e.target.result);
             $('#img_update_user_photo').removeAttr('hidden');
-            $('#Photo').val(e.target.result);
+           // $('#Photo').val(e.target.result);
         }
     });
     input.trigger('click');

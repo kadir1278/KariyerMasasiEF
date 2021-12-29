@@ -158,12 +158,10 @@
                                             </select>
                                         </div>
                                     </div>*@
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="file" id="Photo" name="Photo" class="fxt-btn-fill text-center" />
-                                        </div>
-                                    </div>
-                                    
+                                <div class="form-group col-md-6" onclick="upload_user_photo()">
+                                    <button type="button" class="fxt-btn-fill">Fotoğraf Yükle</button>
+                                </div>
+                                <input hidden id="Photo" name="Photo" value="" />    
                                 </div>
                             </div>
                         </div>
@@ -185,6 +183,6 @@
     <script src="~/Content/Login/js/main.js"></script>
     <script src="~/Content/js/pages/userregister.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-
+    <script src="~/Scripts/bootbox.js"></script>
 </body>
 </html>

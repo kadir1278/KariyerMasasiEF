@@ -33,7 +33,7 @@ namespace KariyerWebUI.Controllers
 
         private void InModel(UserProfileViewModel model, int userID)
         {
-            model.UserInformations = db.Users.Include(x => x.BusinessArea).Where(x => !x.DeletionStatus && x.ID == userID).ToList(); 
+         //   model.UserInformations = db.Users.Include(x => x.BusinessArea).Where(x => !x.DeletionStatus && x.ID == userID).ToList(); 
             model.BusinessInformations = db.UserBusinessInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
             model.Certificates = db.UserCertificates.Include(x => x.Language).Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 
             model.ComputerInformations = db.UserComputerInformations.Where(x => !x.DeletionStatus && x.UserID == userID).ToList(); 

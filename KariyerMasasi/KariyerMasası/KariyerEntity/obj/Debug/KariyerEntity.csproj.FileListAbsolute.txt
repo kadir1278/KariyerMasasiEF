@@ -81,3 +81,11 @@ E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\K
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021003.resources
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021004.resources
 E:\Github\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._29122021001.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations.init.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations.init1.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021001.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021002.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021003.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._28122021004.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.Migrations._29122021001.resources
+C:\Users\x\Documents\GitHub\KariyerMasasiEF\KariyerMasasi\KariyerMasası\KariyerEntity\obj\Debug\KariyerEntity.csproj.GenerateResource.cache
